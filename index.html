@@ -1466,6 +1466,8 @@
       infoModal.classList.remove('hidden');
       infoModal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+    }
+
     function openCertificateScan(title, issuer, badge, score, level, image, caption) {
       if (image && image.trim() !== '') {
         openLightbox(image, caption || title);
