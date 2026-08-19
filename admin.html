@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Studio & Live Editor | Armand Maulana Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              navy: '#070D1B',
+              darker: '#0B1120',
+              slate: '#1E293B',
+              indigo: '#6366F1',
+              emerald: '#10B981',
+              cyan: '#06B6D4',
+              blue: '#3B82F6',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0b1120; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+
+<body class="bg-[#070D1B] text-slate-200 font-sans antialiased h-screen overflow-hidden flex flex-col">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Top Studio Header -->
+  <header class="bg-[#0B1120] border-b border-slate-800 px-4 py-3 flex items-center justify-between shrink-0 z-30">
+    
+    <!-- Left: Branding & Status -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-400 p-[1.5px]">
+        <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-mono font-bold text-sm text-emerald-400">
+          AM
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-sm font-bold text-white tracking-tight">Portfolio Admin Studio</h1>
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">Client-Side CMS</span>
+        </div>
+        <div class="text-xs text-slate-400 font-mono flex items-center gap-1.5">
+          <span id="save-indicator" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span id="status-text">Semua perubahan tersimpan lokal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Viewport & Layout Mode Switcher -->
+    <div class="hidden md:flex items-center gap-1 bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs font-mono">
+      <button onclick="setSplitMode('split')" id="btn-split" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold flex items-center gap-1.5 transition-all">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path></svg>
+        Split View
+      </button>
+      <button onclick="setSplitMode('editor')" id="btn-editor-only" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition-all">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+        Editor Penuh
+      </button>
+      <button onclick="setSplitMode('preview')" id="btn-preview-only" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition-all">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+        Preview Penuh
+      </button>
+    </div>
+
+    <!-- Right: Publish & Data Operations -->
+    <div class="flex items-center gap-2">
+      
+      <!-- Open Public Web in New Tab -->
+      <a href="index.html" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-mono font-medium border border-slate-700 transition-all flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        <span class="hidden sm:inline">Buka Web Publik</span>
+      </a>
+
+      <!-- Quick Export / Download Data -->
+      <div class="relative">
+        <button onclick="toggleDataDropdown()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-mono font-medium border border-slate-700 transition-all flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <span class="hidden sm:inline">Ekspor / File</span>
+          <span class="text-[10px]">▼</span>
+        </button>
+        
+        <div id="data-dropdown" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-2 z-50 text-xs font-mono space-y-1">
+          <button onclick="downloadDataJson()" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2">
+            📄 Unduh data.json
+          </button>
+          <button onclick="downloadStandaloneHtml()" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2">
+            🌐 Unduh index.html Terbaru
+          </button>
+          <button onclick="exportBackupJson()" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2">
+            💾 Backup JSON File
+          </button>
+          <label class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer">
+            📤 Restore dari JSON
+            <input type="file" accept=".json" onchange="importBackupJson(event)" class="hidden">
+          </label>
+          <div class="border-t border-slate-800 my-1"></div>
+          <button onclick="resetToFactoryDefault()" class="w-full text-left px-3 py-2 rounded-xl hover:bg-rose-950/40 text-rose-400 flex items-center gap-2">
+            ⚠️ Reset Data ke Asal
+          </button>
+        </div>
+      </div>
+
+      <!-- Push to GitHub Button -->
+      <button onclick="openGithubModal()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-semibold uppercase tracking-wider shadow-md shadow-indigo-600/30 transition-all flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span>Push ke GitHub</span>
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- ==================== MAIN STUDIO WORKSPACE ==================== -->
+  <main class="flex-1 flex overflow-hidden relative">
+    
+    <!-- LEFT PANEL: Dynamic Form & Code Editor -->
+    <div id="editor-panel" class="w-1/2 flex flex-col border-r border-slate-800 bg-[#0B1120]/90 overflow-hidden transition-all duration-300">
+      
+      <!-- Sub-Navigation Tabs -->
+      <div class="flex items-center gap-1 p-2 border-b border-slate-800 bg-slate-900/60 overflow-x-auto text-xs font-mono shrink-0">
+        <button onclick="switchTab('profile')" class="studio-tab-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold" data-tab="profile">👤 Profil & Bio</button>
+        <button onclick="switchTab('metrics')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="metrics">📊 Statistik</button>
+        <button onclick="switchTab('education')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="education">🎓 Pendidikan</button>
+        <button onclick="switchTab('experience')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="experience">💼 Magang PTUN</button>
+        <button onclick="switchTab('projects')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="projects">🚀 Proyek</button>
+        <button onclick="switchTab('certifications')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="certifications">📜 Sertifikasi</button>
+        <button onclick="switchTab('skills')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="skills">🛠️ Keahlian</button>
+        <button onclick="switchTab('raw_json')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="raw_json">💻 Raw JSON</button>
+      </div>
+
+      <!-- Tab Content Scrollable Area -->
+      <div id="tab-content-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+        <!-- Injected via JavaScript based on current active tab -->
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL: Live Interactive Preview -->
+    <div id="preview-panel" class="w-1/2 flex flex-col bg-[#070D1B] overflow-hidden transition-all duration-300">
+      
+      <!-- Preview Header Toolbar -->
+      <div class="bg-[#0B1120] border-b border-slate-800 px-4 py-2 flex items-center justify-between shrink-0 text-xs font-mono">
+        <div class="flex items-center gap-2 text-slate-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Live Interactive Preview</span>
+        </div>
+
+        <!-- Responsive Device Simulation Icons -->
+        <div class="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
+          <button onclick="setPreviewWidth('100%')" title="Desktop View" class="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800">
+            💻 Desktop
+          </button>
+          <button onclick="setPreviewWidth('768px')" title="Tablet View" class="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800">
+            📱 Tablet
+          </button>
+          <button onclick="setPreviewWidth('390px')" title="Mobile View" class="p-1.5 rounded text-slate-300 hover:text-white hover:bg-slate-800">
+            📱 Mobile
+          </button>
+        </div>
+      </div>
+
+      <!-- Iframe Container -->
+      <div class="flex-1 p-3 flex justify-center items-center overflow-hidden bg-slate-950/60">
+        <iframe id="preview-iframe" src="index.html?preview=true" class="w-full h-full rounded-2xl border border-slate-800 shadow-2xl transition-all duration-300"></iframe>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== GITHUB DIRECT CLOUD SYNC MODAL ==================== -->
+  <div id="github-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="glass-panel rounded-3xl max-w-xl w-full border border-slate-700 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+      
+      <div class="bg-slate-900/95 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-white">Push Otomatis ke GitHub Pages</h3>
+            <p class="text-[11px] text-slate-400 font-mono">1-Klik Sync tanpa terminal / server backend</p>
+          </div>
+        </div>
+        <button onclick="closeGithubModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="p-6 space-y-4 text-xs font-mono">
+        
+        <div class="p-3.5 rounded-xl bg-indigo-950/40 border border-indigo-500/30 text-indigo-200 leading-relaxed font-sans text-xs">
+          💡 <strong>Bagaimana cara kerjanya?</strong> Studio ini akan langsung meng-commit file <code class="text-indigo-400 font-mono">data.json</code> ke repository GitHub Anda via GitHub REST API. Website GitHub Pages Anda akan langsung ter-update otomatis!
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">GitHub Personal Access Token (PAT)</label>
+          <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+          <span class="text-[10px] text-slate-500 mt-1 block">Token disimpan aman di peramban lokal Anda. Butuh izin scope: <code class="text-slate-400">repo</code>.</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 mb-1">Username / Owner</label>
+            <input type="text" id="gh-owner" placeholder="Contoh: armand-maulana" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Nama Repository</label>
+            <input type="text" id="gh-repo" placeholder="Contoh: portfolio" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Branch</label>
+          <input type="text" id="gh-branch" value="main" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div id="gh-sync-status" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs"></div>
+
+      </div>
+
+      <div class="px-6 py-4 bg-slate-900/60 border-t border-slate-800 flex justify-between items-center">
+        <button onclick="closeGithubModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono">
+          Batal
+        </button>
+        <button onclick="executeGithubPush()" id="btn-do-push" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-bold flex items-center gap-2 shadow-lg shadow-indigo-600/30">
+          🚀 Publish Sekarang ke GitHub
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== STUDIO JAVASCRIPT ENGINE ==================== -->
+  <script>
+    // State Store
+    let currentData = null;
+    let activeTab = 'profile';
+
+    // Default Fallback Data (Armand Maulana)
+    const defaultData = {
+      profile: {
+        name: "Armand Maulana",
+        title: "Armand Maulana, S.Tr.Kom.",
+        degree: "D4 Teknologi Rekayasa Komputer",
+        institution: "Politeknik Negeri Samarinda",
+        period: "2022 – 2026",
+        honor: "Cum Laude (IPK 3.91 / 4.00)",
+        tagline: "Information Technology | IT Infrastructure | Digital Solutions",
+        location: "Kec. Anggana, Kab. Kutai Kartanegara, Kalimantan Timur",
+        email: "armandm792@gmail.com",
+        whatsapp: "(+62) 831 4072 3240",
+        whatsapp_link: "https://wa.me/6283140723240",
+        linkedin: "linkedin.com/in/armand-maulana",
+        linkedin_link: "https://linkedin.com/in/armand-maulana",
+        summary: "Lulusan D4 Teknologi Rekayasa Komputer (IPK 3.91/4.00) dengan fokus pada keandalan infrastruktur IT, troubleshooting teknis operasional, dan pengembangan web internal untuk otomasi alur kerja korporat dan instansi."
+      },
+      metrics: {
+        gpa: "3.91",
+        gpa_scale: "4.00",
+        gpa_label: "Predikat Sangat Memuaskan",
+        tickets: "35+",
+        tickets_label: "30+ Device Maintained",
+        web_apps: "3",
+        web_apps_label: "InvenIT, Presensi & Cuti",
+        haki: "2",
+        haki_label: "Resmi Kemenkumham RI",
+        toeic: "835",
+        toeic_label: "Working Proficiency",
+        certifications_count: "BNSP & Cisco",
+        certifications_label: "Junior Net Admin & CCNA"
+      },
+      education: {
+        university: "Politeknik Negeri Samarinda",
+        degree_name: "Sarjana Terapan (D4) - Teknologi Rekayasa Komputer",
+        period: "2022 – 2026",
+        gpa: "3.91 / 4.00",
+        description: "Program studi sarjana terapan berfokus pada integrasi hardware, arsitektur jaringan komputer enterprise, mikroelektronika IoT, sistem tertanam (embedded systems), dan pengembangan sistem informasi berbasis web terdistribusi.",
+        pillars: [
+          "Infrastruktur Jaringan & Routing Enterprise",
+          "Sistem Otomasi IoT & Pemrosesan Sinyal",
+          "Pengolahan Citra Digital & AI Dasar",
+          "Pengembangan Aplikasi Web Internal"
+        ],
+        publication: {
+          journal: "Jurnal JAIEA",
+          title: "Development of an IoT-Based Animal Trap Using Motion Sensors and Camera",
+          description: "Jurnal terakreditasi di bidang otomatisasi industri dan kecerdasan elektronik (JAIEA). Riset mencakup integrasi sensor PIR multi-sudut, mikrokontroler ESP32-CAM, deteksi gerakan presisi tinggi, dan telemetri nirkabel real-time.",
+          tags: ["IoT System", "ESP32-CAM", "Motion Capture", "Wireless Telemetry"]
+        },
+        haki_list: [
+          {
+            id: "1",
+            title: "Sistem Otomasi & Monitoring IoT",
+            status: "Terdaftar Resmi Kemenkumham RI",
+            description: "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera."
+          },
+          {
+            id: "2",
+            title: "Website \"Spin a Meal\"",
+            status: "Terdaftar Resmi Kemenkumham RI",
+            description: "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif."
+          }
+        ]
+      },
+      experience: {
+        institution: "Pengadilan Tata Usaha Negara (PTUN) Samarinda",
+        division: "Subbag Perencanaan, TI, & Pelaporan (PTIP)",
+        role: "IT Support Intern & Internal Web Developer",
+        period: "Januari 2026 – Mei 2026",
+        highlights: {
+          devices: "30+",
+          tickets: "35+",
+          web_count: "3"
+        },
+        responsibilities: [
+          {
+            title: "Maintenance Perangkat Rutin",
+            desc: "Mengelola dan memelihara 30+ unit PC, laptop, printer jaringan, dan perangkat pendukung di seluruh ruangan kerja PTUN Samarinda."
+          },
+          {
+            title: "Troubleshooting Teknis (35+ Kasus)",
+            desc: "Menangani insiden kendala koneksi LAN/Wi-Fi kantor, konfigurasi IP, instalasi OS Windows, konfigurasi driver, antivirus, serta perbaikan hardware."
+          },
+          {
+            title: "Dukungan TI Sidang & Rapat",
+            desc: "Mempersiapkan infrastruktur audio/video conference dan jaringan untuk persidangan elektronik dan rapat koordinasi instansi."
+          }
+        ],
+        web_systems: [
+          {
+            key: "invenit",
+            title: "InvenIT PTUN",
+            category: "Inventaris IT",
+            desc: "Sistem manajemen inventaris aset perangkat keras TI, histori servis teknis, penomoran BMN, dan pelacakan unit secara digital.",
+            tags: ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"]
+          },
+          {
+            key: "absensi",
+            title: "Absensi Digital & Foto",
+            category: "Geofencing",
+            desc: "Presensi presisi pegawai berbasis validasi radius koordinat GPS lokasi kantor, verifikasi foto kamera real-time, dan rekap otomatis.",
+            tags: ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"]
+          },
+          {
+            key: "cuti",
+            title: "Sistem Izin & Cuti",
+            category: "Paperless",
+            desc: "Digitalisasi permohonan izin dinas & cuti pegawai dengan sistem notifikasi, alur persetujuan bertingkat, dan arsip terpusat.",
+            tags: ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"]
+          }
+        ]
+      },
+      projects: [
+        {
+          id: "pioneer",
+          title: "Simulasi Robotik Pioneer P3-DX CoppeliaSim",
+          category: "iot",
+          category_label: "CoppeliaSim • Robotik",
+          role: "Project Lead (25 Mahasiswa / 2 Sub-tim)",
+          lead_highlight: "Lead 25 Mahasiswa",
+          description: "Memimpin koordinasi 25 mahasiswa dalam pengembangan simulasi navigasi robot mobile otonom Pioneer P3-DX pada lingkungan virtual 3D CoppeliaSim, algoritma penghindaran rintangan berbasis sensor ultrasonik/sonar, dan pemetaan rute.",
+          tech_metrics: ["Autonomous Navigation", "Obstacle Avoidance"],
+          tags: ["CoppeliaSim (V-REP)", "Lua Scripting", "Autonomous Alg", "Team Leadership"],
+          details: "Sebagai Project Lead yang mengoordinasikan 25 mahasiswa (terbagi dalam 2 sub-tim teknis), memimpin riset dan implementasi robot navigasi bergerak (mobile robotics)."
+        },
+        {
+          id: "knn",
+          title: "Sistem Klasifikasi Citra Buah (KNN)",
+          category: "ai",
+          category_label: "Machine Learning • Citra",
+          role: "Project Lead (4 Anggota Tim)",
+          lead_highlight: "Lead 4 Anggota",
+          description: "Memimpin tim dalam merancang pipeline pengolahan citra digital: pra-pemrosesan (filtering & resize), ekstraksi fitur warna (ruang HSV) dan tekstur (GLCM), serta klasifikasi tingkat kematangan dan jenis buah dengan akurasi optimal.",
+          tech_metrics: ["HSV Color Extraction", "K-Nearest Neighbors"],
+          tags: ["Python / MATLAB", "KNN Algorithm", "HSV & GLCM", "Feature Extraction"],
+          details: "Memimpin 4 anggota tim dalam merancang pipeline machine learning: pra-pemrosesan citra, segmentasi latar belakang, ekstraksi fitur warna ruang HSV dan tekstur GLCM."
+        },
+        {
+          id: "iot",
+          title: "Sistem Otomasi & Monitoring IoT",
+          category: "iot",
+          category_label: "Riset Skripsi • HAKI & Jurnal",
+          role: "Lead Researcher & Developer Skripsi",
+          lead_highlight: "Lead Researcher",
+          description: "Pengembangan perangkat keras otomasi pengendali jebakan satwa berbasis IoT. Mengintegrasikan sensor gerak presisi, mikrokontroler ESP32-CAM untuk capture visual instan, notifikasi telemetri nirkabel, dan power management efisien.",
+          tech_metrics: ["ESP32-CAM", "PIR Sensor Multi-Zone"],
+          tags: ["ESP32 / Arduino", "PIR Motion Sensors", "IoT Dashboard", "HAKI Registered"],
+          details: "Riset terapan skripsi yang menghasilkan 1 Publikasi Jurnal JAIEA dan 1 Hak Cipta Resmi Kemenkumham RI."
+        }
+      ],
+      certifications: {
+        languages: [
+          {
+            name: "TOEIC (Test of English for International Communication)",
+            issuer: "ETS TOEIC",
+            score: "835",
+            max_score: "990",
+            level: "Working Proficiency",
+            percentage: 84.3,
+            desc: "Kemampuan komunikasi bahasa Inggris tingkat profesional untuk membaca dokumentasi teknis, koordinasi lintas tim, dan komunikasi bisnis korporat."
+          },
+          {
+            name: "TOEFL ITP / Equivalent",
+            issuer: "Institutional English Test",
+            score: "497",
+            max_score: "677",
+            level: "Intermediate",
+            percentage: 73.4,
+            desc: "Pemahaman tata bahasa (Structure), listening comprehension teks akademis, serta membaca literatur teknis komputasi berbahasa Inggris."
+          }
+        ],
+        licenses: [
+          {
+            title: "Junior Network Administrator",
+            issuer: "BNSP RI (Badan Nasional Sertifikasi Profesi)",
+            badge: "BNSP RI",
+            status: "Kompeten",
+            desc: "Standar Kompetensi Kerja Nasional Indonesia (SKKNI) dalam merancang skema IP, konfigurasi switch/router, dan troubleshooting jaringan komputer."
+          },
+          {
+            title: "CCNAv7: Introduction to Networks (ITN)",
+            issuer: "Cisco Networking Academy",
+            badge: "Cisco CCNAv7",
+            status: "Certified",
+            desc: "Arsitektur model OSI & TCP/IP, addressing IPv4/IPv6, subnetting VLSM, konfigurasi dasar Cisco IOS pada switch dan router."
+          },
+          {
+            title: "CCNAv7: Switching, Routing, & Wireless Essentials",
+            issuer: "Cisco Networking Academy",
+            badge: "Cisco CCNAv7",
+            status: "Certified",
+            desc: "VLAN & Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, SLAAC, keamanan port switch, dan konsep nirkabel WLAN/WLC."
+          },
+          {
+            title: "Belajar Fundamental Aplikasi Android",
+            issuer: "Dicoding Indonesia",
+            badge: "Dicoding",
+            status: "Certified",
+            desc: "Pengembangan aplikasi mobile Android dengan arsitektur modern, Activity/Fragment lifecycle, background processing, dan konsumsi REST API."
+          }
+        ]
+      },
+      skills: {
+        networking: {
+          category: "Jaringan & Infrastruktur",
+          subtitle: "Networking & Hardware",
+          items: ["Cisco IOS (CLI)", "PuTTY & SSH/Telnet", "TCP/IP & Subnetting", "VLAN & Routing", "Cisco Packet Tracer", "Hardware Troubleshooting", "Crimping & Cabling (LAN)", "Wi-Fi & AP Config"]
+        },
+        digital_solutions: {
+          category: "Solusi Digital & Software",
+          subtitle: "Web, Database & IoT",
+          items: ["PHP (Native & OOP)", "MySQL / MariaDB", "HTML5 & Semantic", "CSS3 & Tailwind CSS", "JavaScript (ES6+)", "RESTful APIs", "Arsitektur IoT (ESP32)", "Sensor Integration"]
+        },
+        tools: {
+          category: "Tools & Lingkungan Kerja",
+          subtitle: "Workflow & Ecosystem",
+          items: ["Windows Environment", "IT Asset Management", "Git & GitHub", "Visual Studio Code", "C / C++ Programming", "Postman API Testing", "XAMPP / Laragon", "Microsoft Office 365"]
+        }
+      }
+    };
+
+    // Load initial data from LocalStorage or Fallback
+    function loadData() {
+      const stored = localStorage.getItem('armand_portfolio_data');
+      if (stored) {
+        try {
+          currentData = JSON.parse(stored);
+        } catch(e) {
+          currentData = JSON.parse(JSON.stringify(defaultData));
+        }
+      } else {
+        currentData = JSON.parse(JSON.stringify(defaultData));
+      }
+      renderActiveTab();
+      syncPreview();
+    }
+
+    // Save Data to LocalStorage & Sync Preview
+    function saveData() {
+      localStorage.setItem('armand_portfolio_data', JSON.stringify(currentData));
+      document.getElementById('status-text').textContent = 'Perubahan tersimpan otomatis (' + new Date().toLocaleTimeString() + ')';
+      syncPreview();
+    }
+
+    // Broadcast updated data to Iframe Preview
+    function syncPreview() {
+      const iframe = document.getElementById('preview-iframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'PORTFOLIO_DATA_UPDATE', data: currentData }, '*');
+      }
+    }
+
+    // Toast Alert Helper
+    function showToast(msg, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 border text-xs font-mono font-medium pointer-events-auto transition-all ${
+        type === 'success' ? 'bg-slate-900/95 border-emerald-500/50 text-white' : 'bg-slate-900/95 border-rose-500/50 text-rose-300'
+      }`;
+      toast.innerHTML = `<span>${type === 'success' ? '✓' : '⚠️'}</span> <span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3500);
+    }
+
+    // Tab Switching
+    function switchTab(tabKey) {
+      activeTab = tabKey;
+      document.querySelectorAll('.studio-tab-btn').forEach(btn => {
+        if (btn.dataset.tab === tabKey) {
+          btn.className = 'studio-tab-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold';
+        } else {
+          btn.className = 'studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800';
+        }
+      });
+      renderActiveTab();
+    }
+
+    // Render Forms for Active Tab
+    function renderActiveTab() {
+      const container = document.getElementById('tab-content-container');
+      if (!container) return;
+
+      if (activeTab === 'profile') {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Identitas & Informasi Kontak</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Lengkap</label>
+                <input type="text" value="${currentData.profile.name || ''}" oninput="currentData.profile.name = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama dengan Gelar</label>
+                <input type="text" value="${currentData.profile.title || ''}" oninput="currentData.profile.title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1">Tagline Profesional</label>
+              <input type="text" value="${currentData.profile.tagline || ''}" oninput="currentData.profile.tagline = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1">Lokasi Domisili</label>
+              <input type="text" value="${currentData.profile.location || ''}" oninput="currentData.profile.location = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1">Ringkasan Profil (Bio Hero)</label>
+              <textarea rows="3" oninput="currentData.profile.summary = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">${currentData.profile.summary || ''}</textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Email Resmi</label>
+                <input type="text" value="${currentData.profile.email || ''}" oninput="currentData.profile.email = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nomor WhatsApp</label>
+                <input type="text" value="${currentData.profile.whatsapp || ''}" oninput="currentData.profile.whatsapp = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1">URL LinkedIn</label>
+              <input type="text" value="${currentData.profile.linkedin_link || ''}" oninput="currentData.profile.linkedin_link = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+            </div>
+          </div>
+        `;
+      } else if (activeTab === 'metrics') {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Statistik & Metrik Performa</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                <label class="block text-xs font-mono text-slate-400 mb-1">IPK (Indeks Prestasi Kumulatif)</label>
+                <input type="text" value="${currentData.metrics.gpa || ''}" oninput="currentData.metrics.gpa = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-emerald-400 font-mono font-bold text-lg">
+                <input type="text" value="${currentData.metrics.gpa_label || ''}" oninput="currentData.metrics.gpa_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Tiket IT Resolved</label>
+                <input type="text" value="${currentData.metrics.tickets || ''}" oninput="currentData.metrics.tickets = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-indigo-400 font-mono font-bold text-lg">
+                <input type="text" value="${currentData.metrics.tickets_label || ''}" oninput="currentData.metrics.tickets_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Aplikasi Web Instansi</label>
+                <input type="text" value="${currentData.metrics.web_apps || ''}" oninput="currentData.metrics.web_apps = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-sky-400 font-mono font-bold text-lg">
+                <input type="text" value="${currentData.metrics.web_apps_label || ''}" oninput="currentData.metrics.web_apps_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Skor TOEIC</label>
+                <input type="text" value="${currentData.metrics.toeic || ''}" oninput="currentData.metrics.toeic = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-rose-400 font-mono font-bold text-lg">
+                <input type="text" value="${currentData.metrics.toeic_label || ''}" oninput="currentData.metrics.toeic_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (activeTab === 'education') {
+        container.innerHTML = `
+          <div class="space-y-6">
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-white uppercase text-indigo-400">Data Perguruan Tinggi</h3>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Universitas / Politeknik</label>
+                <input type="text" value="${currentData.education.university || ''}" oninput="currentData.education.university = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Program Studi / Jenjang</label>
+                <input type="text" value="${currentData.education.degree_name || ''}" oninput="currentData.education.degree_name = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Deskripsi Studi</label>
+                <textarea rows="2" oninput="currentData.education.description = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">${currentData.education.description || ''}</textarea>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-white uppercase text-sky-400">Publikasi Ilmiah</h3>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Judul Jurnal / Paper</label>
+                <input type="text" value="${currentData.education.publication.title || ''}" oninput="currentData.education.publication.title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Penerbit Jurnal</label>
+                <input type="text" value="${currentData.education.publication.journal || ''}" oninput="currentData.education.publication.journal = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (activeTab === 'experience') {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Pengalaman Magang PTUN Samarinda</h2>
+            
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Instansi</label>
+                <input type="text" value="${currentData.experience.institution || ''}" oninput="currentData.experience.institution = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Divisi / Subbag</label>
+                <input type="text" value="${currentData.experience.division || ''}" oninput="currentData.experience.division = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Peran & Periode</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <input type="text" value="${currentData.experience.role || ''}" oninput="currentData.experience.role = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                  <input type="text" value="${currentData.experience.period || ''}" oninput="currentData.experience.period = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (activeTab === 'projects') {
+        let projectsHtml = `
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-sky-400">Daftar Proyek Unggulan (${currentData.projects.length})</h2>
+            <button onclick="addNewProject()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold flex items-center gap-1">
+              + Tambah Proyek
+            </button>
+          </div>
+          <div class="space-y-4">
+        `;
+
+        currentData.projects.forEach((proj, idx) => {
+          projectsHtml += `
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative group">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400">Proyek #${idx + 1}</span>
+                <button onclick="deleteProject(${idx})" class="text-xs font-mono text-rose-400 hover:text-rose-300 hover:underline">Hapus</button>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-400 mb-1">Judul Proyek</label>
+                <input type="text" value="${proj.title || ''}" oninput="currentData.projects[${idx}].title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Kategori Filter</label>
+                  <select onchange="currentData.projects[${idx}].category = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                    <option value="iot" ${proj.category === 'iot' ? 'selected' : ''}>IoT & Robotik</option>
+                    <option value="web" ${proj.category === 'web' ? 'selected' : ''}>Web & Sistem</option>
+                    <option value="ai" ${proj.category === 'ai' ? 'selected' : ''}>AI / Citra</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Peran / Highlight Tim</label>
+                  <input type="text" value="${proj.role || ''}" oninput="currentData.projects[${idx}].role = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-400 mb-1">Deskripsi Ringkas</label>
+                <textarea rows="2" oninput="currentData.projects[${idx}].description = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">${proj.description || ''}</textarea>
+              </div>
+            </div>
+          `;
+        });
+
+        projectsHtml += `</div>`;
+        container.innerHTML = projectsHtml;
+      } else if (activeTab === 'certifications') {
+        container.innerHTML = `
+          <div class="space-y-6">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-amber-400">Sertifikasi & Lisensi Kompetensi</h2>
+            <div class="space-y-3">
+              ${currentData.certifications.licenses.map((lic, idx) => `
+                <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+                  <div class="flex justify-between text-xs font-mono text-slate-400">
+                    <span>Lisensi #${idx + 1}</span>
+                    <span class="text-emerald-400 font-bold">${lic.badge || ''}</span>
+                  </div>
+                  <input type="text" value="${lic.title || ''}" oninput="currentData.certifications.licenses[${idx}].title = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                  <input type="text" value="${lic.issuer || ''}" oninput="currentData.certifications.licenses[${idx}].issuer = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-400">
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else if (activeTab === 'skills') {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-teal-400">Keahlian & Penguasaan Teknis</h2>
+            <p class="text-xs text-slate-400 font-mono">Pisahkan item dengan koma untuk mengedit daftar keahlian.</p>
+
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+              <label class="block text-xs font-mono text-indigo-400 font-bold">1. Jaringan & Infrastruktur</label>
+              <textarea rows="3" oninput="currentData.skills.networking.items = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono">${currentData.skills.networking.items.join(', ')}</textarea>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+              <label class="block text-xs font-mono text-emerald-400 font-bold">2. Solusi Digital & Software</label>
+              <textarea rows="3" oninput="currentData.skills.digital_solutions.items = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono">${currentData.skills.digital_solutions.items.join(', ')}</textarea>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+              <label class="block text-xs font-mono text-sky-400 font-bold">3. Tools & Lingkungan Kerja</label>
+              <textarea rows="3" oninput="currentData.skills.tools.items = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono">${currentData.skills.tools.items.join(', ')}</textarea>
+            </div>
+          </div>
+        `;
+      } else if (activeTab === 'raw_json') {
+        container.innerHTML = `
+          <div class="space-y-3 h-full flex flex-col">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Raw JSON Code Editor</h2>
+              <button onclick="applyRawJson()" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold">
+                ✓ Terapkan JSON
+              </button>
+            </div>
+            <textarea id="raw-json-editor" class="w-full flex-1 h-[420px] p-4 rounded-2xl bg-slate-950 border border-slate-700 text-xs text-emerald-400 font-mono focus:outline-none focus:border-indigo-500 leading-relaxed">${JSON.stringify(currentData, null, 2)}</textarea>
+          </div>
+        `;
+      }
+    }
+
+    // CRUD Helper: Add Project
+    function addNewProject() {
+      currentData.projects.unshift({
+        id: "proj_" + Date.now(),
+        title: "Proyek Baru",
+        category: "web",
+        category_label: "Web App",
+        role: "Lead Developer",
+        lead_highlight: "Lead",
+        description: "Deskripsi proyek baru...",
+        tech_metrics: ["Web Technology", "System"],
+        tags: ["PHP", "JavaScript", "Tailwind CSS"],
+        details: "Detail lengkap mengenai pencapaian dan arsitektur proyek ini."
+      });
+      saveData();
+      renderActiveTab();
+      showToast('Proyek baru berhasil ditambahkan!');
+    }
+
+    // CRUD Helper: Delete Project
+    function deleteProject(idx) {
+      if (confirm('Yakin ingin menghapus proyek ini?')) {
+        currentData.projects.splice(idx, 1);
+        saveData();
+        renderActiveTab();
+        showToast('Proyek berhasil dihapus');
+      }
+    }
+
+    // Apply Raw JSON
+    function applyRawJson() {
+      const el = document.getElementById('raw-json-editor');
+      if (!el) return;
+      try {
+        const parsed = JSON.parse(el.value);
+        currentData = parsed;
+        saveData();
+        showToast('Data JSON berhasil diperbarui!');
+      } catch(e) {
+        showToast('Format JSON tidak valid: ' + e.message, 'error');
+      }
+    }
+
+    // Viewport Split Controls
+    function setSplitMode(mode) {
+      const editor = document.getElementById('editor-panel');
+      const preview = document.getElementById('preview-panel');
+      const btnSplit = document.getElementById('btn-split');
+      const btnEditor = document.getElementById('btn-editor-only');
+      const btnPreview = document.getElementById('btn-preview-only');
+
+      [btnSplit, btnEditor, btnPreview].forEach(b => {
+        b.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center gap-1.5 transition-all';
+      });
+
+      if (mode === 'split') {
+        editor.className = 'w-1/2 flex flex-col border-r border-slate-800 bg-[#0B1120]/90 overflow-hidden';
+        preview.className = 'w-1/2 flex flex-col bg-[#070D1B] overflow-hidden';
+        btnSplit.className = 'px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold flex items-center gap-1.5';
+      } else if (mode === 'editor') {
+        editor.className = 'w-full flex flex-col bg-[#0B1120]/90 overflow-hidden';
+        preview.className = 'hidden';
+        btnEditor.className = 'px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold flex items-center gap-1.5';
+      } else if (mode === 'preview') {
+        editor.className = 'hidden';
+        preview.className = 'w-full flex flex-col bg-[#070D1B] overflow-hidden';
+        btnPreview.className = 'px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold flex items-center gap-1.5';
+      }
+    }
+
+    function setPreviewWidth(width) {
+      const iframe = document.getElementById('preview-iframe');
+      if (iframe) iframe.style.width = width;
+    }
+
+    // File Downloads & Backup
+    function toggleDataDropdown() {
+      const menu = document.getElementById('data-dropdown');
+      menu.classList.toggle('hidden');
+    }
+
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('.relative')) {
+        document.getElementById('data-dropdown')?.classList.add('hidden');
+      }
+    });
+
+    function downloadDataJson() {
+      const blob = new Blob([JSON.stringify(currentData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('File data.json berhasil diunduh!');
+    }
+
+    function exportBackupJson() {
+      const blob = new Blob([JSON.stringify(currentData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `portfolio-backup-${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Backup JSON berhasil diekspor!');
+    }
+
+    function importBackupJson(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          currentData = parsed;
+          saveData();
+          renderActiveTab();
+          showToast('Data berhasil direstore dari file!');
+        } catch(err) {
+          showToast('File JSON tidak valid', 'error');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function downloadStandaloneHtml() {
+      fetch('index.html')
+        .then(res => res.text())
+        .then(html => {
+          // Embed currentData as the embedded default inside index.html
+          const updatedHtml = html.replace(/const defaultPortfolioData = \{[\s\S]*?\};\s*\/\*DATA_END\*\//, `const defaultPortfolioData = ${JSON.stringify(currentData, null, 2)}; /*DATA_END*/`);
+          const blob = new Blob([updatedHtml], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'index.html';
+          a.click();
+          URL.revokeObjectURL(url);
+          showToast('File index.html terbaru berhasil diunduh!');
+        })
+        .catch(err => {
+          showToast('Gagal mengunduh template index.html: ' + err.message, 'error');
+        });
+    }
+
+    function resetToFactoryDefault() {
+      if (confirm('Apakah Anda yakin ingin mengembalikan seluruh data ke default awal Armand Maulana?')) {
+        currentData = JSON.parse(JSON.stringify(defaultData));
+        saveData();
+        renderActiveTab();
+        showToast('Data telah di-reset ke awal.');
+      }
+    }
+
+    // GitHub Push Controls
+    function openGithubModal() {
+      document.getElementById('gh-token').value = localStorage.getItem('armand_gh_token') || '';
+      document.getElementById('gh-owner').value = localStorage.getItem('armand_gh_owner') || '';
+      document.getElementById('gh-repo').value = localStorage.getItem('armand_gh_repo') || '';
+      document.getElementById('gh-branch').value = localStorage.getItem('armand_gh_branch') || 'main';
+      document.getElementById('github-modal').classList.remove('hidden');
+      document.getElementById('github-modal').classList.add('flex');
+    }
+
+    function closeGithubModal() {
+      document.getElementById('github-modal').classList.add('hidden');
+      document.getElementById('github-modal').classList.remove('flex');
+    }
+
+    async function executeGithubPush() {
+      const token = document.getElementById('gh-token').value.trim();
+      const owner = document.getElementById('gh-owner').value.trim();
+      const repo = document.getElementById('gh-repo').value.trim();
+      const branch = document.getElementById('gh-branch').value.trim() || 'main';
+      const statusBox = document.getElementById('gh-sync-status');
+      const btn = document.getElementById('btn-do-push');
+
+      if (!token || !owner || !repo) {
+        showToast('Lengkapi Token, Owner, dan Nama Repo!', 'error');
+        return;
+      }
+
+      // Save credentials locally
+      localStorage.setItem('armand_gh_token', token);
+      localStorage.setItem('armand_gh_owner', owner);
+      localStorage.setItem('armand_gh_repo', repo);
+      localStorage.setItem('armand_gh_branch', branch);
+
+      statusBox.classList.remove('hidden');
+      statusBox.innerHTML = '⏳ Menghubungkan ke GitHub API...';
+      btn.disabled = true;
+
+      try {
+        // Step 1: Get current SHA of data.json
+        const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/data.json?ref=${branch}`;
+        let sha = null;
+        
+        const getRes = await fetch(fileUrl, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (getRes.ok) {
+          const getJson = await getRes.json();
+          sha = getJson.sha;
+        }
+
+        // Step 2: Push new content (base64)
+        const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(currentData, null, 2))));
+        const payload = {
+          message: `Update portfolio content via Admin Studio (${new Date().toLocaleString()})`,
+          content: contentBase64,
+          branch: branch
+        };
+        if (sha) payload.sha = sha;
+
+        const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data.json`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json();
+          throw new Error(errData.message || 'Gagal push ke GitHub');
+        }
+
+        statusBox.innerHTML = `✅ <strong>Berhasil Push!</strong> Commit tersimpan di branch <code>${branch}</code>.<br/>GitHub Pages Anda akan otomatis ter-update dalam 1 menit!`;
+        showToast('Berhasil ter-publish ke GitHub Pages!');
+      } catch(err) {
+        statusBox.innerHTML = `❌ <strong>Error:</strong> ${err.message}`;
+        showToast(err.message, 'error');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    // Initialize Studio on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadData();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="html-title">Armand Maulana | IT Infrastructure & Digital Solutions Specialist</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portofolio Profesional Armand Maulana - Lulusan D4 Teknologi Rekayasa Komputer (IPK 3.91). Spesialis Infrastruktur IT, Troubleshooting Jaringan, dan Pengembangan Solusi Digital.">
+  <meta name="keywords" content="Armand Maulana, IT Infrastructure, IT Support, Network Administrator, D4 TRK Polnes, Portfolio IT">
+  <meta name="author" content="Armand Maulana">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              navy: '#0B1120',
+              slate: '#1E293B',
+              indigo: '#6366F1',
+              emerald: '#10B981',
+              cyan: '#06B6D4',
+              blue: '#3B82F6',
+              darkcard: '#0F172A',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 3s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%': { opacity: '0.4' },
+              '100%': { opacity: '0.8' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0b1120; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+    /* Glassmorphism Styles */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+    .glass-nav {
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 30%, rgba(99, 102, 241, 0.15) 0%, rgba(16, 185, 129, 0.05) 45%, transparent 70%);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-accent-gradient {
+      background: linear-gradient(135deg, #6366f1 0%, #38bdf8 50%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .glass-card { background: white !important; border: 1px solid #ddd !important; color: black !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-[#070D1B] text-slate-200 font-sans antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden min-h-screen">
+
+  <!-- Ambient Background Grids & Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute inset-0 grid-pattern opacity-60"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-glow"></div>
+    <div class="absolute top-1/3 right-10 w-[30rem] h-[30rem] bg-emerald-600/10 rounded-full blur-3xl animate-glow" style="animation-delay: 1.5s;"></div>
+    <div class="absolute bottom-20 left-1/3 w-[36rem] h-[36rem] bg-cyan-600/10 rounded-full blur-3xl animate-glow" style="animation-delay: 3s;"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Floating Quick Admin Studio Trigger (Hidden in iframe preview mode) -->
+  <div id="admin-floating-trigger" class="fixed bottom-6 left-6 z-40">
+    <a href="admin.html" class="px-4 py-2.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 shadow-2xl backdrop-blur-md text-xs font-mono font-medium flex items-center gap-2 transition-all hover:scale-105 group" title="Buka Studio Admin / Editor Data (Ctrl+Shift+E)">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 group-hover:animate-ping"></span>
+      <span>⚙️ Admin Studio</span>
+    </a>
+  </div>
+
+  <!-- ==================== HEADER & TOP NAV ==================== -->
+  <header class="sticky top-0 z-40 w-full glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo / Brand Identifier -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-[1.5px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
+            <div class="w-full h-full bg-[#0B1120] rounded-[10px] flex items-center justify-center font-mono font-bold text-lg text-emerald-400">
+              AM
+            </div>
+          </div>
+          <div>
+            <div class="font-bold text-white tracking-tight flex items-center gap-1.5 text-base">
+              <span id="nav-brand-name">Armand Maulana</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            </div>
+            <div id="nav-brand-sub" class="text-xs font-mono text-slate-400 tracking-wider">IT Specialist • D4 TRK</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 text-sm">
+          <a href="#pendidikan" class="px-4 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Pendidikan</a>
+          <a href="#pengalaman" class="px-4 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Pengalaman</a>
+          <a href="#proyek" class="px-4 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Proyek</a>
+          <a href="#sertifikasi" class="px-4 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Sertifikasi</a>
+          <a href="#keahlian" class="px-4 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Keahlian</a>
+        </nav>
+
+        <!-- Right Quick Actions -->
+        <div class="hidden sm:flex items-center gap-3">
+          <button onclick="openCvModal()" class="px-4 py-2 text-xs font-medium tracking-wide uppercase font-mono rounded-lg border border-slate-700 bg-slate-800/60 hover:bg-slate-700/80 text-slate-200 hover:text-white transition-all flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Ringkasan CV
+          </button>
+          
+          <a href="#kontak" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white shadow-md shadow-indigo-600/20 hover:shadow-indigo-500/30 transition-all flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            Hubungi
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white" aria-label="Buka Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-[#0B1120]/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-2">
+      <a href="#pendidikan" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Pendidikan & Prestasi</a>
+      <a href="#pengalaman" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Pengalaman Magang</a>
+      <a href="#proyek" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Proyek & Kepemimpinan</a>
+      <a href="#sertifikasi" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Sertifikasi & Bahasa</a>
+      <a href="#keahlian" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Keahlian Teknis</a>
+      <div class="pt-3 border-t border-slate-800 flex gap-2">
+        <button onclick="openCvModal()" class="flex-1 py-2.5 text-center text-xs font-mono rounded-lg border border-slate-700 bg-slate-800 text-slate-200">
+          Ringkasan CV
+        </button>
+        <a href="#kontak" class="flex-1 py-2.5 text-center text-xs font-semibold rounded-lg bg-indigo-600 text-white">
+          Hubungi Saya
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== DYNAMIC APP WRAPPER ==================== -->
+  <main id="app-root" class="relative z-10">
+    <!-- Dynamic content rendered by renderPortfolio(data) -->
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-12 border-t border-slate-800 bg-[#060A14] text-slate-400 text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white" id="footer-name">Armand Maulana</span>
+        <span>•</span>
+        <span id="footer-desc">D4 Teknologi Rekayasa Komputer (Polnes)</span>
+      </div>
+      <div class="text-center sm:text-right text-slate-500">
+        © 2026 Armand Maulana. Clean, Responsive & Enterprise Ready.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE MODAL (VANILLA JS) ==================== -->
+  <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="glass-card rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-700 shadow-2xl relative">
+      <div class="sticky top-0 bg-slate-900/95 backdrop-blur-lg px-6 py-4 border-b border-slate-800 flex items-center justify-between z-10">
+        <div>
+          <span id="modal-badge" class="px-2.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+            Detail Informasi
+          </span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-1">Judul Modal</h3>
+        </div>
+        <button onclick="closeModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" aria-label="Tutup Modal">✕</button>
+      </div>
+      <div id="modal-content" class="p-6 space-y-4 text-sm text-slate-300"></div>
+      <div class="px-6 py-4 bg-slate-900/60 border-t border-slate-800 flex justify-end">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CV QUICK VIEW MODAL ==================== -->
+  <div id="cv-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="glass-card rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-700 shadow-2xl relative">
+      <div class="sticky top-0 bg-slate-900/95 backdrop-blur-lg px-6 py-4 border-b border-slate-800 flex items-center justify-between z-10">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <h3 class="text-base font-bold text-white">Ringkasan Curriculum Vitae (Executive Summary)</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5">
+            Cetak / PDF
+          </button>
+          <button onclick="closeCvModal()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white">✕</button>
+        </div>
+      </div>
+      <div id="cv-modal-content" class="p-6 sm:p-8 space-y-6 text-sm text-slate-300"></div>
+    </div>
+  </div>
+
+  <!-- ==================== EMBEDDED DEFAULT DATA & REACTIVE ENGINE ==================== -->
+  <script>
+    /*DATA_START*/
+    const defaultPortfolioData = {
+      profile: {
+        name: "Armand Maulana",
+        title: "Armand Maulana, S.Tr.Kom.",
+        degree: "D4 Teknologi Rekayasa Komputer",
+        institution: "Politeknik Negeri Samarinda",
+        period: "2022 – 2026",
+        honor: "Cum Laude (IPK 3.91 / 4.00)",
+        tagline: "Information Technology | IT Infrastructure | Digital Solutions",
+        location: "Kec. Anggana, Kab. Kutai Kartanegara, Kalimantan Timur",
+        email: "armandm792@gmail.com",
+        whatsapp: "(+62) 831 4072 3240",
+        whatsapp_link: "https://wa.me/6283140723240",
+        linkedin: "linkedin.com/in/armand-maulana",
+        linkedin_link: "https://linkedin.com/in/armand-maulana",
+        summary: "Lulusan D4 Teknologi Rekayasa Komputer (IPK 3.91/4.00) dengan fokus pada keandalan infrastruktur IT, troubleshooting teknis operasional, dan pengembangan web internal untuk otomasi alur kerja korporat dan instansi."
+      },
+      metrics: {
+        gpa: "3.91",
+        gpa_scale: "4.00",
+        gpa_label: "Predikat Sangat Memuaskan",
+        tickets: "35+",
+        tickets_label: "30+ Device Maintained",
+        web_apps: "3",
+        web_apps_label: "InvenIT, Presensi & Cuti",
+        haki: "2",
+        haki_label: "Resmi Kemenkumham RI",
+        toeic: "835",
+        toeic_label: "Working Proficiency",
+        certifications_count: "BNSP & Cisco",
+        certifications_label: "Junior Net Admin & CCNA"
+      },
+      education: {
+        university: "Politeknik Negeri Samarinda",
+        degree_name: "Sarjana Terapan (D4) - Teknologi Rekayasa Komputer",
+        period: "2022 – 2026",
+        gpa: "3.91 / 4.00",
+        description: "Program studi sarjana terapan berfokus pada integrasi hardware, arsitektur jaringan komputer enterprise, mikroelektronika IoT, sistem tertanam (embedded systems), dan pengembangan sistem informasi berbasis web terdistribusi.",
+        pillars: [
+          "Infrastruktur Jaringan & Routing Enterprise",
+          "Sistem Otomasi IoT & Pemrosesan Sinyal",
+          "Pengolahan Citra Digital & AI Dasar",
+          "Pengembangan Aplikasi Web Internal"
+        ],
+        publication: {
+          journal: "Jurnal JAIEA",
+          title: "Development of an IoT-Based Animal Trap Using Motion Sensors and Camera",
+          description: "Jurnal terakreditasi di bidang otomatisasi industri dan kecerdasan elektronik (JAIEA). Riset mencakup integrasi sensor PIR multi-sudut, mikrokontroler ESP32-CAM, deteksi gerakan presisi tinggi, dan telemetri nirkabel real-time.",
+          tags: ["IoT System", "ESP32-CAM", "Motion Capture", "Wireless Telemetry"]
+        },
+        haki_list: [
+          {
+            id: "1",
+            title: "Sistem Otomasi & Monitoring IoT",
+            status: "Terdaftar Resmi Kemenkumham RI",
+            description: "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera."
+          },
+          {
+            id: "2",
+            title: "Website \"Spin a Meal\"",
+            status: "Terdaftar Resmi Kemenkumham RI",
+            description: "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif."
+          }
+        ]
+      },
+      experience: {
+        institution: "Pengadilan Tata Usaha Negara (PTUN) Samarinda",
+        division: "Subbag Perencanaan, TI, & Pelaporan (PTIP)",
+        role: "IT Support Intern & Internal Web Developer",
+        period: "Januari 2026 – Mei 2026",
+        highlights: {
+          devices: "30+",
+          tickets: "35+",
+          web_count: "3"
+        },
+        responsibilities: [
+          {
+            title: "Maintenance Perangkat Rutin",
+            desc: "Mengelola dan memelihara 30+ unit PC, laptop, printer jaringan, dan perangkat pendukung di seluruh ruangan kerja PTUN Samarinda."
+          },
+          {
+            title: "Troubleshooting Teknis (35+ Kasus)",
+            desc: "Menangani insiden kendala koneksi LAN/Wi-Fi kantor, konfigurasi IP, instalasi OS Windows, konfigurasi driver, antivirus, serta perbaikan hardware."
+          },
+          {
+            title: "Dukungan TI Sidang & Rapat",
+            desc: "Mempersiapkan infrastruktur audio/video conference dan jaringan untuk persidangan elektronik dan rapat koordinasi instansi."
+          }
+        ],
+        web_systems: [
+          {
+            key: "invenit",
+            title: "InvenIT PTUN",
+            category: "Inventaris IT",
+            desc: "Sistem manajemen inventaris aset perangkat keras TI, histori servis teknis, penomoran BMN, dan pelacakan unit secara digital.",
+            tags: ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"]
+          },
+          {
+            key: "absensi",
+            title: "Absensi Digital & Foto",
+            category: "Geofencing",
+            desc: "Presensi presisi pegawai berbasis validasi radius koordinat GPS lokasi kantor, verifikasi foto kamera real-time, dan rekap otomatis.",
+            tags: ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"]
+          },
+          {
+            key: "cuti",
+            title: "Sistem Izin & Cuti",
+            category: "Paperless",
+            desc: "Digitalisasi permohonan izin dinas & cuti pegawai dengan sistem notifikasi, alur persetujuan bertingkat, dan arsip terpusat.",
+            tags: ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"]
+          }
+        ]
+      },
+      projects: [
+        {
+          id: "pioneer",
+          title: "Simulasi Robotik Pioneer P3-DX CoppeliaSim",
+          category: "iot",
+          category_label: "CoppeliaSim • Robotik",
+          role: "Project Lead (25 Mahasiswa / 2 Sub-tim)",
+          lead_highlight: "Lead 25 Mahasiswa",
+          description: "Memimpin koordinasi 25 mahasiswa dalam pengembangan simulasi navigasi robot mobile otonom Pioneer P3-DX pada lingkungan virtual 3D CoppeliaSim, algoritma penghindaran rintangan berbasis sensor ultrasonik/sonar, dan pemetaan rute.",
+          tech_metrics: ["Autonomous Navigation", "Obstacle Avoidance"],
+          tags: ["CoppeliaSim (V-REP)", "Lua Scripting", "Autonomous Alg", "Team Leadership"],
+          details: "Sebagai Project Lead yang mengoordinasikan 25 mahasiswa (terbagi dalam 2 sub-tim teknis), memimpin riset dan implementasi robot navigasi bergerak (mobile robotics). Mengembangkan skenario uji coba labirin 3D dan algoritma sensor array sonar 16-arah."
+        },
+        {
+          id: "knn",
+          title: "Sistem Klasifikasi Citra Buah (KNN)",
+          category: "ai",
+          category_label: "Machine Learning • Citra",
+          role: "Project Lead (4 Anggota Tim)",
+          lead_highlight: "Lead 4 Anggota",
+          description: "Memimpin tim dalam merancang pipeline pengolahan citra digital: pra-pemrosesan (filtering & resize), ekstraksi fitur warna (ruang HSV) dan tekstur (GLCM), serta klasifikasi tingkat kematangan dan jenis buah dengan akurasi optimal.",
+          tech_metrics: ["HSV Color Extraction", "K-Nearest Neighbors"],
+          tags: ["Python / MATLAB", "KNN Algorithm", "HSV & GLCM", "Feature Extraction"],
+          details: "Memimpin 4 anggota tim dalam merancang pipeline machine learning: pra-pemrosesan citra, segmentasi latar belakang, ekstraksi fitur warna ruang HSV dan tekstur GLCM, serta klasifikasi menggunakan algoritma K-Nearest Neighbors."
+        },
+        {
+          id: "iot",
+          title: "Sistem Otomasi & Monitoring IoT",
+          category: "iot",
+          category_label: "Riset Skripsi • HAKI & Jurnal",
+          role: "Lead Researcher & Developer Skripsi",
+          lead_highlight: "Lead Researcher",
+          description: "Pengembangan perangkat keras otomasi pengendali jebakan satwa berbasis IoT. Mengintegrasikan sensor gerak presisi, mikrokontroler ESP32-CAM untuk capture visual instan, notifikasi telemetri nirkabel, dan power management efisien.",
+          tech_metrics: ["ESP32-CAM", "PIR Sensor Multi-Zone"],
+          tags: ["ESP32 / Arduino", "PIR Motion Sensors", "IoT Dashboard", "HAKI Registered"],
+          details: "Riset terapan skripsi yang menghasilkan 1 Publikasi Jurnal JAIEA dan 1 Hak Cipta Resmi Kemenkumham RI. Mengintegrasikan ESP32-CAM, array sensor PIR, protokol HTTP/MQTT, dan dashboard visual."
+        },
+        {
+          id: "invenit",
+          title: "InvenIT - Manajemen Aset TI PTUN",
+          category: "web",
+          category_label: "Web App • Instansi",
+          role: "Full-stack Developer (Internship)",
+          lead_highlight: "PTUN Samarinda",
+          description: "Sistem web pengelolaan inventaris perangkat keras TI (PC, printer, switch, server) untuk Subbag PTIP. Dilengkapi pencatatan spesifikasi, riwayat perbaikan, penugasan perangkat ke pegawai, dan cetak laporan inventaris.",
+          tech_metrics: ["Asset Management", "Maintenance Log"],
+          tags: ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"],
+          details: "Katalogisasi 30+ aset komputer, pelacakan histori perbaikan perangkat, pencatatan penanggung jawab ruangan, serta modul ekspor rekap inventaris otomatis."
+        },
+        {
+          id: "absensi",
+          title: "Presensi Digital Geofencing & Foto",
+          category: "web",
+          category_label: "Web App • Presensi",
+          role: "Full-stack Developer (Internship)",
+          lead_highlight: "GPS & Camera",
+          description: "Sistem absensi online dengan validasi koordinat GPS (rumus Haversine untuk geofencing radius kantor) dan pengambilan foto wajah real-time melalui kamera peramban guna mencegah kecurangan titip absen.",
+          tech_metrics: ["Radius Geolocation", "Webcam Snapshot"],
+          tags: ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"],
+          details: "Perhitungan jarak realtime radius kantor via rumus Haversine, capture foto wajah webcam tanpa rekayasa upload galeri, dan kalkulasi otomatis rekapitulasi kehadiran."
+        },
+        {
+          id: "cuti",
+          title: "Sistem Pengajuan Izin & Cuti Pegawai",
+          category: "web",
+          category_label: "Web App • Approval Workflow",
+          role: "Full-stack Developer (Internship)",
+          lead_highlight: "Paperless",
+          description: "Platform paperless pengajuan cuti tahunan, izin dinas luar, dan sakit. Menyediakan alur validasi persetujuan atasan langsung, kuota sisa cuti otomatis, dan riwayat audit trail pegawai instansi.",
+          tech_metrics: ["Multi-tier Approval", "Digital Archive"],
+          tags: ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"],
+          details: "Workflow pengajuan izin dan cuti pegawai secara digital dengan persetujuan bertingkat atasan, pengurangan saldo kuota cuti otomatis, serta pembuatan surat izin berformat dinas."
+        }
+      ],
+      certifications: {
+        languages: [
+          {
+            name: "TOEIC (Test of English for International Communication)",
+            issuer: "ETS TOEIC",
+            score: "835",
+            max_score: "990",
+            level: "Working Proficiency",
+            percentage: 84.3,
+            desc: "Kemampuan komunikasi bahasa Inggris tingkat profesional untuk membaca dokumentasi teknis, koordinasi lintas tim, dan komunikasi bisnis korporat."
+          },
+          {
+            name: "TOEFL ITP / Equivalent",
+            issuer: "Institutional English Test",
+            score: "497",
+            max_score: "677",
+            level: "Intermediate",
+            percentage: 73.4,
+            desc: "Pemahaman tata bahasa (Structure), listening comprehension teks akademis, serta membaca literatur teknis komputasi berbahasa Inggris."
+          }
+        ],
+        licenses: [
+          {
+            title: "Junior Network Administrator",
+            issuer: "BNSP RI (Badan Nasional Sertifikasi Profesi)",
+            badge: "BNSP RI",
+            status: "Kompeten",
+            desc: "Standar Kompetensi Kerja Nasional Indonesia (SKKNI) dalam merancang skema IP, konfigurasi switch/router, dan troubleshooting jaringan komputer."
+          },
+          {
+            title: "CCNAv7: Introduction to Networks (ITN)",
+            issuer: "Cisco Networking Academy",
+            badge: "Cisco CCNAv7",
+            status: "Certified",
+            desc: "Arsitektur model OSI & TCP/IP, addressing IPv4/IPv6, subnetting VLSM, konfigurasi dasar Cisco IOS pada switch dan router."
+          },
+          {
+            title: "CCNAv7: Switching, Routing, & Wireless Essentials",
+            issuer: "Cisco Networking Academy",
+            badge: "Cisco CCNAv7",
+            status: "Certified",
+            desc: "VLAN & Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, SLAAC, keamanan port switch, dan konsep nirkabel WLAN/WLC."
+          },
+          {
+            title: "Belajar Fundamental Aplikasi Android",
+            issuer: "Dicoding Indonesia",
+            badge: "Dicoding",
+            status: "Certified",
+            desc: "Pengembangan aplikasi mobile Android dengan arsitektur modern, Activity/Fragment lifecycle, background processing, dan konsumsi REST API."
+          }
+        ]
+      },
+      skills: {
+        networking: {
+          category: "Jaringan & Infrastruktur",
+          subtitle: "Networking & Hardware",
+          items: ["Cisco IOS (CLI)", "PuTTY & SSH/Telnet", "TCP/IP & Subnetting", "VLAN & Routing", "Cisco Packet Tracer", "Hardware Troubleshooting", "Crimping & Cabling (LAN)", "Wi-Fi & AP Config"]
+        },
+        digital_solutions: {
+          category: "Solusi Digital & Software",
+          subtitle: "Web, Database & IoT",
+          items: ["PHP (Native & OOP)", "MySQL / MariaDB", "HTML5 & Semantic", "CSS3 & Tailwind CSS", "JavaScript (ES6+)", "RESTful APIs", "Arsitektur IoT (ESP32)", "Sensor Integration"]
+        },
+        tools: {
+          category: "Tools & Lingkungan Kerja",
+          subtitle: "Workflow & Ecosystem",
+          items: ["Windows Environment", "IT Asset Management", "Git & GitHub", "Visual Studio Code", "C / C++ Programming", "Postman API Testing", "XAMPP / Laragon", "Microsoft Office 365"]
+        }
+      }
+    };
+    /*DATA_END*/
+
+    let activePortfolioData = defaultPortfolioData;
+
+    // Render Full Page from Data Object
+    function renderPortfolio(data) {
+      activePortfolioData = data;
+      const p = data.profile;
+      const m = data.metrics;
+      const edu = data.education;
+      const exp = data.experience;
+
+      // Update Titles & Brand
+      document.getElementById('html-title').textContent = `${p.name} | IT Infrastructure & Digital Solutions Specialist`;
+      document.getElementById('nav-brand-name').textContent = p.name;
+      document.getElementById('footer-name').textContent = p.name;
+
+      const appRoot = document.getElementById('app-root');
+      appRoot.innerHTML = `
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-28 hero-glow">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              <!-- Left Column: Bio & Contacts -->
+              <div class="lg:col-span-7 space-y-6 text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>Terbuka untuk Posisi IT Support, Infrastructure & Software Solutions</span>
+                </div>
+
+                <div class="space-y-2">
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    ${p.name}
+                  </h1>
+                  <div class="text-lg sm:text-xl lg:text-2xl font-semibold text-accent-gradient flex flex-wrap items-center gap-2">
+                    ${p.tagline.split('|').map((tag, i) => `
+                      <span>${tag.trim()}</span>
+                      ${i < p.tagline.split('|').length - 1 ? '<span class="text-slate-600">•</span>' : ''}
+                    `).join('')}
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 text-slate-400 text-sm font-mono">
+                  <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span>${p.location}</span>
+                </div>
+
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                  ${p.summary}
+                </p>
+
+                <!-- Quick Action Buttons -->
+                <div class="pt-2 flex flex-wrap items-center gap-3">
+                  <a href="${p.whatsapp_link || '#'}" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-lg shadow-emerald-600/25 transition-all flex items-center gap-2 group">
+                    <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    WhatsApp Langsung
+                  </a>
+                  <a href="mailto:${p.email}" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700/80 transition-all flex items-center gap-2 group">
+                    <svg class="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span>${p.email}</span>
+                  </a>
+                  <a href="${p.linkedin_link || '#'}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/80 transition-all" title="LinkedIn Profile">
+                    <svg class="w-5 h-5 fill-current text-sky-400" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                  <button onclick="copyToClipboard('${p.email}', 'Email berhasil disalin!')" class="p-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/80 transition-all" title="Salin Email">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Column: Performance Card -->
+              <div class="lg:col-span-5">
+                <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-slate-700/60">
+                  <div class="flex items-center gap-4 pb-6 border-b border-slate-800">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[2px] shadow-lg shadow-indigo-500/30">
+                      <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center font-mono font-bold text-2xl text-white">AM</div>
+                    </div>
+                    <div>
+                      <h2 class="text-white font-bold text-lg">${p.title}</h2>
+                      <p class="text-xs text-slate-400 font-mono">${p.degree}</p>
+                      <div class="mt-1 flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Polnes ${p.period}</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Cum Laude</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3.5 py-6">
+                    <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+                      <div class="text-xs font-mono text-slate-400 mb-1">Indeks Prestasi Kumulatif</div>
+                      <div class="text-2xl font-black font-mono text-emerald-400">${m.gpa} <span class="text-xs text-slate-400 font-normal">/ ${m.gpa_scale}</span></div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">${m.gpa_label}</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+                      <div class="text-xs font-mono text-slate-400 mb-1">Tiket IT Resolved</div>
+                      <div class="text-2xl font-black font-mono text-indigo-400">${m.tickets} <span class="text-xs text-slate-400 font-normal">Kasus</span></div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">${m.tickets_label}</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+                      <div class="text-xs font-mono text-slate-400 mb-1">Aplikasi Web Instansi</div>
+                      <div class="text-2xl font-black font-mono text-sky-400">${m.web_apps} <span class="text-xs text-slate-400 font-normal">Sistem</span></div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">${m.web_apps_label}</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+                      <div class="text-xs font-mono text-slate-400 mb-1">Hak Cipta (HAKI)</div>
+                      <div class="text-2xl font-black font-mono text-amber-400">${m.haki} <span class="text-xs text-slate-400 font-normal">Sertifikat</span></div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">${m.haki_label}</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+                      <div class="text-xs font-mono text-slate-400 mb-1">Skor TOEIC Resmi</div>
+                      <div class="text-2xl font-black font-mono text-rose-400">${m.toeic} <span class="text-xs text-slate-400 font-normal">/ 990</span></div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">${m.toeic_label}</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60">
+                      <div class="text-xs font-mono text-slate-400 mb-1">Sertifikasi Kompetensi</div>
+                      <div class="text-2xl font-black font-mono text-teal-400">${m.certifications_count}</div>
+                      <div class="text-[11px] text-slate-400 mt-0.5">${m.certifications_label}</div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                    <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-indigo-400"></span> ${exp.institution} Intern</span>
+                    <a href="#pengalaman" class="text-indigo-400 hover:text-indigo-300 font-medium hover:underline">Detail Magang →</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- LANDING HUB MENU -->
+        <section class="py-8 border-y border-slate-800/80 bg-slate-950/60 relative z-20">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+              <a href="#pendidikan" class="group p-4 rounded-2xl glass-card transition-all hover:-translate-y-1 block">
+                <div class="font-bold text-white text-sm group-hover:text-indigo-400">Pendidikan & HAKI</div>
+                <div class="text-[11px] text-slate-400 mt-1">D4 TRK • IPK ${m.gpa} • 2 HAKI</div>
+              </a>
+              <a href="#pengalaman" class="group p-4 rounded-2xl glass-card transition-all hover:-translate-y-1 block">
+                <div class="font-bold text-white text-sm group-hover:text-emerald-400">Pengalaman Magang</div>
+                <div class="text-[11px] text-slate-400 mt-1">PTUN Samarinda • PTIP</div>
+              </a>
+              <a href="#proyek" class="group p-4 rounded-2xl glass-card transition-all hover:-translate-y-1 block">
+                <div class="font-bold text-white text-sm group-hover:text-sky-400">Proyek & Lead</div>
+                <div class="text-[11px] text-slate-400 mt-1">Robotik, IoT & Web Apps</div>
+              </a>
+              <a href="#sertifikasi" class="group p-4 rounded-2xl glass-card transition-all hover:-translate-y-1 block">
+                <div class="font-bold text-white text-sm group-hover:text-amber-400">Sertifikasi & Bahasa</div>
+                <div class="text-[11px] text-slate-400 mt-1">BNSP, Cisco, TOEIC ${m.toeic}</div>
+              </a>
+              <a href="#keahlian" class="col-span-2 sm:col-span-1 group p-4 rounded-2xl glass-card transition-all hover:-translate-y-1 block">
+                <div class="font-bold text-white text-sm group-hover:text-teal-400">Keahlian Teknis</div>
+                <div class="text-[11px] text-slate-400 mt-1">Jaringan, Web & Tools</div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 1: PENDIDIKAN & PRESTASI -->
+        <section id="pendidikan" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-800 pb-6">
+            <div>
+              <div class="text-xs font-mono font-bold tracking-widest text-indigo-400 uppercase mb-2">01 / Latar Belakang Akademis</div>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Pendidikan & Prestasi Ilmiah</h2>
+            </div>
+            <p class="text-slate-400 text-sm mt-3 md:mt-0 max-w-md">Fondasi akademis kuat dalam rekayasa komputer, riset terapan IoT, dan hak cipta terdaftar resmi.</p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-7">
+              <div class="glass-card rounded-3xl p-6 sm:p-8 h-full border border-slate-700/60">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs">Periode ${edu.period}</div>
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-xs font-bold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> IPK ${edu.gpa} (Cum Laude)
+                  </div>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-1">${edu.university}</h3>
+                <p class="text-slate-300 font-medium text-base mb-4">${edu.degree_name}</p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">${edu.description}</p>
+                <div class="space-y-3">
+                  <div class="text-xs font-mono uppercase tracking-wider text-slate-400">Fokus & Kompetensi Utama:</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    ${edu.pillars.map(pillar => `
+                      <div class="flex items-start gap-2 text-xs text-slate-300 bg-slate-800/40 p-2.5 rounded-lg border border-slate-700/40">
+                        <span class="text-indigo-400 font-bold">✓</span>
+                        <span>${pillar}</span>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+              <div class="glass-card rounded-3xl p-6 border border-slate-700/60">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-2.5 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-[11px] font-semibold uppercase">Publikasi Ilmiah</span>
+                  <span class="text-slate-400 text-xs font-mono">${edu.publication.journal}</span>
+                </div>
+                <h4 class="text-white font-bold text-base leading-snug mb-2">"${edu.publication.title}"</h4>
+                <p class="text-slate-400 text-xs leading-relaxed mb-4">${edu.publication.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  ${edu.publication.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-mono">${t}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="glass-card rounded-3xl p-6 border border-slate-700/60">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-[11px] font-semibold uppercase">Hak Cipta (HAKI)</span>
+                  <span class="text-slate-400 text-xs font-mono">Kemenkumham RI</span>
+                </div>
+                <div class="space-y-3">
+                  ${edu.haki_list.map(h => `
+                    <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/40">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-white">${h.title}</span>
+                        <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Resmi</span>
+                      </div>
+                      <p class="text-[11px] text-slate-400 mt-1">${h.description}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: PENGALAMAN MAGANG PTUN -->
+        <section id="pengalaman" class="py-20 bg-slate-950/40 border-t border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-800 pb-6">
+              <div>
+                <div class="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase mb-2">02 / Pengalaman Praktik Profesional</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Pengalaman Kerja & Magang</h2>
+              </div>
+              <p class="text-slate-400 text-sm mt-3 md:mt-0 max-w-md">Pemeliharaan 30+ unit perangkat, penanganan 35+ kasus kendala teknis, dan perancangan 3 sistem web instansi.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-700/60 mb-12">
+              <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-8 border-b border-slate-800">
+                <div>
+                  <div class="flex flex-wrap items-center gap-3 mb-2">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white">${exp.institution}</h3>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">${exp.division}</span>
+                  </div>
+                  <p class="text-slate-300 text-base font-medium">${exp.role} • <span class="font-mono text-slate-400 text-sm">${exp.period}</span></p>
+                </div>
+                <div class="flex items-center gap-4 bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800 shrink-0">
+                  <div class="text-center px-2">
+                    <div class="text-xl font-bold font-mono text-emerald-400">${exp.highlights.devices}</div>
+                    <div class="text-[10px] text-slate-400 font-mono">Device PC/Laptop</div>
+                  </div>
+                  <div class="w-px h-8 bg-slate-800"></div>
+                  <div class="text-center px-2">
+                    <div class="text-xl font-bold font-mono text-indigo-400">${exp.highlights.tickets}</div>
+                    <div class="text-[10px] text-slate-400 font-mono">Trouble Solved</div>
+                  </div>
+                  <div class="w-px h-8 bg-slate-800"></div>
+                  <div class="text-center px-2">
+                    <div class="text-xl font-bold font-mono text-sky-400">${exp.highlights.web_count}</div>
+                    <div class="text-[10px] text-slate-400 font-mono">Web Internal</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8">
+                <div class="lg:col-span-5 space-y-4">
+                  <h4 class="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">Tanggung Jawab Operasional:</h4>
+                  <ul class="space-y-3 text-sm text-slate-300">
+                    ${exp.responsibilities.map(r => `
+                      <li class="flex items-start gap-3">
+                        <div class="w-5 h-5 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">✓</div>
+                        <span><strong class="text-white">${r.title}:</strong> ${r.desc}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+
+                <div class="lg:col-span-7 space-y-4">
+                  <h4 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold">Pengembangan 3 Sistem Web Internal PTUN:</h4>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    ${exp.web_systems.map((sys, idx) => `
+                      <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col justify-between">
+                        <div>
+                          <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-300">${sys.category}</span>
+                            <span class="text-xs text-slate-500">0${idx+1}</span>
+                          </div>
+                          <h5 class="text-white font-bold text-sm mb-1.5">${sys.title}</h5>
+                          <p class="text-slate-400 text-xs leading-relaxed mb-3">${sys.desc}</p>
+                        </div>
+                        <button onclick="openSystemDetail('${sys.key}')" class="text-left text-xs font-semibold text-indigo-400 hover:text-indigo-300">Lihat Fitur Sistem →</button>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: PROYEK UNGGULAN -->
+        <section id="proyek" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-800 pb-6">
+            <div>
+              <div class="text-xs font-mono font-bold tracking-widest text-sky-400 uppercase mb-2">03 / Portofolio Proyek & Riset</div>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Proyek Unggulan & Kepemimpinan</h2>
+            </div>
+            <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+              <button onclick="filterProjects('all')" class="project-filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-indigo-600 text-white" data-filter="all">Semua</button>
+              <button onclick="filterProjects('iot')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="iot">IoT & Robotik</button>
+              <button onclick="filterProjects('web')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="web">Web & Sistem</button>
+              <button onclick="filterProjects('ai')" class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-filter="ai">AI / Citra</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
+            ${data.projects.map(proj => `
+              <div class="project-card glass-card rounded-3xl overflow-hidden border border-slate-700/60 hover:border-indigo-500/50 transition-all flex flex-col justify-between" data-category="${proj.category}">
+                <div>
+                  <div class="h-44 bg-gradient-to-br from-slate-900 via-indigo-950/40 to-slate-900 p-6 flex flex-col justify-between border-b border-slate-800">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-300 font-mono text-[10px] font-semibold border border-indigo-500/30">${proj.category_label || 'Project'}</span>
+                      <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ${proj.lead_highlight || 'Project Lead'}</span>
+                    </div>
+                    <div class="text-[11px] font-mono text-slate-400 flex justify-between">
+                      <span>${proj.tech_metrics ? proj.tech_metrics[0] : ''}</span>
+                      <span>${proj.tech_metrics ? proj.tech_metrics[1] : ''}</span>
+                    </div>
+                  </div>
+                  <div class="p-6">
+                    <div class="text-xs font-mono text-indigo-400 font-semibold mb-1">${proj.role}</div>
+                    <h3 class="text-xl font-bold text-white mb-2 leading-snug">${proj.title}</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">${proj.description}</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                      ${(proj.tags || []).map(t => `<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-mono">${t}</span>`).join('')}
+                    </div>
+                  </div>
+                </div>
+                <div class="px-6 pb-6 pt-0">
+                  <button onclick="openProjectModal('${proj.id}')" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-indigo-600 text-slate-200 hover:text-white text-xs font-semibold transition-all text-center border border-slate-700/60">
+                    Lihat Detail Proyek →
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- SECTION 4: SERTIFIKASI & BAHASA -->
+        <section id="sertifikasi" class="py-20 bg-slate-950/40 border-t border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-800 pb-6">
+              <div>
+                <div class="text-xs font-mono font-bold tracking-widest text-amber-400 uppercase mb-2">04 / Kredensial & Validasi Kompetensi</div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Sertifikasi & Kemampuan Bahasa</h2>
+              </div>
+              <p class="text-slate-400 text-sm mt-3 md:mt-0 max-w-md">Sertifikasi resmi nasional & internasional di bidang administrasi jaringan dan bahasa profesional.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div class="lg:col-span-5 space-y-6">
+                ${data.certifications.languages.map(lang => `
+                  <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-700/60">
+                    <div class="flex items-center justify-between mb-3">
+                      <span class="px-2.5 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-400 font-mono text-xs font-semibold">${lang.name}</span>
+                      <span class="text-xs font-mono text-slate-400">${lang.issuer}</span>
+                    </div>
+                    <div class="flex items-baseline gap-3 mb-2">
+                      <div class="text-4xl font-black font-mono text-white">${lang.score}</div>
+                      <div class="text-sm font-mono text-slate-400">/ ${lang.max_score}</div>
+                      <span class="ml-auto px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold font-mono">${lang.level}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs leading-relaxed mb-4">${lang.desc}</p>
+                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700/50">
+                      <div class="h-full bg-gradient-to-r from-rose-500 via-indigo-500 to-emerald-400 rounded-full" style="width: ${lang.percentage}%"></div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ${data.certifications.licenses.map(lic => `
+                  <div class="glass-card rounded-2xl p-5 border border-slate-700/60 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between mb-3">
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[10px] font-mono font-bold">${lic.badge}</span>
+                        <span class="text-[10px] font-mono text-slate-400">${lic.status}</span>
+                      </div>
+                      <h4 class="text-white font-bold text-base mb-1.5">${lic.title}</h4>
+                      <p class="text-slate-400 text-xs leading-relaxed mb-3">${lic.desc}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800 text-[11px] font-mono text-slate-400 flex items-center justify-between">
+                      <span>${lic.issuer}</span>
+                      <span class="text-emerald-400">Verified</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: KEAHLIAN TEKNIS -->
+        <section id="keahlian" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-800 pb-6">
+            <div>
+              <div class="text-xs font-mono font-bold tracking-widest text-teal-400 uppercase mb-2">05 / Matriks Kemampuan</div>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Keahlian & Penguasaan Teknis</h2>
+            </div>
+            <p class="text-slate-400 text-sm mt-3 md:mt-0 max-w-md">Kombinasi administrasi jaringan fisik/logis, pengembangan sistem web internal, dan workflow tools.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-700/60 flex flex-col justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-white mb-1">${data.skills.networking.category}</h3>
+                <p class="text-xs text-slate-400 font-mono mb-4">${data.skills.networking.subtitle}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  ${data.skills.networking.items.map(item => `<span class="px-3 py-1.5 rounded-xl bg-slate-800/80 text-indigo-300 border border-slate-700 text-xs font-mono font-medium">${item}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-700/60 flex flex-col justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-white mb-1">${data.skills.digital_solutions.category}</h3>
+                <p class="text-xs text-slate-400 font-mono mb-4">${data.skills.digital_solutions.subtitle}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  ${data.skills.digital_solutions.items.map(item => `<span class="px-3 py-1.5 rounded-xl bg-slate-800/80 text-emerald-300 border border-slate-700 text-xs font-mono font-medium">${item}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-700/60 flex flex-col justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-white mb-1">${data.skills.tools.category}</h3>
+                <p class="text-xs text-slate-400 font-mono mb-4">${data.skills.tools.subtitle}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  ${data.skills.tools.items.map(item => `<span class="px-3 py-1.5 rounded-xl bg-slate-800/80 text-sky-300 border border-slate-700 text-xs font-mono font-medium">${item}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6: KONTAK -->
+        <section id="kontak" class="py-20 bg-slate-950/60 border-t border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-700/60">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono">
+                    <span>Mari Berkolaborasi & Terhubung</span>
+                  </div>
+                  <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Siap Berkontribusi untuk Kebutuhan TI & Solusi Perusahaan Anda</h2>
+                  <p class="text-slate-300 text-sm leading-relaxed">Terbuka untuk posisi IT Support, Infrastructure & Software Specialist.</p>
+                  <div class="space-y-3 pt-2">
+                    <div class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                      <span class="text-sm font-semibold text-white">${p.email}</span>
+                      <button onclick="copyToClipboard('${p.email}', 'Email disalin!')" class="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-800 text-slate-300">Salin</button>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                      <span class="text-sm font-semibold text-white">${p.whatsapp}</span>
+                      <a href="${p.whatsapp_link}" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-mono bg-emerald-600/30 text-emerald-300">Chat WA</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                  <div class="bg-slate-900/90 rounded-2xl p-6 sm:p-8 border border-slate-800">
+                    <h3 class="text-lg font-bold text-white mb-2">Kirim Pesan Instan</h3>
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                      <input type="text" id="sender-name" required placeholder="Nama Lengkap / Perusahaan" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                      <select id="sender-subject" class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        <option value="Tawaran Kerja IT Support / Infrastructure">Tawaran Kerja IT Support / Infrastructure</option>
+                        <option value="Tawaran Kerja Network Administrator">Tawaran Kerja Network Administrator</option>
+                        <option value="Pengembangan Solusi Web Internal">Pengembangan Solusi Web Internal</option>
+                      </select>
+                      <textarea id="sender-message" rows="3" required placeholder="Tuliskan pesan..." class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500"></textarea>
+                      <button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs uppercase tracking-wider">Kirim via Email Client</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Render CV Modal Content
+      const cvModalContent = document.getElementById('cv-modal-content');
+      if (cvModalContent) {
+        cvModalContent.innerHTML = `
+          <div class="border-b border-slate-800 pb-6">
+            <h4 class="text-2xl font-black text-white">${p.title.toUpperCase()}</h4>
+            <p class="text-indigo-400 font-mono text-xs mt-1">${p.tagline}</p>
+            <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-400 mt-3">
+              <span>📍 ${p.location}</span>
+              <span>✉️ ${p.email}</span>
+              <span>📞 ${p.whatsapp}</span>
+            </div>
+          </div>
+          <div>
+            <h5 class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold mb-2">Pendidikan</h5>
+            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex justify-between font-bold text-white">
+                <span>${edu.university} - ${edu.degree_name}</span>
+                <span class="text-emerald-400 font-mono">IPK ${edu.gpa}</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">Periode ${edu.period} • Predikat Pujian (Cum Laude)</p>
+            </div>
+          </div>
+          <div>
+            <h5 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold mb-2">Pengalaman Magang</h5>
+            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2">
+              <div class="flex justify-between font-bold text-white">
+                <span>${exp.institution}</span>
+                <span class="text-slate-400 font-mono text-xs">${exp.period}</span>
+              </div>
+              <p class="text-xs text-indigo-300 font-mono">${exp.role} (${exp.division})</p>
+              <ul class="list-disc list-inside text-xs text-slate-400 space-y-1 pt-1">
+                ${exp.responsibilities.map(r => `<li>${r.title}: ${r.desc}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Modal Control Functions
+    const infoModal = document.getElementById('info-modal');
+    const modalBadge = document.getElementById('modal-badge');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+
+    function openSystemDetail(key) {
+      const sys = (activePortfolioData.experience.web_systems || []).find(s => s.key === key);
+      if (!sys || !infoModal) return;
+
+      modalBadge.textContent = sys.category || 'Sistem Web';
+      modalTitle.textContent = sys.title;
+      modalContent.innerHTML = `
+        <div class="space-y-4">
+          <p class="leading-relaxed">${sys.desc}</p>
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h5 class="text-xs font-mono text-indigo-400 font-bold uppercase">Teknologi & Modul:</h5>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              ${(sys.tags || []).map(t => `<span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">${t}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+
+      infoModal.classList.remove('hidden');
+      infoModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openProjectModal(id) {
+      const proj = (activePortfolioData.projects || []).find(p => p.id === id);
+      if (!proj || !infoModal) return;
+
+      modalBadge.textContent = proj.category_label || 'Detail Proyek';
+      modalTitle.textContent = proj.title;
+      modalContent.innerHTML = `
+        <div class="space-y-4">
+          <p class="text-indigo-400 font-mono text-xs font-semibold">${proj.role}</p>
+          <p class="leading-relaxed">${proj.details || proj.description}</p>
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+            <h5 class="text-xs font-mono text-emerald-400 font-bold uppercase">Tag & Kompetensi:</h5>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              ${(proj.tags || []).map(t => `<span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">${t}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+
+      infoModal.classList.remove('hidden');
+      infoModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!infoModal) return;
+      infoModal.classList.add('hidden');
+      infoModal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    // CV Modal
+    const cvModal = document.getElementById('cv-modal');
+    function openCvModal() {
+      if (!cvModal) return;
+      cvModal.classList.remove('hidden');
+      cvModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCvModal() {
+      if (!cvModal) return;
+      cvModal.classList.add('hidden');
+      cvModal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target === infoModal) closeModal();
+      if (e.target === cvModal) closeCvModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeCvModal();
+      }
+      // Shortcut Ctrl+Shift+E to open admin studio
+      if (e.ctrlKey && e.shiftKey && (e.key === 'E' || e.key === 'e')) {
+        window.location.href = 'admin.html';
+      }
+    });
+
+    // Project Category Filtering Logic
+    function filterProjects(category) {
+      const filterBtns = document.querySelectorAll('.project-filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = 'project-filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-indigo-600 text-white';
+        } else {
+          btn.className = 'project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700';
+        }
+      });
+
+      projectCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        }
+      });
+    }
+
+    // Toast Notification System
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border text-xs font-mono bg-slate-900/95 border-emerald-500/50 text-white';
+      toast.innerHTML = `<span class="text-emerald-400 font-bold">✓</span> <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3500);
+    }
+
+    function copyToClipboard(text, successMsg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(successMsg || 'Teks disalin ke clipboard!');
+      }).catch(() => {
+        showToast(successMsg || 'Teks disalin ke clipboard!');
+      });
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('sender-name').value;
+      const subject = document.getElementById('sender-subject').value;
+      const message = document.getElementById('sender-message').value;
+      const emailSubject = encodeURIComponent(`[Inquiry Portfolio] ${subject} - dari ${name}`);
+      const emailBody = encodeURIComponent(`Halo Armand,\n\nNama: ${name}\nPerihal: ${subject}\n\nPesan:\n${message}`);
+      window.location.href = `mailto:${activePortfolioData.profile.email}?subject=${emailSubject}&body=${emailBody}`;
+    }
+
+    // Live Message Receiver for Iframe Studio Preview
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'PORTFOLIO_DATA_UPDATE') {
+        renderPortfolio(event.data.data);
+      }
+    });
+
+    // Check if in Iframe (Hide Floating Admin Trigger)
+    if (window.self !== window.top || new URLSearchParams(window.location.search).get('preview') === 'true') {
+      const floatBtn = document.getElementById('admin-floating-trigger');
+      if (floatBtn) floatBtn.style.display = 'none';
+    }
+
+    // Auto-fetch data.json or load from localStorage or default
+    async function initPortfolio() {
+      // 1. Check if preview in iframe with localStorage
+      const localData = localStorage.getItem('armand_portfolio_data');
+      if (localData && new URLSearchParams(window.location.search).get('preview') === 'true') {
+        try {
+          renderPortfolio(JSON.parse(localData));
+          return;
+        } catch(e) {}
+      }
+
+      // 2. Fetch external data.json (for live GitHub Pages)
+      try {
+        const response = await fetch('./data.json?v=' + Date.now());
+        if (response.ok) {
+          const json = await response.json();
+          renderPortfolio(json);
+          return;
+        }
+      } catch(err) {
+        // Fallback to local or default if fetch fails (e.g. offline file://)
+      }
+
+      // 3. Fallback to local storage or embedded default
+      if (localData) {
+        try {
+          renderPortfolio(JSON.parse(localData));
+          return;
+        } catch(e) {}
+      }
+
+      renderPortfolio(defaultPortfolioData);
+    }
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    }
+
+    window.addEventListener('DOMContentLoaded', initPortfolio);
+  </script>
+
+</body>
+</html>
