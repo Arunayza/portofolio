@@ -1,0 +1,7 @@
+# System & temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Optional: To keep admin.html strictly local on your laptop, 
+# you can leave admin.html unpushed or keep it for personal access.

@@ -47,6 +47,10 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
+    .drop-zone-active {
+      border-color: #6366F1 !important;
+      background-color: rgba(99, 102, 241, 0.1) !important;
+    }
   </style>
 </head>
 
@@ -95,8 +99,6 @@
 
     <!-- Right: Publish & Data Operations -->
     <div class="flex items-center gap-2">
-      
-      <!-- Open Public Web in New Tab -->
       <a href="index.html" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-mono font-medium border border-slate-700 transition-all flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         <span class="hidden sm:inline">Buka Web Publik</span>
@@ -153,7 +155,7 @@
         <button onclick="switchTab('metrics')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="metrics">📊 Statistik</button>
         <button onclick="switchTab('education')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="education">🎓 Pendidikan</button>
         <button onclick="switchTab('experience')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="experience">💼 Magang PTUN</button>
-        <button onclick="switchTab('projects')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="projects">🚀 Proyek</button>
+        <button onclick="switchTab('projects')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="projects">🚀 Proyek & Media</button>
         <button onclick="switchTab('certifications')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="certifications">📜 Sertifikasi</button>
         <button onclick="switchTab('skills')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="skills">🛠️ Keahlian</button>
         <button onclick="switchTab('raw_json')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="raw_json">💻 Raw JSON</button>
@@ -173,7 +175,7 @@
       <div class="bg-[#0B1120] border-b border-slate-800 px-4 py-2 flex items-center justify-between shrink-0 text-xs font-mono">
         <div class="flex items-center gap-2 text-slate-400">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Live Interactive Preview</span>
+          <span>Live Interactive Preview (Sync Real-Time)</span>
         </div>
 
         <!-- Responsive Device Simulation Icons -->
@@ -217,15 +219,13 @@
       </div>
 
       <div class="p-6 space-y-4 text-xs font-mono">
-        
         <div class="p-3.5 rounded-xl bg-indigo-950/40 border border-indigo-500/30 text-indigo-200 leading-relaxed font-sans text-xs">
-          💡 <strong>Bagaimana cara kerjanya?</strong> Studio ini akan langsung meng-commit file <code class="text-indigo-400 font-mono">data.json</code> ke repository GitHub Anda via GitHub REST API. Website GitHub Pages Anda akan langsung ter-update otomatis!
+          💡 <strong>Bagaimana cara kerjanya?</strong> Studio ini akan langsung meng-commit data & dokumentasi terbaru ke repository GitHub Anda via GitHub REST API.
         </div>
 
         <div>
           <label class="block text-slate-300 mb-1">GitHub Personal Access Token (PAT)</label>
           <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-indigo-500">
-          <span class="text-[10px] text-slate-500 mt-1 block">Token disimpan aman di peramban lokal Anda. Butuh izin scope: <code class="text-slate-400">repo</code>.</span>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
@@ -245,13 +245,10 @@
         </div>
 
         <div id="gh-sync-status" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs"></div>
-
       </div>
 
       <div class="px-6 py-4 bg-slate-900/60 border-t border-slate-800 flex justify-between items-center">
-        <button onclick="closeGithubModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono">
-          Batal
-        </button>
+        <button onclick="closeGithubModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono">Batal</button>
         <button onclick="executeGithubPush()" id="btn-do-push" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-bold flex items-center gap-2 shadow-lg shadow-indigo-600/30">
           🚀 Publish Sekarang ke GitHub
         </button>
@@ -262,12 +259,8 @@
 
   <!-- ==================== STUDIO JAVASCRIPT ENGINE ==================== -->
   <script>
-    // State Store
-    let currentData = null;
-    let activeTab = 'profile';
-
-    // Default Fallback Data (Armand Maulana)
-    const defaultData = {
+    // Embedded initial data for synchronous instant load
+    const embeddedData = {
       profile: {
         name: "Armand Maulana",
         title: "Armand Maulana, S.Tr.Kom.",
@@ -314,21 +307,41 @@
         publication: {
           journal: "Jurnal JAIEA",
           title: "Development of an IoT-Based Animal Trap Using Motion Sensors and Camera",
+          doi: "https://doi.org/10.59934/jaiea.v5i3.2554",
+          url: "https://doi.org/10.59934/jaiea.v5i3.2554",
           description: "Jurnal terakreditasi di bidang otomatisasi industri dan kecerdasan elektronik (JAIEA). Riset mencakup integrasi sensor PIR multi-sudut, mikrokontroler ESP32-CAM, deteksi gerakan presisi tinggi, dan telemetri nirkabel real-time.",
-          tags: ["IoT System", "ESP32-CAM", "Motion Capture", "Wireless Telemetry"]
+          tags: ["IoT System", "ESP32-CAM", "Motion Capture", "Wireless Telemetry"],
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+              caption: "Purwarupa Perangkat Keras ESP32 & Modul Kamera IoT"
+            }
+          ]
         },
         haki_list: [
           {
             id: "1",
             title: "Sistem Otomasi & Monitoring IoT",
             status: "Terdaftar Resmi Kemenkumham RI",
-            description: "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera."
+            description: "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera.",
+            images: [
+              {
+                url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+                caption: "Sertifikat Hak Cipta Kemenkumham RI - Sistem Otomasi IoT"
+              }
+            ]
           },
           {
             id: "2",
             title: "Website \"Spin a Meal\"",
             status: "Terdaftar Resmi Kemenkumham RI",
-            description: "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif."
+            description: "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif.",
+            images: [
+              {
+                url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+                caption: "Sertifikat Hak Cipta Kemenkumham RI - Website Spin a Meal"
+              }
+            ]
           }
         ]
       },
@@ -360,23 +373,48 @@
           {
             key: "invenit",
             title: "InvenIT PTUN",
+            folder: "assets/projek/invenit",
             category: "Inventaris IT",
             desc: "Sistem manajemen inventaris aset perangkat keras TI, histori servis teknis, penomoran BMN, dan pelacakan unit secara digital.",
-            tags: ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"]
+            tags: ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"],
+            images: [
+              {
+                url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+                caption: "Dashboard Utama InvenIT - Manajemen Aset IT PTUN"
+              },
+              {
+                url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+                caption: "Log Histori Servis & Pemeliharaan Hardware"
+              }
+            ]
           },
           {
             key: "absensi",
             title: "Absensi Digital & Foto",
+            folder: "assets/projek/absensi",
             category: "Geofencing",
             desc: "Presensi presisi pegawai berbasis validasi radius koordinat GPS lokasi kantor, verifikasi foto kamera real-time, dan rekap otomatis.",
-            tags: ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"]
+            tags: ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"],
+            images: [
+              {
+                url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+                caption: "Modul Geofencing Radius Kantor & Snapshot Kamera"
+              }
+            ]
           },
           {
             key: "cuti",
             title: "Sistem Izin & Cuti",
+            folder: "assets/projek/cuti",
             category: "Paperless",
             desc: "Digitalisasi permohonan izin dinas & cuti pegawai dengan sistem notifikasi, alur persetujuan bertingkat, dan arsip terpusat.",
-            tags: ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"]
+            tags: ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"],
+            images: [
+              {
+                url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+                caption: "Alur Persetujuan Bertingkat & Lembar Izin Digital"
+              }
+            ]
           }
         ]
       },
@@ -384,6 +422,7 @@
         {
           id: "pioneer",
           title: "Simulasi Robotik Pioneer P3-DX CoppeliaSim",
+          folder: "assets/projek/pioneer",
           category: "iot",
           category_label: "CoppeliaSim • Robotik",
           role: "Project Lead (25 Mahasiswa / 2 Sub-tim)",
@@ -391,11 +430,22 @@
           description: "Memimpin koordinasi 25 mahasiswa dalam pengembangan simulasi navigasi robot mobile otonom Pioneer P3-DX pada lingkungan virtual 3D CoppeliaSim, algoritma penghindaran rintangan berbasis sensor ultrasonik/sonar, dan pemetaan rute.",
           tech_metrics: ["Autonomous Navigation", "Obstacle Avoidance"],
           tags: ["CoppeliaSim (V-REP)", "Lua Scripting", "Autonomous Alg", "Team Leadership"],
-          details: "Sebagai Project Lead yang mengoordinasikan 25 mahasiswa (terbagi dalam 2 sub-tim teknis), memimpin riset dan implementasi robot navigasi bergerak (mobile robotics)."
+          details: "Sebagai Project Lead yang mengoordinasikan 25 mahasiswa (terbagi dalam 2 sub-tim teknis), memimpin riset dan implementasi robot navigasi bergerak (mobile robotics). Mengembangkan skenario arena labirin 3D dengan rintangan statis/dinamis dan algoritma sonar 16-arah.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+              caption: "Simulasi Navigasi Pioneer P3-DX pada Arena Virtual CoppeliaSim"
+            },
+            {
+              url: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=800&q=80",
+              caption: "Arsitektur Algoritma Obstacle Avoidance & Sensor Sonar"
+            }
+          ]
         },
         {
           id: "knn",
           title: "Sistem Klasifikasi Citra Buah (KNN)",
+          folder: "assets/projek/knn",
           category: "ai",
           category_label: "Machine Learning • Citra",
           role: "Project Lead (4 Anggota Tim)",
@@ -403,11 +453,22 @@
           description: "Memimpin tim dalam merancang pipeline pengolahan citra digital: pra-pemrosesan (filtering & resize), ekstraksi fitur warna (ruang HSV) dan tekstur (GLCM), serta klasifikasi tingkat kematangan dan jenis buah dengan akurasi optimal.",
           tech_metrics: ["HSV Color Extraction", "K-Nearest Neighbors"],
           tags: ["Python / MATLAB", "KNN Algorithm", "HSV & GLCM", "Feature Extraction"],
-          details: "Memimpin 4 anggota tim dalam merancang pipeline machine learning: pra-pemrosesan citra, segmentasi latar belakang, ekstraksi fitur warna ruang HSV dan tekstur GLCM."
+          details: "Memimpin 4 anggota tim dalam merancang pipeline machine learning: pra-pemrosesan citra, segmentasi latar belakang, ekstraksi fitur warna ruang HSV dan tekstur GLCM, serta klasifikasi menggunakan algoritma K-Nearest Neighbors.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+              caption: "Pipeline Ekstraksi Fitur Warna HSV dan Tekstur GLCM"
+            },
+            {
+              url: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80",
+              caption: "Matriks Evaluasi Akurasi Klasifikasi KNN"
+            }
+          ]
         },
         {
           id: "iot",
           title: "Sistem Otomasi & Monitoring IoT",
+          folder: "assets/projek/iot",
           category: "iot",
           category_label: "Riset Skripsi • HAKI & Jurnal",
           role: "Lead Researcher & Developer Skripsi",
@@ -415,58 +476,168 @@
           description: "Pengembangan perangkat keras otomasi pengendali jebakan satwa berbasis IoT. Mengintegrasikan sensor gerak presisi, mikrokontroler ESP32-CAM untuk capture visual instan, notifikasi telemetri nirkabel, dan power management efisien.",
           tech_metrics: ["ESP32-CAM", "PIR Sensor Multi-Zone"],
           tags: ["ESP32 / Arduino", "PIR Motion Sensors", "IoT Dashboard", "HAKI Registered"],
-          details: "Riset terapan skripsi yang menghasilkan 1 Publikasi Jurnal JAIEA dan 1 Hak Cipta Resmi Kemenkumham RI."
+          details: "Riset terapan skripsi yang menghasilkan 1 Publikasi Jurnal JAIEA dan 1 Hak Cipta Resmi Kemenkumham RI. Mengintegrasikan ESP32-CAM, array sensor PIR, protokol HTTP/MQTT, dan dashboard visual.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+              caption: "Integrasi Modul ESP32-CAM & Rangkaian Sensor PIR"
+            },
+            {
+              url: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80",
+              caption: "Dashboard Pemantauan Telemetri Nirkabel Real-Time"
+            }
+          ]
+        },
+        {
+          id: "pesut",
+          title: "Sistem Monitoring Pesut Mahakam & Konservasi",
+          folder: "assets/projek/pesut",
+          category: "iot",
+          category_label: "IoT • Konservasi Perairan",
+          role: "Lead Hardware & IoT Developer",
+          lead_highlight: "IoT & Sensor",
+          description: "Rancang bangun sistem pemantauan habitat pesut berbasis sensor kualitas air (pH, Turbidity, Suhu) dan transmisi data telemetri nirkabel untuk pelestarian fauna endemik Sungai Mahakam Kalimantan Timur.",
+          tech_metrics: ["Water Quality Sensor", "Long Range Telemetry"],
+          tags: ["ESP32", "Hydro-Sensor", "LoRa / Telemetry", "Conservation Tech"],
+          details: "Monitoring parameter hidrologi habitat alami pesut Mahakam secara berkala dengan notifikasi anomali pencemaran air langsung ke posko konservasi.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+              caption: "Sensor Kualitas Air & Modul Telemetri Nirkabel"
+            }
+          ]
+        },
+        {
+          id: "invenit",
+          title: "InvenIT - Manajemen Aset TI PTUN",
+          folder: "assets/projek/invenit",
+          category: "web",
+          category_label: "Web App • Instansi",
+          role: "Full-stack Developer (Internship)",
+          lead_highlight: "PTUN Samarinda",
+          description: "Sistem web pengelolaan inventaris perangkat keras TI (PC, printer, switch, server) untuk Subbag PTIP. Dilengkapi pencatatan spesifikasi, riwayat perbaikan, penugasan perangkat ke pegawai, dan cetak laporan inventaris.",
+          tech_metrics: ["Asset Management", "Maintenance Log"],
+          tags: ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"],
+          details: "Katalogisasi 30+ aset komputer, pelacakan histori perbaikan perangkat, pencatatan penanggung jawab ruangan, serta modul ekspor rekap inventaris otomatis.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+              caption: "Tampilan Antarmuka Inventaris Aset BMN PTUN"
+            }
+          ]
+        },
+        {
+          id: "absensi",
+          title: "Presensi Digital Geofencing & Foto",
+          folder: "assets/projek/absensi",
+          category: "web",
+          category_label: "Web App • Presensi",
+          role: "Full-stack Developer (Internship)",
+          lead_highlight: "GPS & Camera",
+          description: "Sistem absensi online dengan validasi koordinat GPS (rumus Haversine untuk geofencing radius kantor) dan pengambilan foto wajah real-time melalui kamera peramban guna mencegah kecurangan titip absen.",
+          tech_metrics: ["Radius Geolocation", "Webcam Snapshot"],
+          tags: ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"],
+          details: "Perhitungan jarak realtime radius kantor via rumus Haversine, capture foto wajah webcam tanpa rekayasa upload galeri, dan kalkulasi otomatis rekapitulasi kehadiran.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+              caption: "Validasi Titik Koordinat GPS & Verifikasi Wajah"
+            }
+          ]
+        },
+        {
+          id: "cuti",
+          title: "Sistem Pengajuan Izin & Cuti Pegawai",
+          folder: "assets/projek/cuti",
+          category: "web",
+          category_label: "Web App • Approval Workflow",
+          role: "Full-stack Developer (Internship)",
+          lead_highlight: "Paperless",
+          description: "Platform paperless pengajuan cuti tahunan, izin dinas luar, dan sakit. Menyediakan alur validasi persetujuan atasan langsung, kuota sisa cuti otomatis, dan riwayat audit trail pegawai instansi.",
+          tech_metrics: ["Multi-tier Approval", "Digital Archive"],
+          tags: ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"],
+          details: "Workflow pengajuan izin dan cuti pegawai secara digital dengan persetujuan bertingkat atasan, pengurangan saldo kuota cuti otomatis, serta pembuatan surat izin berformat dinas.",
+          images: [
+            {
+              url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+              caption: "Sistem Persetujuan Bertingkat & Rekap Hak Cuti"
+            }
+          ]
         }
       ],
       certifications: {
         languages: [
           {
+            id: "toeic",
             name: "TOEIC (Test of English for International Communication)",
             issuer: "ETS TOEIC",
             score: "835",
             max_score: "990",
             level: "Working Proficiency",
             percentage: 84.3,
-            desc: "Kemampuan komunikasi bahasa Inggris tingkat profesional untuk membaca dokumentasi teknis, koordinasi lintas tim, dan komunikasi bisnis korporat."
+            desc: "Kemampuan komunikasi bahasa Inggris tingkat profesional untuk membaca dokumentasi teknis, koordinasi lintas tim, dan komunikasi bisnis korporat.",
+            scan_status: "dalam_proses",
+            image: "",
+            caption: "Sertifikat Resmi ETS TOEIC Official Score Report (Skor 835)"
           },
           {
+            id: "toefl",
             name: "TOEFL ITP / Equivalent",
             issuer: "Institutional English Test",
             score: "497",
             max_score: "677",
             level: "Intermediate",
             percentage: 73.4,
-            desc: "Pemahaman tata bahasa (Structure), listening comprehension teks akademis, serta membaca literatur teknis komputasi berbahasa Inggris."
+            desc: "Pemahaman tata bahasa (Structure), listening comprehension teks akademis, serta membaca literatur teknis komputasi berbahasa Inggris.",
+            scan_status: "dalam_proses",
+            image: "",
+            caption: "Sertifikat TOEFL ITP Institutional Score Report (Skor 497)"
           }
         ],
         licenses: [
           {
+            id: "bnsp",
             title: "Junior Network Administrator",
             issuer: "BNSP RI (Badan Nasional Sertifikasi Profesi)",
             badge: "BNSP RI",
             status: "Kompeten",
-            desc: "Standar Kompetensi Kerja Nasional Indonesia (SKKNI) dalam merancang skema IP, konfigurasi switch/router, dan troubleshooting jaringan komputer."
+            desc: "Standar Kompetensi Kerja Nasional Indonesia (SKKNI) dalam merancang skema IP, konfigurasi switch/router, dan troubleshooting jaringan komputer.",
+            scan_status: "dalam_proses",
+            image: "",
+            caption: "Sertifikat Kompetensi Kerja BNSP RI - Junior Network Administrator"
           },
           {
+            id: "ccna_itn",
             title: "CCNAv7: Introduction to Networks (ITN)",
             issuer: "Cisco Networking Academy",
             badge: "Cisco CCNAv7",
             status: "Certified",
-            desc: "Arsitektur model OSI & TCP/IP, addressing IPv4/IPv6, subnetting VLSM, konfigurasi dasar Cisco IOS pada switch dan router."
+            desc: "Arsitektur model OSI & TCP/IP, addressing IPv4/IPv6, subnetting VLSM, konfigurasi dasar Cisco IOS pada switch dan router.",
+            scan_status: "dalam_proses",
+            image: "",
+            caption: "Sertifikat Cisco CCNAv7: Introduction to Networks (ITN)"
           },
           {
+            id: "ccna_srwe",
             title: "CCNAv7: Switching, Routing, & Wireless Essentials",
             issuer: "Cisco Networking Academy",
             badge: "Cisco CCNAv7",
             status: "Certified",
-            desc: "VLAN & Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, SLAAC, keamanan port switch, dan konsep nirkabel WLAN/WLC."
+            desc: "VLAN & Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, SLAAC, keamanan port switch, dan konsep nirkabel WLAN/WLC.",
+            scan_status: "dalam_proses",
+            image: "",
+            caption: "Sertifikat Cisco CCNAv7: Switching, Routing, & Wireless Essentials (SRWE)"
           },
           {
+            id: "dicoding",
             title: "Belajar Fundamental Aplikasi Android",
             issuer: "Dicoding Indonesia",
             badge: "Dicoding",
             status: "Certified",
-            desc: "Pengembangan aplikasi mobile Android dengan arsitektur modern, Activity/Fragment lifecycle, background processing, dan konsumsi REST API."
+            desc: "Pengembangan aplikasi mobile Android dengan arsitektur modern, Activity/Fragment lifecycle, background processing, dan konsumsi REST API.",
+            scan_status: "dalam_proses",
+            image: "",
+            caption: "Sertifikat Kelulusan Belajar Fundamental Aplikasi Android - Dicoding Indonesia"
           }
         ]
       },
@@ -489,30 +660,43 @@
       }
     };
 
-    // Load initial data from LocalStorage or Fallback
+    let currentData = embeddedData;
+    let activeTab = 'profile';
+
+    // Google Drive Link to Direct Embed Converter
+    function convertGoogleDriveLink(url) {
+      if (!url) return '';
+      const trimmed = url.trim();
+      const fileIdMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/id=([a-zA-Z0-9_-]+)/);
+      if (fileIdMatch && fileIdMatch[1]) {
+        return `https://lh3.googleusercontent.com/d/${fileIdMatch[1]}`;
+      }
+      return trimmed;
+    }
+
+    // Load initial data synchronously
     function loadData() {
       const stored = localStorage.getItem('armand_portfolio_data');
       if (stored) {
         try {
           currentData = JSON.parse(stored);
         } catch(e) {
-          currentData = JSON.parse(JSON.stringify(defaultData));
+          currentData = embeddedData;
         }
       } else {
-        currentData = JSON.parse(JSON.stringify(defaultData));
+        currentData = embeddedData;
       }
       renderActiveTab();
       syncPreview();
     }
 
-    // Save Data to LocalStorage & Sync Preview
     function saveData() {
       localStorage.setItem('armand_portfolio_data', JSON.stringify(currentData));
-      document.getElementById('status-text').textContent = 'Perubahan tersimpan otomatis (' + new Date().toLocaleTimeString() + ')';
+      const statusText = document.getElementById('status-text');
+      if (statusText) statusText.textContent = 'Tersimpan otomatis (' + new Date().toLocaleTimeString() + ')';
       syncPreview();
     }
 
-    // Broadcast updated data to Iframe Preview
     function syncPreview() {
       const iframe = document.getElementById('preview-iframe');
       if (iframe && iframe.contentWindow) {
@@ -520,7 +704,6 @@
       }
     }
 
-    // Toast Alert Helper
     function showToast(msg, type = 'success') {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
@@ -532,7 +715,6 @@
       setTimeout(() => toast.remove(), 3500);
     }
 
-    // Tab Switching
     function switchTab(tabKey) {
       activeTab = tabKey;
       document.querySelectorAll('.studio-tab-btn').forEach(btn => {
@@ -545,16 +727,55 @@
       renderActiveTab();
     }
 
+    function handleImageFileDrop(file, targetFolder, callback) {
+      if (!file || !file.type.startsWith('image/')) {
+        showToast('Mohon drop file gambar (JPG/PNG/WebP)', 'error');
+        return;
+      }
+
+      showToast(`Memproses ${file.name} untuk folder ${targetFolder}...`);
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          const maxDim = 1200;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+          callback(compressedDataUrl, file.name);
+          showToast(`Gambar berhasil ditambahkan ke ${targetFolder}!`);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
     // Render Forms for Active Tab
     function renderActiveTab() {
       const container = document.getElementById('tab-content-container');
-      if (!container) return;
+      if (!container || !currentData) return;
 
       if (activeTab === 'profile') {
         container.innerHTML = `
           <div class="space-y-4">
             <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Identitas & Informasi Kontak</h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-mono text-slate-400 mb-1">Nama Lengkap</label>
@@ -604,23 +825,20 @@
             <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Statistik & Metrik Performa</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                <label class="block text-xs font-mono text-slate-400 mb-1">IPK (Indeks Prestasi Kumulatif)</label>
+                <label class="block text-xs font-mono text-slate-400 mb-1">IPK</label>
                 <input type="text" value="${currentData.metrics.gpa || ''}" oninput="currentData.metrics.gpa = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-emerald-400 font-mono font-bold text-lg">
                 <input type="text" value="${currentData.metrics.gpa_label || ''}" oninput="currentData.metrics.gpa_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
               </div>
-
               <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
                 <label class="block text-xs font-mono text-slate-400 mb-1">Tiket IT Resolved</label>
                 <input type="text" value="${currentData.metrics.tickets || ''}" oninput="currentData.metrics.tickets = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-indigo-400 font-mono font-bold text-lg">
                 <input type="text" value="${currentData.metrics.tickets_label || ''}" oninput="currentData.metrics.tickets_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
               </div>
-
               <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
                 <label class="block text-xs font-mono text-slate-400 mb-1">Aplikasi Web Instansi</label>
                 <input type="text" value="${currentData.metrics.web_apps || ''}" oninput="currentData.metrics.web_apps = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-sky-400 font-mono font-bold text-lg">
                 <input type="text" value="${currentData.metrics.web_apps_label || ''}" oninput="currentData.metrics.web_apps_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
               </div>
-
               <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
                 <label class="block text-xs font-mono text-slate-400 mb-1">Skor TOEIC</label>
                 <input type="text" value="${currentData.metrics.toeic || ''}" oninput="currentData.metrics.toeic = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-rose-400 font-mono font-bold text-lg">
@@ -632,76 +850,143 @@
       } else if (activeTab === 'education') {
         container.innerHTML = `
           <div class="space-y-6">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Pendidikan, Riset Ilmiah & HAKI</h2>
+            
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
               <h3 class="text-xs font-mono font-bold text-white uppercase text-indigo-400">Data Perguruan Tinggi</h3>
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Universitas / Politeknik</label>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Politeknik / Universitas</label>
                 <input type="text" value="${currentData.education.university || ''}" oninput="currentData.education.university = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Program Studi / Jenjang</label>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Program Studi</label>
                 <input type="text" value="${currentData.education.degree_name || ''}" oninput="currentData.education.degree_name = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
-              <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Deskripsi Studi</label>
-                <textarea rows="2" oninput="currentData.education.description = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">${currentData.education.description || ''}</textarea>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Periode</label>
+                  <input type="text" value="${currentData.education.period || ''}" oninput="currentData.education.period = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">IPK</label>
+                  <input type="text" value="${currentData.education.gpa || ''}" oninput="currentData.education.gpa = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
               </div>
             </div>
 
+            <!-- Publikasi Ilmiah Editor -->
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
-              <h3 class="text-xs font-mono font-bold text-white uppercase text-sky-400">Publikasi Ilmiah</h3>
-              <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Judul Jurnal / Paper</label>
-                <input type="text" value="${currentData.education.publication.title || ''}" oninput="currentData.education.publication.title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-mono font-bold text-sky-400 uppercase">Publikasi Jurnal Ilmiah</h3>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">Terakreditasi</span>
               </div>
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Penerbit Jurnal</label>
-                <input type="text" value="${currentData.education.publication.journal || ''}" oninput="currentData.education.publication.journal = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Jurnal</label>
+                <input type="text" value="${currentData.education.publication?.journal || 'Jurnal JAIEA'}" oninput="if(!currentData.education.publication) currentData.education.publication={}; currentData.education.publication.journal = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Judul Paper / Publikasi</label>
+                <input type="text" value="${currentData.education.publication?.title || ''}" oninput="if(!currentData.education.publication) currentData.education.publication={}; currentData.education.publication.title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-emerald-400 font-bold mb-1">🔗 Link DOI / URL Paper Jurnal</label>
+                <input type="text" value="${currentData.education.publication?.url || currentData.education.publication?.doi || 'https://doi.org/10.59934/jaiea.v5i3.2554'}" oninput="if(!currentData.education.publication) currentData.education.publication={}; currentData.education.publication.url = this.value; currentData.education.publication.doi = this.value; saveData()" placeholder="https://doi.org/10.59934/jaiea.v5i3.2554" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-emerald-500/50 text-xs font-mono text-emerald-300 focus:outline-none focus:border-emerald-400">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Deskripsi Ringkas Riset</label>
+                <textarea rows="3" oninput="if(!currentData.education.publication) currentData.education.publication={}; currentData.education.publication.description = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">${currentData.education.publication?.description || ''}</textarea>
               </div>
             </div>
           </div>
         `;
       } else if (activeTab === 'experience') {
         container.innerHTML = `
-          <div class="space-y-4">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Pengalaman Magang PTUN Samarinda</h2>
+          <div class="space-y-6">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Magang PTUN & Dokumentasi 3 Sistem Web</h2>
             
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
               <div>
                 <label class="block text-xs font-mono text-slate-400 mb-1">Nama Instansi</label>
                 <input type="text" value="${currentData.experience.institution || ''}" oninput="currentData.experience.institution = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
-              <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Divisi / Subbag</label>
-                <input type="text" value="${currentData.experience.division || ''}" oninput="currentData.experience.division = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" value="${currentData.experience.role || ''}" oninput="currentData.experience.role = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                <input type="text" value="${currentData.experience.period || ''}" oninput="currentData.experience.period = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
-              <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Peran & Periode</label>
-                <div class="grid grid-cols-2 gap-2">
-                  <input type="text" value="${currentData.experience.role || ''}" oninput="currentData.experience.role = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
-                  <input type="text" value="${currentData.experience.period || ''}" oninput="currentData.experience.period = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+            </div>
+
+            <!-- Web Systems Media Manager -->
+            <div class="space-y-4">
+              <h3 class="text-xs font-mono font-bold text-indigo-400 uppercase">Dokumentasi Gambar 3 Sistem Web PTUN:</h3>
+              ${currentData.experience.web_systems.map((sys, sysIdx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <span class="text-xs font-mono font-bold text-white">${sys.title}</span>
+                      <span class="text-[10px] font-mono text-slate-400 block">📁 Folder: <code class="text-indigo-400">${sys.folder || `assets/projek/${sys.key}`}</code></span>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">${sys.category}</span>
+                  </div>
+                  
+                  <!-- Drag & Drop & File Picker Zone -->
+                  <div 
+                    ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                    ondragleave="this.classList.remove('drop-zone-active');"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], '${sys.folder || `assets/projek/${sys.key}`}', (url, fname)=>{ addSystemImage(${sysIdx}, url, fname); });"
+                    class="p-4 border-2 border-dashed border-slate-700 rounded-2xl text-center hover:border-indigo-500/60 transition-colors bg-slate-950/40 flex flex-col items-center justify-center gap-2"
+                  >
+                    <p class="text-xs text-slate-300 font-medium">📥 Drag & Drop atau Pilih Screenshot Sistem</p>
+                    <label class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold cursor-pointer shadow-lg shadow-indigo-600/30 flex items-center gap-1.5 transition-all">
+                      <span>📁 Pilih File dari Laptop</span>
+                      <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], '${sys.folder || `assets/projek/${sys.key}`}', (url, fname)=>{ addSystemImage(${sysIdx}, url, fname); });" class="hidden">
+                    </label>
+                    <p class="text-[10px] text-slate-500">Otomatis tersinkronisasi ke ${sys.folder || `assets/projek/${sys.key}`}</p>
+                  </div>
+
+                  <!-- Quick Add Input -->
+                  <div class="flex gap-2">
+                    <input type="text" id="sys-img-input-${sysIdx}" placeholder="Paste URL Gambar, Link Google Drive, atau 'assets/projek/${sys.key}/foto.jpg'..." class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                    <button onclick="addSystemImageUrl(${sysIdx})" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-bold">+ Tambah</button>
+                  </div>
+
+                  <!-- Images Grid -->
+                  <div class="grid grid-cols-2 gap-2 pt-2">
+                    ${(sys.images || []).map((img, imgIdx) => `
+                      <div class="relative group rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-1">
+                        <img src="${img.url}" class="w-full h-24 object-cover rounded-lg">
+                        <input type="text" value="${img.caption || ''}" placeholder="Keterangan..." oninput="currentData.experience.web_systems[${sysIdx}].images[${imgIdx}].caption = this.value; saveData()" class="w-full mt-1 px-2 py-1 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300">
+                        <button onclick="removeSystemImage(${sysIdx}, ${imgIdx})" class="absolute top-2 right-2 p-1 rounded-md bg-rose-600/90 text-white text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">Hapus</button>
+                      </div>
+                    `).join('')}
+                  </div>
                 </div>
-              </div>
+              `).join('')}
             </div>
           </div>
         `;
       } else if (activeTab === 'projects') {
         let projectsHtml = `
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-sky-400">Daftar Proyek Unggulan (${currentData.projects.length})</h2>
-            <button onclick="addNewProject()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold flex items-center gap-1">
+            <div>
+              <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-sky-400">Proyek Unggulan & Dokumentasi (${currentData.projects.length})</h2>
+              <p class="text-xs text-slate-400 font-mono">Tiap proyek memiliki folder lokal <code class="text-indigo-400">assets/projek/[nama_projek]/</code> & Google Drive Sync.</p>
+            </div>
+            <button onclick="addNewProject()" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold flex items-center gap-1">
               + Tambah Proyek
             </button>
           </div>
-          <div class="space-y-4">
+          <div class="space-y-6">
         `;
 
         currentData.projects.forEach((proj, idx) => {
           projectsHtml += `
-            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative group">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-indigo-400">Proyek #${idx + 1}</span>
-                <button onclick="deleteProject(${idx})" class="text-xs font-mono text-rose-400 hover:text-rose-300 hover:underline">Hapus</button>
+            <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 relative group">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div>
+                  <span class="text-xs font-mono font-bold text-indigo-400">Proyek #${idx + 1}: ${proj.title}</span>
+                  <span class="text-[10px] font-mono text-slate-400 block">📁 Folder: <code class="text-emerald-400">${proj.folder || `assets/projek/${proj.id}`}</code></span>
+                </div>
+                <button onclick="deleteProject(${idx})" class="text-xs font-mono text-rose-400 hover:text-rose-300 hover:underline">Hapus Proyek</button>
               </div>
 
               <div>
@@ -709,7 +994,7 @@
                 <input type="text" value="${proj.title || ''}" oninput="currentData.projects[${idx}].title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
 
-              <div class="grid grid-cols-2 gap-2">
+              <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="block text-[11px] font-mono text-slate-400 mb-1">Kategori Filter</label>
                   <select onchange="currentData.projects[${idx}].category = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
@@ -719,7 +1004,7 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Peran / Highlight Tim</label>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Peran & Tanggung Jawab</label>
                   <input type="text" value="${proj.role || ''}" oninput="currentData.projects[${idx}].role = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
                 </div>
               </div>
@@ -728,6 +1013,47 @@
                 <label class="block text-[11px] font-mono text-slate-400 mb-1">Deskripsi Ringkas</label>
                 <textarea rows="2" oninput="currentData.projects[${idx}].description = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">${proj.description || ''}</textarea>
               </div>
+
+              <!-- MEDIA & DOCUMENTATION GALLERY MANAGER -->
+              <div class="pt-2 border-t border-slate-800 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-emerald-400 uppercase">📸 Galeri Dokumentasi (${(proj.images || []).length} Foto)</span>
+                </div>
+
+                <!-- Drag & Drop & File Picker Zone -->
+                <div 
+                  ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                  ondragleave="this.classList.remove('drop-zone-active');"
+                  ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], '${proj.folder || `assets/projek/${proj.id}`}', (url, fname)=>{ addProjectImage(${idx}, url, fname); });"
+                  class="p-4 border-2 border-dashed border-slate-700 rounded-2xl text-center hover:border-emerald-500/60 transition-colors bg-slate-950/40 flex flex-col items-center justify-center gap-2"
+                >
+                  <p class="text-xs text-slate-300 font-semibold">📥 Drag & Drop Foto atau Pilih dari Laptop</p>
+                  <label class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold cursor-pointer shadow-lg shadow-emerald-600/30 flex items-center gap-2 transition-all">
+                    <span>📁 Pilih File Foto dari Komputer</span>
+                    <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], '${proj.folder || `assets/projek/${proj.id}`}', (url, fname)=>{ addProjectImage(${idx}, url, fname); });" class="hidden">
+                  </label>
+                  <p class="text-[10px] text-slate-500">Otomatis tersimpan & terkonversi kualitas tinggi</p>
+                </div>
+
+                <!-- Google Drive / URL Add Input -->
+                <div class="flex gap-2">
+                  <input type="text" id="proj-img-input-${idx}" placeholder="Paste URL Gambar, Link Google Drive, atau 'assets/projek/${proj.id}/foto.jpg'..." class="flex-1 px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                  <button onclick="addProjectImageUrl(${idx})" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold">+ Tambah</button>
+                </div>
+
+                <!-- Image Thumbnails Grid with Captions -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+                  ${(proj.images || []).map((img, imgIdx) => `
+                    <div class="relative group rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-1.5 flex flex-col justify-between">
+                      <img src="${img.url}" class="w-full h-24 object-cover rounded-lg mb-1.5" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80'">
+                      <input type="text" value="${img.caption || ''}" placeholder="Keterangan foto..." oninput="currentData.projects[${idx}].images[${imgIdx}].caption = this.value; saveData()" class="w-full px-2 py-1 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300">
+                      <button onclick="removeProjectImage(${idx}, ${imgIdx})" class="absolute top-2 right-2 p-1 px-2 rounded-md bg-rose-600 text-white text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-bold shadow-lg">✕</button>
+                    </div>
+                  `).join('')}
+                </div>
+
+              </div>
+
             </div>
           `;
         });
@@ -737,37 +1063,112 @@
       } else if (activeTab === 'certifications') {
         container.innerHTML = `
           <div class="space-y-6">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-amber-400">Sertifikasi & Lisensi Kompetensi</h2>
-            <div class="space-y-3">
-              ${currentData.certifications.licenses.map((lic, idx) => `
-                <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                  <div class="flex justify-between text-xs font-mono text-slate-400">
-                    <span>Lisensi #${idx + 1}</span>
-                    <span class="text-emerald-400 font-bold">${lic.badge || ''}</span>
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-amber-400">Sertifikasi & Scan Dokumen Resmi</h2>
+            
+            <!-- Language Certifications -->
+            <div class="space-y-4">
+              <h3 class="text-xs font-mono font-bold text-rose-400 uppercase">1. Sertifikasi Kemampuan Bahasa (TOEIC & TOEFL):</h3>
+              ${currentData.certifications.languages.map((lang, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs font-mono font-bold text-white">${lang.name}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">${lang.score} / ${lang.max_score}</span>
                   </div>
-                  <input type="text" value="${lic.title || ''}" oninput="currentData.certifications.licenses[${idx}].title = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
-                  <input type="text" value="${lic.issuer || ''}" oninput="currentData.certifications.licenses[${idx}].issuer = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-400">
+                  <div class="grid grid-cols-2 gap-2">
+                    <input type="text" value="${lang.score || ''}" placeholder="Skor" oninput="currentData.certifications.languages[${idx}].score = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                    <input type="text" value="${lang.level || ''}" placeholder="Level" oninput="currentData.certifications.languages[${idx}].level = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (URL, Google Drive, atau 'assets/sertifikat/...')</label>
+                    <div class="flex gap-2">
+                      <input type="text" value="${lang.image || ''}" placeholder="URL Scan Sertifikat..." onchange="currentData.certifications.languages[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
+                    </div>
+                  </div>
+                  
+                  <!-- Drop & File Picker Zone -->
+                  <div 
+                    ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                    ondragleave="this.classList.remove('drop-zone-active');"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.languages[${idx}].image = url; saveData(); renderActiveTab(); });"
+                    class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-rose-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
+                  >
+                    <span>📥 Drag & Drop atau</span>
+                    <label class="px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">
+                      <span>📁 Pilih File Scan</span>
+                      <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.languages[${idx}].image = url; saveData(); renderActiveTab(); });" class="hidden">
+                    </label>
+                  </div>
+
+                  ${lang.image ? `
+                    <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-950 border border-slate-800">
+                      <img src="${lang.image}" class="w-16 h-12 object-cover rounded-lg">
+                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">${lang.caption || 'Scan Sertifikat Terpasang'}</div>
+                      <button onclick="currentData.certifications.languages[${idx}].image = ''; saveData(); renderActiveTab();" class="text-[10px] font-mono text-rose-400 hover:underline">Hapus</button>
+                    </div>
+                  ` : ''}
                 </div>
               `).join('')}
             </div>
+
+            <!-- License Certifications -->
+            <div class="space-y-4 pt-2">
+              <h3 class="text-xs font-mono font-bold text-teal-400 uppercase">2. Lisensi & Sertifikasi Kompetensi (BNSP, Cisco, Dicoding):</h3>
+              ${currentData.certifications.licenses.map((lic, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs font-mono font-bold text-white">${lic.title}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">${lic.badge || ''}</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <input type="text" value="${lic.title || ''}" placeholder="Judul Sertifikasi" oninput="currentData.certifications.licenses[${idx}].title = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                    <input type="text" value="${lic.issuer || ''}" placeholder="Penerbit" oninput="currentData.certifications.licenses[${idx}].issuer = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (URL, Google Drive, atau 'assets/sertifikat/...')</label>
+                    <div class="flex gap-2">
+                      <input type="text" value="${lic.image || ''}" placeholder="URL Scan Sertifikat..." onchange="currentData.certifications.licenses[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
+                    </div>
+                  </div>
+
+                  <!-- Drop & File Picker Zone -->
+                  <div 
+                    ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                    ondragleave="this.classList.remove('drop-zone-active');"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.licenses[${idx}].image = url; saveData(); renderActiveTab(); });"
+                    class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-emerald-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
+                  >
+                    <span>📥 Drag & Drop atau</span>
+                    <label class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">
+                      <span>📁 Pilih File Scan</span>
+                      <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.licenses[${idx}].image = url; saveData(); renderActiveTab(); });" class="hidden">
+                    </label>
+                  </div>
+
+                  ${lic.image ? `
+                    <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-950 border border-slate-800">
+                      <img src="${lic.image}" class="w-16 h-12 object-cover rounded-lg">
+                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">${lic.caption || 'Scan Sertifikat Terpasang'}</div>
+                      <button onclick="currentData.certifications.licenses[${idx}].image = ''; saveData(); renderActiveTab();" class="text-[10px] font-mono text-rose-400 hover:underline">Hapus</button>
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+
           </div>
         `;
       } else if (activeTab === 'skills') {
         container.innerHTML = `
           <div class="space-y-4">
             <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-teal-400">Keahlian & Penguasaan Teknis</h2>
-            <p class="text-xs text-slate-400 font-mono">Pisahkan item dengan koma untuk mengedit daftar keahlian.</p>
-
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
               <label class="block text-xs font-mono text-indigo-400 font-bold">1. Jaringan & Infrastruktur</label>
               <textarea rows="3" oninput="currentData.skills.networking.items = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono">${currentData.skills.networking.items.join(', ')}</textarea>
             </div>
-
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
               <label class="block text-xs font-mono text-emerald-400 font-bold">2. Solusi Digital & Software</label>
               <textarea rows="3" oninput="currentData.skills.digital_solutions.items = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono">${currentData.skills.digital_solutions.items.join(', ')}</textarea>
             </div>
-
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
               <label class="block text-xs font-mono text-sky-400 font-bold">3. Tools & Lingkungan Kerja</label>
               <textarea rows="3" oninput="currentData.skills.tools.items = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono">${currentData.skills.tools.items.join(', ')}</textarea>
@@ -779,9 +1180,7 @@
           <div class="space-y-3 h-full flex flex-col">
             <div class="flex items-center justify-between">
               <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Raw JSON Code Editor</h2>
-              <button onclick="applyRawJson()" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold">
-                ✓ Terapkan JSON
-              </button>
+              <button onclick="applyRawJson()" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold">✓ Terapkan JSON</button>
             </div>
             <textarea id="raw-json-editor" class="w-full flex-1 h-[420px] p-4 rounded-2xl bg-slate-950 border border-slate-700 text-xs text-emerald-400 font-mono focus:outline-none focus:border-indigo-500 leading-relaxed">${JSON.stringify(currentData, null, 2)}</textarea>
           </div>
@@ -789,11 +1188,62 @@
       }
     }
 
-    // CRUD Helper: Add Project
+    function addProjectImage(projIdx, url, caption = 'Dokumentasi Proyek') {
+      if (!currentData.projects[projIdx].images) {
+        currentData.projects[projIdx].images = [];
+      }
+      currentData.projects[projIdx].images.push({ url, caption });
+      saveData();
+      renderActiveTab();
+    }
+
+    function addProjectImageUrl(projIdx) {
+      const input = document.getElementById(`proj-img-input-${projIdx}`);
+      if (!input || !input.value.trim()) return;
+      const convertedUrl = convertGoogleDriveLink(input.value.trim());
+      addProjectImage(projIdx, convertedUrl, 'Dokumentasi Teknis');
+      input.value = '';
+      showToast('Gambar berhasil ditambahkan!');
+    }
+
+    function removeProjectImage(projIdx, imgIdx) {
+      currentData.projects[projIdx].images.splice(imgIdx, 1);
+      saveData();
+      renderActiveTab();
+      showToast('Gambar dihapus');
+    }
+
+    function addSystemImage(sysIdx, url, caption = 'Tampilan Sistem') {
+      if (!currentData.experience.web_systems[sysIdx].images) {
+        currentData.experience.web_systems[sysIdx].images = [];
+      }
+      currentData.experience.web_systems[sysIdx].images.push({ url, caption });
+      saveData();
+      renderActiveTab();
+    }
+
+    function addSystemImageUrl(sysIdx) {
+      const input = document.getElementById(`sys-img-input-${sysIdx}`);
+      if (!input || !input.value.trim()) return;
+      const convertedUrl = convertGoogleDriveLink(input.value.trim());
+      addSystemImage(sysIdx, convertedUrl, 'Tampilan Antarmuka Sistem');
+      input.value = '';
+      showToast('Screenshot sistem berhasil ditambahkan!');
+    }
+
+    function removeSystemImage(sysIdx, imgIdx) {
+      currentData.experience.web_systems[sysIdx].images.splice(imgIdx, 1);
+      saveData();
+      renderActiveTab();
+      showToast('Gambar dihapus');
+    }
+
     function addNewProject() {
+      const id = "proj_" + Date.now();
       currentData.projects.unshift({
-        id: "proj_" + Date.now(),
+        id: id,
         title: "Proyek Baru",
+        folder: `assets/projek/${id}`,
         category: "web",
         category_label: "Web App",
         role: "Lead Developer",
@@ -801,14 +1251,19 @@
         description: "Deskripsi proyek baru...",
         tech_metrics: ["Web Technology", "System"],
         tags: ["PHP", "JavaScript", "Tailwind CSS"],
-        details: "Detail lengkap mengenai pencapaian dan arsitektur proyek ini."
+        details: "Detail lengkap mengenai pencapaian dan arsitektur proyek ini.",
+        images: [
+          {
+            url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+            caption: "Screenshot Dokumentasi Utama"
+          }
+        ]
       });
       saveData();
       renderActiveTab();
       showToast('Proyek baru berhasil ditambahkan!');
     }
 
-    // CRUD Helper: Delete Project
     function deleteProject(idx) {
       if (confirm('Yakin ingin menghapus proyek ini?')) {
         currentData.projects.splice(idx, 1);
@@ -818,13 +1273,11 @@
       }
     }
 
-    // Apply Raw JSON
     function applyRawJson() {
       const el = document.getElementById('raw-json-editor');
       if (!el) return;
       try {
-        const parsed = JSON.parse(el.value);
-        currentData = parsed;
+        currentData = JSON.parse(el.value);
         saveData();
         showToast('Data JSON berhasil diperbarui!');
       } catch(e) {
@@ -832,7 +1285,6 @@
       }
     }
 
-    // Viewport Split Controls
     function setSplitMode(mode) {
       const editor = document.getElementById('editor-panel');
       const preview = document.getElementById('preview-panel');
@@ -864,10 +1316,8 @@
       if (iframe) iframe.style.width = width;
     }
 
-    // File Downloads & Backup
     function toggleDataDropdown() {
-      const menu = document.getElementById('data-dropdown');
-      menu.classList.toggle('hidden');
+      document.getElementById('data-dropdown').classList.toggle('hidden');
     }
 
     window.addEventListener('click', (e) => {
@@ -904,8 +1354,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         try {
-          const parsed = JSON.parse(e.target.result);
-          currentData = parsed;
+          currentData = JSON.parse(e.target.result);
           saveData();
           renderActiveTab();
           showToast('Data berhasil direstore dari file!');
@@ -920,7 +1369,6 @@
       fetch('index.html')
         .then(res => res.text())
         .then(html => {
-          // Embed currentData as the embedded default inside index.html
           const updatedHtml = html.replace(/const defaultPortfolioData = \{[\s\S]*?\};\s*\/\*DATA_END\*\//, `const defaultPortfolioData = ${JSON.stringify(currentData, null, 2)}; /*DATA_END*/`);
           const blob = new Blob([updatedHtml], { type: 'text/html' });
           const url = URL.createObjectURL(blob);
@@ -938,14 +1386,14 @@
 
     function resetToFactoryDefault() {
       if (confirm('Apakah Anda yakin ingin mengembalikan seluruh data ke default awal Armand Maulana?')) {
-        currentData = JSON.parse(JSON.stringify(defaultData));
+        localStorage.removeItem('armand_portfolio_data');
+        currentData = embeddedData;
         saveData();
         renderActiveTab();
         showToast('Data telah di-reset ke awal.');
       }
     }
 
-    // GitHub Push Controls
     function openGithubModal() {
       document.getElementById('gh-token').value = localStorage.getItem('armand_gh_token') || '';
       document.getElementById('gh-owner').value = localStorage.getItem('armand_gh_owner') || '';
@@ -973,18 +1421,16 @@
         return;
       }
 
-      // Save credentials locally
       localStorage.setItem('armand_gh_token', token);
       localStorage.setItem('armand_gh_owner', owner);
       localStorage.setItem('armand_gh_repo', repo);
       localStorage.setItem('armand_gh_branch', branch);
 
       statusBox.classList.remove('hidden');
-      statusBox.innerHTML = '⏳ Menghubungkan ke GitHub API...';
+      statusBox.innerHTML = '⏳ Menghubungkan ke GitHub API & Meng-commit data.json...';
       btn.disabled = true;
 
       try {
-        // Step 1: Get current SHA of data.json
         const fileUrl = `https://api.github.com/repos/${owner}/${repo}/contents/data.json?ref=${branch}`;
         let sha = null;
         
@@ -1000,10 +1446,9 @@
           sha = getJson.sha;
         }
 
-        // Step 2: Push new content (base64)
         const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(currentData, null, 2))));
         const payload = {
-          message: `Update portfolio content via Admin Studio (${new Date().toLocaleString()})`,
+          message: `Update portfolio documentation & content via Admin Studio (${new Date().toLocaleString()})`,
           content: contentBase64,
           branch: branch
         };
@@ -1034,10 +1479,8 @@
       }
     }
 
-    // Initialize Studio on Load
-    window.addEventListener('DOMContentLoaded', () => {
-      loadData();
-    });
+    // Load and render immediately
+    loadData();
   </script>
 
 </body>

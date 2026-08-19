@@ -45,21 +45,41 @@
     "publication": {
       "journal": "Jurnal JAIEA",
       "title": "Development of an IoT-Based Animal Trap Using Motion Sensors and Camera",
+      "doi": "https://doi.org/10.59934/jaiea.v5i3.2554",
+      "url": "https://doi.org/10.59934/jaiea.v5i3.2554",
       "description": "Jurnal terakreditasi di bidang otomatisasi industri dan kecerdasan elektronik (JAIEA). Riset mencakup integrasi sensor PIR multi-sudut, mikrokontroler ESP32-CAM, deteksi gerakan presisi tinggi, dan telemetri nirkabel real-time.",
-      "tags": ["IoT System", "ESP32-CAM", "Motion Capture", "Wireless Telemetry"]
+      "tags": ["IoT System", "ESP32-CAM", "Motion Capture", "Wireless Telemetry"],
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+          "caption": "Purwarupa Perangkat Keras ESP32 & Modul Kamera IoT"
+        }
+      ]
     },
     "haki_list": [
       {
         "id": "1",
         "title": "Sistem Otomasi & Monitoring IoT",
         "status": "Terdaftar Resmi Kemenkumham RI",
-        "description": "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera."
+        "description": "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera.",
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+            "caption": "Sertifikat Hak Cipta Kemenkumham RI - Sistem Otomasi IoT"
+          }
+        ]
       },
       {
         "id": "2",
         "title": "Website \"Spin a Meal\"",
         "status": "Terdaftar Resmi Kemenkumham RI",
-        "description": "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif."
+        "description": "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif.",
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+            "caption": "Sertifikat Hak Cipta Kemenkumham RI - Website Spin a Meal"
+          }
+        ]
       }
     ]
   },
@@ -91,23 +111,48 @@
       {
         "key": "invenit",
         "title": "InvenIT PTUN",
+        "folder": "assets/projek/invenit",
         "category": "Inventaris IT",
         "desc": "Sistem manajemen inventaris aset perangkat keras TI, histori servis teknis, penomoran BMN, dan pelacakan unit secara digital.",
-        "tags": ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"]
+        "tags": ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"],
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+            "caption": "Dashboard Utama InvenIT - Manajemen Aset IT PTUN"
+          },
+          {
+            "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+            "caption": "Log Histori Servis & Pemeliharaan Hardware"
+          }
+        ]
       },
       {
         "key": "absensi",
         "title": "Absensi Digital & Foto",
+        "folder": "assets/projek/absensi",
         "category": "Geofencing",
         "desc": "Presensi presisi pegawai berbasis validasi radius koordinat GPS lokasi kantor, verifikasi foto kamera real-time, dan rekap otomatis.",
-        "tags": ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"]
+        "tags": ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"],
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+            "caption": "Modul Geofencing Radius Kantor & Snapshot Kamera"
+          }
+        ]
       },
       {
         "key": "cuti",
         "title": "Sistem Izin & Cuti",
+        "folder": "assets/projek/cuti",
         "category": "Paperless",
         "desc": "Digitalisasi permohonan izin dinas & cuti pegawai dengan sistem notifikasi, alur persetujuan bertingkat, dan arsip terpusat.",
-        "tags": ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"]
+        "tags": ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"],
+        "images": [
+          {
+            "url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+            "caption": "Alur Persetujuan Bertingkat & Lembar Izin Digital"
+          }
+        ]
       }
     ]
   },
@@ -115,6 +160,7 @@
     {
       "id": "pioneer",
       "title": "Simulasi Robotik Pioneer P3-DX CoppeliaSim",
+      "folder": "assets/projek/pioneer",
       "category": "iot",
       "category_label": "CoppeliaSim • Robotik",
       "role": "Project Lead (25 Mahasiswa / 2 Sub-tim)",
@@ -122,11 +168,22 @@
       "description": "Memimpin koordinasi 25 mahasiswa dalam pengembangan simulasi navigasi robot mobile otonom Pioneer P3-DX pada lingkungan virtual 3D CoppeliaSim, algoritma penghindaran rintangan berbasis sensor ultrasonik/sonar, dan pemetaan rute.",
       "tech_metrics": ["Autonomous Navigation", "Obstacle Avoidance"],
       "tags": ["CoppeliaSim (V-REP)", "Lua Scripting", "Autonomous Alg", "Team Leadership"],
-      "details": "Sebagai Project Lead yang mengoordinasikan 25 mahasiswa (terbagi dalam 2 sub-tim teknis), memimpin riset dan implementasi robot navigasi bergerak (mobile robotics). Mengembangkan skenario labirin 3D dengan rintangan statis/dinamis dan algoritma sonar 16-arah."
+      "details": "Sebagai Project Lead yang mengoordinasikan 25 mahasiswa (terbagi dalam 2 sub-tim teknis), memimpin riset dan implementasi robot navigasi bergerak (mobile robotics). Mengembangkan skenario arena labirin 3D dengan rintangan statis/dinamis dan algoritma sonar 16-arah.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+          "caption": "Simulasi Navigasi Pioneer P3-DX pada Arena Virtual CoppeliaSim"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=800&q=80",
+          "caption": "Arsitektur Algoritma Obstacle Avoidance & Sensor Sonar"
+        }
+      ]
     },
     {
       "id": "knn",
       "title": "Sistem Klasifikasi Citra Buah (KNN)",
+      "folder": "assets/projek/knn",
       "category": "ai",
       "category_label": "Machine Learning • Citra",
       "role": "Project Lead (4 Anggota Tim)",
@@ -134,11 +191,22 @@
       "description": "Memimpin tim dalam merancang pipeline pengolahan citra digital: pra-pemrosesan (filtering & resize), ekstraksi fitur warna (ruang HSV) dan tekstur (GLCM), serta klasifikasi tingkat kematangan dan jenis buah dengan akurasi optimal.",
       "tech_metrics": ["HSV Color Extraction", "K-Nearest Neighbors"],
       "tags": ["Python / MATLAB", "KNN Algorithm", "HSV & GLCM", "Feature Extraction"],
-      "details": "Memimpin 4 anggota tim dalam merancang pipeline machine learning: pra-pemrosesan citra, segmentasi latar belakang, ekstraksi fitur warna ruang HSV dan tekstur GLCM, serta klasifikasi menggunakan algoritma K-Nearest Neighbors."
+      "details": "Memimpin 4 anggota tim dalam merancang pipeline machine learning: pra-pemrosesan citra, segmentasi latar belakang, ekstraksi fitur warna ruang HSV dan tekstur GLCM, serta klasifikasi menggunakan algoritma K-Nearest Neighbors.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+          "caption": "Pipeline Ekstraksi Fitur Warna HSV dan Tekstur GLCM"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80",
+          "caption": "Matriks Evaluasi Akurasi Klasifikasi KNN"
+        }
+      ]
     },
     {
       "id": "iot",
       "title": "Sistem Otomasi & Monitoring IoT",
+      "folder": "assets/projek/iot",
       "category": "iot",
       "category_label": "Riset Skripsi • HAKI & Jurnal",
       "role": "Lead Researcher & Developer Skripsi",
@@ -146,11 +214,41 @@
       "description": "Pengembangan perangkat keras otomasi pengendali jebakan satwa berbasis IoT. Mengintegrasikan sensor gerak presisi, mikrokontroler ESP32-CAM untuk capture visual instan, notifikasi telemetri nirkabel, dan power management efisien.",
       "tech_metrics": ["ESP32-CAM", "PIR Sensor Multi-Zone"],
       "tags": ["ESP32 / Arduino", "PIR Motion Sensors", "IoT Dashboard", "HAKI Registered"],
-      "details": "Riset terapan skripsi yang menghasilkan 1 Publikasi Jurnal JAIEA dan 1 Hak Cipta Resmi Kemenkumham RI. Mengintegrasikan ESP32-CAM, array sensor PIR, protokol HTTP/MQTT, dan dashboard visual."
+      "details": "Riset terapan skripsi yang menghasilkan 1 Publikasi Jurnal JAIEA dan 1 Hak Cipta Resmi Kemenkumham RI. Mengintegrasikan ESP32-CAM, array sensor PIR, protokol HTTP/MQTT, dan dashboard visual.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+          "caption": "Integrasi Modul ESP32-CAM & Rangkaian Sensor PIR"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80",
+          "caption": "Dashboard Pemantauan Telemetri Nirkabel Real-Time"
+        }
+      ]
+    },
+    {
+      "id": "pesut",
+      "title": "Sistem Monitoring Pesut Mahakam & Konservasi",
+      "folder": "assets/projek/pesut",
+      "category": "iot",
+      "category_label": "IoT • Konservasi Perairan",
+      "role": "Lead Hardware & IoT Developer",
+      "lead_highlight": "IoT & Sensor",
+      "description": "Rancang bangun sistem pemantauan habitat pesut berbasis sensor kualitas air (pH, Turbidity, Suhu) dan transmisi data telemetri nirkabel untuk pelestarian fauna endemik Sungai Mahakam Kalimantan Timur.",
+      "tech_metrics": ["Water Quality Sensor", "Long Range Telemetry"],
+      "tags": ["ESP32", "Hydro-Sensor", "LoRa / Telemetry", "Conservation Tech"],
+      "details": "Monitoring parameter hidrologi habitat alami pesut Mahakam secara berkala dengan notifikasi anomali pencemaran air langsung ke posko konservasi.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+          "caption": "Sensor Kualitas Air & Modul Telemetri Nirkabel"
+        }
+      ]
     },
     {
       "id": "invenit",
       "title": "InvenIT - Manajemen Aset TI PTUN",
+      "folder": "assets/projek/invenit",
       "category": "web",
       "category_label": "Web App • Instansi",
       "role": "Full-stack Developer (Internship)",
@@ -158,11 +256,18 @@
       "description": "Sistem web pengelolaan inventaris perangkat keras TI (PC, printer, switch, server) untuk Subbag PTIP. Dilengkapi pencatatan spesifikasi, riwayat perbaikan, penugasan perangkat ke pegawai, dan cetak laporan inventaris.",
       "tech_metrics": ["Asset Management", "Maintenance Log"],
       "tags": ["PHP & MySQL", "Tailwind CSS", "Barcode/QR Ready", "CRUD Enterprise"],
-      "details": "Katalogisasi 30+ aset komputer, pelacakan histori perbaikan perangkat, pencatatan penanggung jawab ruangan, serta modul ekspor rekap inventaris otomatis."
+      "details": "Katalogisasi 30+ aset komputer, pelacakan histori perbaikan perangkat, pencatatan penanggung jawab ruangan, serta modul ekspor rekap inventaris otomatis.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+          "caption": "Tampilan Antarmuka Inventaris Aset BMN PTUN"
+        }
+      ]
     },
     {
       "id": "absensi",
       "title": "Presensi Digital Geofencing & Foto",
+      "folder": "assets/projek/absensi",
       "category": "web",
       "category_label": "Web App • Presensi",
       "role": "Full-stack Developer (Internship)",
@@ -170,11 +275,18 @@
       "description": "Sistem absensi online dengan validasi koordinat GPS (rumus Haversine untuk geofencing radius kantor) dan pengambilan foto wajah real-time melalui kamera peramban guna mencegah kecurangan titip absen.",
       "tech_metrics": ["Radius Geolocation", "Webcam Snapshot"],
       "tags": ["Geolocation API", "WebRTC Camera", "PHP / MySQL", "Haversine Distance"],
-      "details": "Perhitungan jarak realtime radius kantor via rumus Haversine, capture foto wajah webcam tanpa rekayasa upload galeri, dan kalkulasi otomatis rekapitulasi kehadiran."
+      "details": "Perhitungan jarak realtime radius kantor via rumus Haversine, capture foto wajah webcam tanpa rekayasa upload galeri, dan kalkulasi otomatis rekapitulasi kehadiran.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+          "caption": "Validasi Titik Koordinat GPS & Verifikasi Wajah"
+        }
+      ]
     },
     {
       "id": "cuti",
       "title": "Sistem Pengajuan Izin & Cuti Pegawai",
+      "folder": "assets/projek/cuti",
       "category": "web",
       "category_label": "Web App • Approval Workflow",
       "role": "Full-stack Developer (Internship)",
@@ -182,58 +294,88 @@
       "description": "Platform paperless pengajuan cuti tahunan, izin dinas luar, dan sakit. Menyediakan alur validasi persetujuan atasan langsung, kuota sisa cuti otomatis, dan riwayat audit trail pegawai instansi.",
       "tech_metrics": ["Multi-tier Approval", "Digital Archive"],
       "tags": ["PHP & JavaScript", "Workflow Engine", "PDF Export", "Role-based Access"],
-      "details": "Workflow pengajuan izin dan cuti pegawai secara digital dengan persetujuan bertingkat atasan, pengurangan saldo kuota cuti otomatis, serta pembuatan surat izin berformat dinas."
+      "details": "Workflow pengajuan izin dan cuti pegawai secara digital dengan persetujuan bertingkat atasan, pengurangan saldo kuota cuti otomatis, serta pembuatan surat izin berformat dinas.",
+      "images": [
+        {
+          "url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+          "caption": "Sistem Persetujuan Bertingkat & Rekap Hak Cuti"
+        }
+      ]
     }
   ],
   "certifications": {
     "languages": [
       {
+        "id": "toeic",
         "name": "TOEIC (Test of English for International Communication)",
         "issuer": "ETS TOEIC",
         "score": "835",
         "max_score": "990",
         "level": "Working Proficiency",
         "percentage": 84.3,
-        "desc": "Kemampuan komunikasi bahasa Inggris tingkat profesional untuk membaca dokumentasi teknis, koordinasi lintas tim, dan komunikasi bisnis korporat."
+        "desc": "Kemampuan komunikasi bahasa Inggris tingkat profesional untuk membaca dokumentasi teknis, koordinasi lintas tim, dan komunikasi bisnis korporat.",
+        "scan_status": "dalam_proses",
+        "image": "",
+        "caption": "Sertifikat Resmi ETS TOEIC Official Score Report (Skor 835)"
       },
       {
+        "id": "toefl",
         "name": "TOEFL ITP / Equivalent",
         "issuer": "Institutional English Test",
         "score": "497",
         "max_score": "677",
         "level": "Intermediate",
         "percentage": 73.4,
-        "desc": "Pemahaman tata bahasa (Structure), listening comprehension teks akademis, serta membaca literatur teknis komputasi berbahasa Inggris."
+        "desc": "Pemahaman tata bahasa (Structure), listening comprehension teks akademis, serta membaca literatur teknis komputasi berbahasa Inggris.",
+        "scan_status": "dalam_proses",
+        "image": "",
+        "caption": "Sertifikat TOEFL ITP Institutional Score Report (Skor 497)"
       }
     ],
     "licenses": [
       {
+        "id": "bnsp",
         "title": "Junior Network Administrator",
         "issuer": "BNSP RI (Badan Nasional Sertifikasi Profesi)",
         "badge": "BNSP RI",
         "status": "Kompeten",
-        "desc": "Standar Kompetensi Kerja Nasional Indonesia (SKKNI) dalam merancang skema IP, konfigurasi switch/router, dan troubleshooting jaringan komputer."
+        "desc": "Standar Kompetensi Kerja Nasional Indonesia (SKKNI) dalam merancang skema IP, konfigurasi switch/router, dan troubleshooting jaringan komputer.",
+        "scan_status": "dalam_proses",
+        "image": "",
+        "caption": "Sertifikat Kompetensi Kerja BNSP RI - Junior Network Administrator"
       },
       {
+        "id": "ccna_itn",
         "title": "CCNAv7: Introduction to Networks (ITN)",
         "issuer": "Cisco Networking Academy",
         "badge": "Cisco CCNAv7",
         "status": "Certified",
-        "desc": "Arsitektur model OSI & TCP/IP, addressing IPv4/IPv6, subnetting VLSM, konfigurasi dasar Cisco IOS pada switch dan router."
+        "desc": "Arsitektur model OSI & TCP/IP, addressing IPv4/IPv6, subnetting VLSM, konfigurasi dasar Cisco IOS pada switch dan router.",
+        "scan_status": "dalam_proses",
+        "image": "",
+        "caption": "Sertifikat Cisco CCNAv7: Introduction to Networks (ITN)"
       },
       {
+        "id": "ccna_srwe",
         "title": "CCNAv7: Switching, Routing, & Wireless Essentials",
         "issuer": "Cisco Networking Academy",
         "badge": "Cisco CCNAv7",
         "status": "Certified",
-        "desc": "VLAN & Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, SLAAC, keamanan port switch, dan konsep nirkabel WLAN/WLC."
+        "desc": "VLAN & Inter-VLAN routing, STP, EtherChannel, DHCPv4/v6, SLAAC, keamanan port switch, dan konsep nirkabel WLAN/WLC.",
+        "scan_status": "dalam_proses",
+        "image": "",
+        "caption": "Sertifikat Cisco CCNAv7: Switching, Routing, & Wireless Essentials (SRWE)"
       },
       {
+        "id": "dicoding",
         "title": "Belajar Fundamental Aplikasi Android",
         "issuer": "Dicoding Indonesia",
         "badge": "Dicoding",
         "status": "Certified",
-        "desc": "Pengembangan aplikasi mobile Android dengan arsitektur modern, Activity/Fragment lifecycle, background processing, dan konsumsi REST API."
+        "desc": "Pengembangan aplikasi mobile Android dengan arsitektur modern, Activity/Fragment lifecycle, background processing, dan konsumsi REST API.",
+        "scan_status": "dalam_proses",
+        "image": "",
+        "caption": "Sertifikat Kelulusan Belajar Fundamental Aplikasi Android - Dicoding Indonesia"
       }
     ]
   },
@@ -241,8 +383,6 @@
     "networking": {
       "category": "Jaringan & Infrastruktur",
       "subtitle": "Networking & Hardware",
-      "badge_color": "indigo",
-      "note": "Teruji memelihara 30+ PC dan menangani 35+ insiden jaringan di instansi pemerintah.",
       "items": [
         "Cisco IOS (CLI)",
         "PuTTY & SSH/Telnet",
@@ -257,8 +397,6 @@
     "digital_solutions": {
       "category": "Solusi Digital & Software",
       "subtitle": "Web, Database & IoT",
-      "badge_color": "emerald",
-      "note": "Berhasil mendeploy 3 sistem web instansi dan memegang 2 HAKI resmi terdaftar.",
       "items": [
         "PHP (Native & OOP)",
         "MySQL / MariaDB",
@@ -273,8 +411,6 @@
     "tools": {
       "category": "Tools & Lingkungan Kerja",
       "subtitle": "Workflow & Ecosystem",
-      "badge_color": "sky",
-      "note": "Terbiasa dengan standar dokumentasi kerja, versi kontrol, dan etika komunikasi korporat.",
       "items": [
         "Windows Environment",
         "IT Asset Management",
