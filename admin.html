@@ -154,7 +154,7 @@
         <button onclick="switchTab('profile')" class="studio-tab-btn active px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold" data-tab="profile">👤 Profil & Bio</button>
         <button onclick="switchTab('metrics')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="metrics">📊 Statistik</button>
         <button onclick="switchTab('education')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="education">🎓 Pendidikan</button>
-        <button onclick="switchTab('experience')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="experience">💼 Magang PTUN</button>
+        <button onclick="switchTab('experience')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="experience">💼 Pengalaman Kerja & Kegiatan</button>
         <button onclick="switchTab('projects')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="projects">🚀 Proyek & Media</button>
         <button onclick="switchTab('certifications')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="certifications">📜 Sertifikasi</button>
         <button onclick="switchTab('skills')" class="studio-tab-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" data-tab="skills">🛠️ Keahlian</button>
@@ -263,11 +263,16 @@
     const embeddedData = {
       profile: {
         name: "Armand Maulana",
+        status_badge: "Terbuka untuk Posisi IT Support, Infrastructure & Software Solutions",
+        avatar_initials: "AM",
+        degree_title: "Armand Maulana, S.Tr.T.",
+        degree_name: "D4 Teknologi Rekayasa Komputer",
+        school_period: "Polnes 2022 – 2026",
+        honor: "Cum Laude",
         title: "Armand Maulana, S.Tr.Kom.",
         degree: "D4 Teknologi Rekayasa Komputer",
         institution: "Politeknik Negeri Samarinda",
         period: "2022 – 2026",
-        honor: "Cum Laude (IPK 3.91 / 4.00)",
         tagline: "Information Technology | IT Infrastructure | Digital Solutions",
         location: "Kec. Anggana, Kab. Kutai Kartanegara, Kalimantan Timur",
         email: "armandm792@gmail.com",
@@ -280,17 +285,28 @@
       metrics: {
         gpa: "3.91",
         gpa_scale: "4.00",
+        gpa_unit: "/ 4.00",
         gpa_label: "Predikat Sangat Memuaskan",
         tickets: "35+",
-        tickets_label: "30+ Device Maintained",
+        tickets_unit: "Kasus",
+        tickets_sub: "30+ Device Maintained",
+        tickets_label: "Kasus",
         web_apps: "3",
-        web_apps_label: "InvenIT, Presensi & Cuti",
+        web_apps_unit: "Sistem",
+        web_apps_sub: "InvenIT, Presensi & Cuti",
+        web_apps_label: "Sistem",
         haki: "2",
+        haki_unit: "Sertifikat",
+        haki_sub: "Resmi Kemenkumham RI",
         haki_label: "Resmi Kemenkumham RI",
         toeic: "835",
+        toeic_unit: "/ 990",
+        toeic_sub: "Working Proficiency",
         toeic_label: "Working Proficiency",
         certifications_count: "BNSP & Cisco",
-        certifications_label: "Junior Net Admin & CCNA"
+        certifications_sub: "Junior Net Admin & CCNA",
+        certifications_label: "Junior Net Admin & CCNA",
+        footer_intern_label: "Pengadilan Tata Usaha Negara (PTUN) Samarinda Intern"
       },
       education: {
         university: "Politeknik Negeri Samarinda",
@@ -372,6 +388,7 @@
         web_systems: [
           {
             key: "invenit",
+            project_id: "invenit",
             title: "InvenIT PTUN",
             folder: "assets/projek/invenit",
             category: "Inventaris IT",
@@ -390,6 +407,7 @@
           },
           {
             key: "absensi",
+            project_id: "absensi",
             title: "Absensi Digital & Foto",
             folder: "assets/projek/absensi",
             category: "Geofencing",
@@ -404,6 +422,7 @@
           },
           {
             key: "cuti",
+            project_id: "cuti",
             title: "Sistem Izin & Cuti",
             folder: "assets/projek/cuti",
             category: "Paperless",
@@ -639,6 +658,28 @@
             image: "",
             caption: "Sertifikat Kelulusan Belajar Fundamental Aplikasi Android - Dicoding Indonesia"
           }
+        ],
+        haki: [
+          {
+            id: "1",
+            title: "Sistem Otomasi & Monitoring IoT",
+            issuer: "Kemenkumham RI",
+            badge: "HAKI Kemenkumham",
+            status: "Terdaftar Resmi",
+            description: "Arsitektur perangkat keras dan firmware otomatisasi pengendali nirkabel berbasis sensor dan modul kamera.",
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+            caption: "Sertifikat Hak Cipta Kemenkumham RI - Sistem Otomasi IoT"
+          },
+          {
+            id: "2",
+            title: "Website \"Spin a Meal\"",
+            issuer: "Kemenkumham RI",
+            badge: "HAKI Kemenkumham",
+            status: "Terdaftar Resmi",
+            description: "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem algoritma pengacakan responsif.",
+            image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+            caption: "Sertifikat Hak Cipta Kemenkumham RI - Website Spin a Meal"
+          }
         ]
       },
       skills: {
@@ -663,15 +704,51 @@
     let currentData = embeddedData;
     let activeTab = 'profile';
 
-    // Google Drive Link to Direct Embed Converter
-    function convertGoogleDriveLink(url) {
+    // Google Drive Link to Direct Image URL Converter (for <img> tags)
+    function convertGoogleDriveImageUrl(url) {
       if (!url) return '';
       const trimmed = url.trim();
-      const fileIdMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/id=([a-zA-Z0-9_-]+)/);
+      const fileIdMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || 
+                          trimmed.match(/id=([a-zA-Z0-9_-]+)/) ||
+                          trimmed.match(/googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/);
       if (fileIdMatch && fileIdMatch[1]) {
         return `https://lh3.googleusercontent.com/d/${fileIdMatch[1]}`;
       }
       return trimmed;
+    }
+
+    function convertGoogleDriveLink(url) {
+      return convertGoogleDriveImageUrl(url);
+    }
+
+    function ensureHakiData() {
+      if (!currentData) return;
+      if (!currentData.certifications) {
+        currentData.certifications = { languages: [], licenses: [], haki: [] };
+      }
+      if (!Array.isArray(currentData.certifications.haki) || currentData.certifications.haki.length === 0) {
+        if (currentData.education && Array.isArray(currentData.education.haki_list) && currentData.education.haki_list.length > 0) {
+          currentData.certifications.haki = currentData.education.haki_list.map(h => ({
+            id: h.id || ("haki_" + Math.random().toString(36).substr(2, 5)),
+            title: h.title,
+            issuer: h.issuer || 'Kemenkumham RI',
+            badge: h.badge || 'HAKI Kemenkumham',
+            status: h.status || 'Terdaftar Resmi Kemenkumham RI',
+            description: h.description,
+            image: (h.images && h.images[0]) ? h.images[0].url : (h.image || ''),
+            caption: h.caption || h.title
+          }));
+        } else if (embeddedData.certifications && Array.isArray(embeddedData.certifications.haki)) {
+          currentData.certifications.haki = JSON.parse(JSON.stringify(embeddedData.certifications.haki));
+        } else {
+          currentData.certifications.haki = [];
+        }
+      }
+      currentData.certifications.haki.forEach(h => {
+        if (!h.image && h.images && h.images[0] && h.images[0].url) {
+          h.image = h.images[0].url;
+        }
+      });
     }
 
     // Load initial data synchronously
@@ -686,15 +763,68 @@
       } else {
         currentData = embeddedData;
       }
+      ensureHakiData();
       renderActiveTab();
       syncPreview();
     }
 
     function saveData() {
-      localStorage.setItem('armand_portfolio_data', JSON.stringify(currentData));
-      const statusText = document.getElementById('status-text');
-      if (statusText) statusText.textContent = 'Tersimpan otomatis (' + new Date().toLocaleTimeString() + ')';
-      syncPreview();
+      try {
+        localStorage.setItem('armand_portfolio_data', JSON.stringify(currentData));
+        const statusText = document.getElementById('status-text');
+        if (statusText) statusText.textContent = 'Tersimpan otomatis (' + new Date().toLocaleTimeString() + ')';
+        syncPreview();
+      } catch(e) {
+        if (e.name === 'QuotaExceededError' || e.code === 22 || e.code === 1014) {
+          console.warn('localStorage quota exceeded, compressing images...');
+          compressAllImages();
+          try {
+            localStorage.setItem('armand_portfolio_data', JSON.stringify(currentData));
+            const statusText = document.getElementById('status-text');
+            if (statusText) statusText.textContent = 'Tersimpan (dikompresi) (' + new Date().toLocaleTimeString() + ')';
+            syncPreview();
+            showToast('Penyimpanan berhasil setelah kompresi otomatis', 'success');
+          } catch(e2) {
+            console.error('Still exceeds quota after compression:', e2);
+            showToast('Ukuran file terlalu besar untuk disimpan di browser. Gunakan URL gambar eksternal (Google Drive / Imgur).', 'error');
+            syncPreview();
+          }
+        } else {
+          console.error('saveData error:', e);
+          showToast('Gagal menyimpan data: ' + e.message, 'error');
+        }
+      }
+    }
+
+    function compressAllImages() {
+      // Compress any base64 data URLs over 100KB to reduce storage
+      const maxB64Len = 130000; // ~100KB in base64
+      function shrinkField(obj, key) {
+        if (obj && typeof obj[key] === 'string' && obj[key].startsWith('data:') && obj[key].length > maxB64Len) {
+          // For PDFs, truncate (can't compress) — clear it and warn
+          if (obj[key].startsWith('data:application/pdf')) {
+            obj[key] = '';
+            showToast('File PDF terlalu besar untuk localStorage. Gunakan URL Google Drive.', 'error');
+          }
+          // For images, try to re-compress at lower quality
+          // (sync compress not possible, just truncate for now)
+        }
+      }
+      // Scan certifications
+      ['languages', 'licenses', 'haki'].forEach(cat => {
+        (currentData.certifications[cat] || []).forEach(item => {
+          shrinkField(item, 'image');
+        });
+      });
+      // Scan education haki_list
+      (currentData.education.haki_list || []).forEach(item => {
+        shrinkField(item, 'image');
+        if (item.images) item.images.forEach(img => shrinkField(img, 'url'));
+      });
+      // Scan projects
+      (currentData.projects || []).forEach(proj => {
+        (proj.images || []).forEach(img => shrinkField(img, 'url'));
+      });
     }
 
     function syncPreview() {
@@ -767,6 +897,95 @@
       reader.readAsDataURL(file);
     }
 
+    function isPdfUrl(url) {
+      if (!url) return false;
+      const trimmed = url.toLowerCase().trim();
+      if (trimmed.includes('googleusercontent.com/d/')) return false;
+      return trimmed.startsWith('data:application/pdf') || 
+             trimmed.endsWith('.pdf') || 
+             trimmed.includes('.pdf?') || 
+             trimmed.includes('/preview') ||
+             trimmed.includes('docs.google.com');
+    }
+
+    function handleCertFileDrop(file, targetFolder, callback) {
+      if (!file) {
+        showToast('Tidak ada berkas yang dipilih', 'error');
+        return;
+      }
+
+      const fileName = (file.name || 'file').toLowerCase();
+      const fileSizeMB = (file.size / 1024 / 1024).toFixed(1);
+
+      // Reject PDF — localStorage can't handle base64 PDFs (too large)
+      if (file.type === 'application/pdf' || fileName.endsWith('.pdf')) {
+        showToast(`File PDF (${fileSizeMB}MB) tidak bisa disimpan langsung di browser. Upload ke Google Drive lalu paste URL-nya di kolom URL.`, 'error');
+        return;
+      }
+
+      // Only accept images
+      if (!file.type.startsWith('image/') && !fileName.match(/\.(png|jpg|jpeg|webp|gif|bmp)$/)) {
+        showToast('Format file tidak didukung. Gunakan gambar (JPG/PNG/WebP) atau paste URL PDF dari Google Drive.', 'error');
+        return;
+      }
+
+      showToast(`Memproses gambar ${file.name} (${fileSizeMB}MB)...`);
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        if (!dataUrl) {
+          showToast('Gagal membaca berkas', 'error');
+          return;
+        }
+
+        const img = new Image();
+        img.onload = function() {
+          try {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+            const maxDim = 800;
+
+            if (width > maxDim || height > maxDim) {
+              if (width > height) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6);
+            callback(compressedDataUrl, file.name);
+            showToast(`Gambar (${file.name}) berhasil disimpan!`);
+          } catch(err) {
+            console.warn('Canvas compression failed:', err);
+            callback(dataUrl, file.name);
+            showToast(`Gambar (${file.name}) berhasil disimpan!`);
+          }
+        };
+        img.onerror = function() {
+          callback(dataUrl, file.name);
+          showToast(`Gambar (${file.name}) berhasil disimpan!`);
+        };
+        img.src = dataUrl;
+      };
+
+      reader.onerror = function(err) {
+        console.error('FileReader error:', err);
+        showToast('Gagal membaca file dari komputer', 'error');
+      };
+
+      reader.readAsDataURL(file);
+    }
+
     // Render Forms for Active Tab
     function renderActiveTab() {
       const container = document.getElementById('tab-content-container');
@@ -775,75 +994,154 @@
       if (activeTab === 'profile') {
         container.innerHTML = `
           <div class="space-y-4">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Identitas & Informasi Kontak</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-indigo-400">Identitas & Informasi Kontak Utama</h2>
+            
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-emerald-400 uppercase">Header & Hero Section (Tampilan Atas)</h3>
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Lengkap</label>
-                <input type="text" value="${currentData.profile.name || ''}" oninput="currentData.profile.name = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Lencana Status Top Header (Pill Hijau)</label>
+                <input type="text" value="${currentData.profile.status_badge || 'Terbuka untuk Posisi IT Support, Infrastructure & Software Solutions'}" oninput="currentData.profile.status_badge = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-emerald-400 font-semibold">
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Nama Lengkap Navigasi & Hero</label>
+                  <input type="text" value="${currentData.profile.name || ''}" oninput="currentData.profile.name = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Tagline Spesialisasi (pisahkan dengan '|')</label>
+                  <input type="text" value="${currentData.profile.tagline || ''}" oninput="currentData.profile.tagline = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
               </div>
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Nama dengan Gelar</label>
-                <input type="text" value="${currentData.profile.title || ''}" oninput="currentData.profile.title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1">Tagline Profesional</label>
-              <input type="text" value="${currentData.profile.tagline || ''}" oninput="currentData.profile.tagline = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1">Lokasi Domisili</label>
-              <input type="text" value="${currentData.profile.location || ''}" oninput="currentData.profile.location = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1">Ringkasan Profil (Bio Hero)</label>
-              <textarea rows="3" oninput="currentData.profile.summary = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">${currentData.profile.summary || ''}</textarea>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Email Resmi</label>
-                <input type="text" value="${currentData.profile.email || ''}" oninput="currentData.profile.email = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Lokasi Domisili</label>
+                <input type="text" value="${currentData.profile.location || ''}" oninput="currentData.profile.location = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Nomor WhatsApp</label>
-                <input type="text" value="${currentData.profile.whatsapp || ''}" oninput="currentData.profile.whatsapp = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Ringkasan Profil (Bio Hero)</label>
+                <textarea rows="3" oninput="currentData.profile.summary = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">${currentData.profile.summary || ''}</textarea>
               </div>
             </div>
 
-            <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1">URL LinkedIn</label>
-              <input type="text" value="${currentData.profile.linkedin_link || ''}" oninput="currentData.profile.linkedin_link = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500">
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-sky-400 uppercase">Card Performa Profil (Kanan Atas)</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Inisial Avatar / Logo</label>
+                  <input type="text" value="${currentData.profile.avatar_initials || 'AM'}" oninput="currentData.profile.avatar_initials = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white font-mono font-bold">
+                </div>
+                <div class="col-span-2">
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Nama Lengkap + Gelar Card</label>
+                  <input type="text" value="${currentData.profile.degree_title || currentData.profile.title || ''}" oninput="currentData.profile.degree_title = this.value; currentData.profile.title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white font-bold">
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Program Studi Card</label>
+                  <input type="text" value="${currentData.profile.degree_name || currentData.profile.degree || ''}" oninput="currentData.profile.degree_name = this.value; currentData.profile.degree = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Lencana Kampus & Periode</label>
+                  <input type="text" value="${currentData.profile.school_period || 'Polnes 2022 – 2026'}" oninput="currentData.profile.school_period = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-indigo-300">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Lencana Predikat Kelulusan</label>
+                  <input type="text" value="${currentData.profile.honor || 'Cum Laude'}" oninput="currentData.profile.honor = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-emerald-300">
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-amber-400 uppercase">Kontak & Tautan Sosial</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Email Resmi</label>
+                  <input type="text" value="${currentData.profile.email || ''}" oninput="currentData.profile.email = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Nomor WhatsApp</label>
+                  <input type="text" value="${currentData.profile.whatsapp || ''}" oninput="currentData.profile.whatsapp = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">Direct Link WhatsApp</label>
+                  <input type="text" value="${currentData.profile.whatsapp_link || 'https://wa.me/6283140723240'}" oninput="currentData.profile.whatsapp_link = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs font-mono text-emerald-400">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-400 mb-1">URL Profil LinkedIn</label>
+                  <input type="text" value="${currentData.profile.linkedin_link || ''}" oninput="currentData.profile.linkedin_link = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs font-mono text-sky-400">
+                </div>
+              </div>
             </div>
           </div>
         `;
       } else if (activeTab === 'metrics') {
         container.innerHTML = `
           <div class="space-y-4">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Statistik & Metrik Performa</h2>
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Statistik & Metrik Performa (6 Grid Card)</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                <label class="block text-xs font-mono text-slate-400 mb-1">IPK</label>
-                <input type="text" value="${currentData.metrics.gpa || ''}" oninput="currentData.metrics.gpa = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-emerald-400 font-mono font-bold text-lg">
-                <input type="text" value="${currentData.metrics.gpa_label || ''}" oninput="currentData.metrics.gpa_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+              <!-- Card 1: IPK -->
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <label class="block text-xs font-mono text-emerald-400 font-bold">1. Indeks Prestasi Kumulatif (IPK)</label>
+                <div class="flex gap-2">
+                  <input type="text" value="${currentData.metrics.gpa || ''}" placeholder="3.91" oninput="currentData.metrics.gpa = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-emerald-400 font-mono font-bold text-lg">
+                  <input type="text" value="${currentData.metrics.gpa_unit || '/ 4.00'}" placeholder="/ 4.00" oninput="currentData.metrics.gpa_unit = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 font-mono text-sm">
+                </div>
+                <input type="text" value="${currentData.metrics.gpa_label || ''}" placeholder="Predikat Sangat Memuaskan" oninput="currentData.metrics.gpa_label = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300">
               </div>
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                <label class="block text-xs font-mono text-slate-400 mb-1">Tiket IT Resolved</label>
-                <input type="text" value="${currentData.metrics.tickets || ''}" oninput="currentData.metrics.tickets = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-indigo-400 font-mono font-bold text-lg">
-                <input type="text" value="${currentData.metrics.tickets_label || ''}" oninput="currentData.metrics.tickets_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+
+              <!-- Card 2: Tiket IT -->
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <label class="block text-xs font-mono text-indigo-400 font-bold">2. Tiket IT Resolved</label>
+                <div class="flex gap-2">
+                  <input type="text" value="${currentData.metrics.tickets || ''}" placeholder="35+" oninput="currentData.metrics.tickets = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-indigo-400 font-mono font-bold text-lg">
+                  <input type="text" value="${currentData.metrics.tickets_unit || 'Kasus'}" placeholder="Kasus" oninput="currentData.metrics.tickets_unit = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 font-mono text-sm">
+                </div>
+                <input type="text" value="${currentData.metrics.tickets_sub || currentData.metrics.tickets_label || ''}" placeholder="30+ Device Maintained" oninput="currentData.metrics.tickets_sub = this.value; currentData.metrics.tickets_label = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300">
               </div>
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                <label class="block text-xs font-mono text-slate-400 mb-1">Aplikasi Web Instansi</label>
-                <input type="text" value="${currentData.metrics.web_apps || ''}" oninput="currentData.metrics.web_apps = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-sky-400 font-mono font-bold text-lg">
-                <input type="text" value="${currentData.metrics.web_apps_label || ''}" oninput="currentData.metrics.web_apps_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+
+              <!-- Card 3: Web Instansi -->
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <label class="block text-xs font-mono text-sky-400 font-bold">3. Aplikasi Web Instansi</label>
+                <div class="flex gap-2">
+                  <input type="text" value="${currentData.metrics.web_apps || ''}" placeholder="3" oninput="currentData.metrics.web_apps = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-sky-400 font-mono font-bold text-lg">
+                  <input type="text" value="${currentData.metrics.web_apps_unit || 'Sistem'}" placeholder="Sistem" oninput="currentData.metrics.web_apps_unit = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 font-mono text-sm">
+                </div>
+                <input type="text" value="${currentData.metrics.web_apps_sub || currentData.metrics.web_apps_label || ''}" placeholder="InvenIT, Presensi & Cuti" oninput="currentData.metrics.web_apps_sub = this.value; currentData.metrics.web_apps_label = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300">
               </div>
-              <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                <label class="block text-xs font-mono text-slate-400 mb-1">Skor TOEIC</label>
-                <input type="text" value="${currentData.metrics.toeic || ''}" oninput="currentData.metrics.toeic = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-rose-400 font-mono font-bold text-lg">
-                <input type="text" value="${currentData.metrics.toeic_label || ''}" oninput="currentData.metrics.toeic_label = this.value; saveData()" class="w-full mt-2 px-3 py-1 rounded bg-slate-950 border border-slate-700 text-xs text-slate-400">
+
+              <!-- Card 4: Hak Cipta HAKI -->
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <label class="block text-xs font-mono text-amber-400 font-bold">4. Hak Cipta (HAKI)</label>
+                <div class="flex gap-2">
+                  <input type="text" value="${currentData.metrics.haki || ''}" placeholder="2" oninput="currentData.metrics.haki = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-amber-400 font-mono font-bold text-lg">
+                  <input type="text" value="${currentData.metrics.haki_unit || 'Sertifikat'}" placeholder="Sertifikat" oninput="currentData.metrics.haki_unit = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 font-mono text-sm">
+                </div>
+                <input type="text" value="${currentData.metrics.haki_sub || currentData.metrics.haki_label || ''}" placeholder="Resmi Kemenkumham RI" oninput="currentData.metrics.haki_sub = this.value; currentData.metrics.haki_label = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300">
               </div>
+
+              <!-- Card 5: TOEIC -->
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <label class="block text-xs font-mono text-rose-400 font-bold">5. Skor TOEIC Resmi</label>
+                <div class="flex gap-2">
+                  <input type="text" value="${currentData.metrics.toeic || ''}" placeholder="835" oninput="currentData.metrics.toeic = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-rose-400 font-mono font-bold text-lg">
+                  <input type="text" value="${currentData.metrics.toeic_unit || '/ 990'}" placeholder="/ 990" oninput="currentData.metrics.toeic_unit = this.value; saveData()" class="w-1/2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-400 font-mono text-sm">
+                </div>
+                <input type="text" value="${currentData.metrics.toeic_sub || currentData.metrics.toeic_label || ''}" placeholder="Working Proficiency" oninput="currentData.metrics.toeic_sub = this.value; currentData.metrics.toeic_label = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300">
+              </div>
+
+              <!-- Card 6: Sertifikasi Kompetensi -->
+              <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                <label class="block text-xs font-mono text-teal-400 font-bold">6. Sertifikasi Kompetensi</label>
+                <input type="text" value="${currentData.metrics.certifications_count || 'BNSP & Cisco'}" placeholder="BNSP & Cisco" oninput="currentData.metrics.certifications_count = this.value; saveData()" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-teal-400 font-mono font-bold text-lg">
+                <input type="text" value="${currentData.metrics.certifications_sub || currentData.metrics.certifications_label || ''}" placeholder="Junior Net Admin & CCNA" oninput="currentData.metrics.certifications_sub = this.value; currentData.metrics.certifications_label = this.value; saveData()" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-slate-300">
+              </div>
+            </div>
+
+            <!-- Footer Card Intern Label -->
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+              <label class="block text-xs font-mono text-indigo-400 font-bold">Lencana Status Intern / Magang Footer Card</label>
+              <input type="text" value="${currentData.metrics.footer_intern_label || 'Pengadilan Tata Usaha Negara (PTUN) Samarinda Intern'}" oninput="currentData.metrics.footer_intern_label = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
             </div>
           </div>
         `;
@@ -890,7 +1188,7 @@
               </div>
               <div>
                 <label class="block text-xs font-mono text-emerald-400 font-bold mb-1">🔗 Link DOI / URL Paper Jurnal</label>
-                <input type="text" value="${currentData.education.publication?.url || currentData.education.publication?.doi || 'https://doi.org/10.59934/jaiea.v5i3.2554'}" oninput="if(!currentData.education.publication) currentData.education.publication={}; currentData.education.publication.url = this.value; currentData.education.publication.doi = this.value; saveData()" placeholder="https://doi.org/10.59934/jaiea.v5i3.2554" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-emerald-500/50 text-xs font-mono text-emerald-300 focus:outline-none focus:border-emerald-400">
+                <input type="text" value="${currentData.education.publication?.url || currentData.education.publication?.doi || 'https://doi.org/10.59934/jaiea.v5i3.2554'}" oninput="if(!currentData.education.publication) currentData.education.publication={}; const cleanUrl = convertGoogleDriveLink(this.value.trim()); currentData.education.publication.url = cleanUrl; currentData.education.publication.doi = cleanUrl; saveData()" placeholder="https://doi.org/10.59934/jaiea.v5i3.2554" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-emerald-500/50 text-xs font-mono text-emerald-300 focus:outline-none focus:border-emerald-400">
               </div>
               <div>
                 <label class="block text-xs font-mono text-slate-400 mb-1">Deskripsi Ringkas Riset</label>
@@ -902,65 +1200,128 @@
       } else if (activeTab === 'experience') {
         container.innerHTML = `
           <div class="space-y-6">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Magang PTUN & Dokumentasi 3 Sistem Web</h2>
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-emerald-400">Pengalaman Kerja & Kegiatan</h2>
             
+            <!-- Company / Institution Profile -->
             <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
               <div>
-                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Instansi</label>
-                <input type="text" value="${currentData.experience.institution || ''}" oninput="currentData.experience.institution = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                <label class="block text-xs font-mono text-slate-400 mb-1">Nama Perusahaan / Instansi</label>
+                <input type="text" value="${currentData.experience.institution || ''}" placeholder="Contoh: Pengadilan Tata Usaha Negara (PTUN) Samarinda" oninput="currentData.experience.institution = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-slate-400 mb-1">Divisi / Sub-Bagian</label>
+                <input type="text" value="${currentData.experience.division || ''}" placeholder="Contoh: Subbag Perencanaan, TI, & Pelaporan (PTIP)" oninput="currentData.experience.division = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
               <div class="grid grid-cols-2 gap-2">
-                <input type="text" value="${currentData.experience.role || ''}" oninput="currentData.experience.role = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
-                <input type="text" value="${currentData.experience.period || ''}" oninput="currentData.experience.period = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
+                <div>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Peran / Jabatan</label>
+                  <input type="text" value="${currentData.experience.role || ''}" placeholder="Contoh: IT Support Intern" oninput="currentData.experience.role = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white w-full">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Periode</label>
+                  <input type="text" value="${currentData.experience.period || ''}" placeholder="Contoh: Januari 2026 – Mei 2026" oninput="currentData.experience.period = this.value; saveData()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white w-full">
+                </div>
               </div>
             </div>
 
-            <!-- Web Systems Media Manager -->
+            <!-- Activities & Systems Manager -->
             <div class="space-y-4">
-              <h3 class="text-xs font-mono font-bold text-indigo-400 uppercase">Dokumentasi Gambar 3 Sistem Web PTUN:</h3>
-              ${currentData.experience.web_systems.map((sys, sysIdx) => `
-                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <span class="text-xs font-mono font-bold text-white">${sys.title}</span>
-                      <span class="text-[10px] font-mono text-slate-400 block">📁 Folder: <code class="text-indigo-400">${sys.folder || `assets/projek/${sys.key}`}</code></span>
-                    </div>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">${sys.category}</span>
-                  </div>
-                  
-                  <!-- Drag & Drop & File Picker Zone -->
-                  <div 
-                    ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
-                    ondragleave="this.classList.remove('drop-zone-active');"
-                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], '${sys.folder || `assets/projek/${sys.key}`}', (url, fname)=>{ addSystemImage(${sysIdx}, url, fname); });"
-                    class="p-4 border-2 border-dashed border-slate-700 rounded-2xl text-center hover:border-indigo-500/60 transition-colors bg-slate-950/40 flex flex-col items-center justify-center gap-2"
-                  >
-                    <p class="text-xs text-slate-300 font-medium">📥 Drag & Drop atau Pilih Screenshot Sistem</p>
-                    <label class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold cursor-pointer shadow-lg shadow-indigo-600/30 flex items-center gap-1.5 transition-all">
-                      <span>📁 Pilih File dari Laptop</span>
-                      <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], '${sys.folder || `assets/projek/${sys.key}`}', (url, fname)=>{ addSystemImage(${sysIdx}, url, fname); });" class="hidden">
-                    </label>
-                    <p class="text-[10px] text-slate-500">Otomatis tersinkronisasi ke ${sys.folder || `assets/projek/${sys.key}`}</p>
-                  </div>
-
-                  <!-- Quick Add Input -->
-                  <div class="flex gap-2">
-                    <input type="text" id="sys-img-input-${sysIdx}" placeholder="Paste URL Gambar, Link Google Drive, atau 'assets/projek/${sys.key}/foto.jpg'..." class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
-                    <button onclick="addSystemImageUrl(${sysIdx})" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-bold">+ Tambah</button>
-                  </div>
-
-                  <!-- Images Grid -->
-                  <div class="grid grid-cols-2 gap-2 pt-2">
-                    ${(sys.images || []).map((img, imgIdx) => `
-                      <div class="relative group rounded-xl overflow-hidden border border-slate-700 bg-slate-950 p-1">
-                        <img src="${img.url}" class="w-full h-24 object-cover rounded-lg">
-                        <input type="text" value="${img.caption || ''}" placeholder="Keterangan..." oninput="currentData.experience.web_systems[${sysIdx}].images[${imgIdx}].caption = this.value; saveData()" class="w-full mt-1 px-2 py-1 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300">
-                        <button onclick="removeSystemImage(${sysIdx}, ${imgIdx})" class="absolute top-2 right-2 p-1 rounded-md bg-rose-600/90 text-white text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">Hapus</button>
-                      </div>
-                    `).join('')}
-                  </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xs font-mono font-bold text-indigo-400 uppercase">Dokumentasi Kegiatan & Sistem Web</h3>
+                  <p class="text-[11px] text-slate-400 font-mono">Dapat berupa <strong>Dokumentasi Kegiatan (Maintenance, Event, dll)</strong> ATAU terhubung ke <strong>Proyek Software</strong>.</p>
                 </div>
-              `).join('')}
+                <button onclick="addExperienceProjectLink()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold">
+                  + Tambah Dokumentasi / Sistem
+                </button>
+              </div>
+
+              ${(currentData.experience.web_systems || []).map((sys, sysIdx) => {
+                const linkedProject = (currentData.projects || []).find(p => p.id === sys.project_id || p.id === sys.key);
+                const sysImages = (sys.images && sys.images.length > 0) ? sys.images : (linkedProject ? (linkedProject.images || []) : []);
+                return `
+                  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                      <span class="text-xs font-mono font-bold text-white">Item #${sysIdx + 1}: ${sys.title || 'Dokumentasi Kegiatan'}</span>
+                      <button onclick="removeExperienceProjectLink(${sysIdx})" class="text-[11px] font-mono text-rose-400 hover:underline">Hapus Item</button>
+                    </div>
+
+                    <!-- Selector to Link Project (Optional) -->
+                    <div class="p-3 rounded-xl bg-slate-950 border border-indigo-500/30 space-y-2">
+                      <label class="block text-[11px] font-mono text-indigo-300 font-bold">🔗 Opsi Hubungkan ke Proyek Software (Atau biarkan tanpa proyek):</label>
+                      <select onchange="linkExperienceProject(${sysIdx}, this.value)" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white">
+                        <option value="">-- Tanpa Proyek (Dokumentasi Kegiatan Only) --</option>
+                        ${currentData.projects.map(p => `
+                          <option value="${p.id}" ${ (sys.project_id === p.id || sys.key === p.id) ? 'selected' : '' }>${p.title} (${p.category_label || p.category})</option>
+                        `).join('')}
+                      </select>
+                      ${linkedProject ? `
+                        <div class="flex items-center justify-between text-[11px] font-mono text-emerald-400 pt-1">
+                          <span>✓ Terhubung & tersinkronisasi otomatis dengan Proyek '${linkedProject.title}'</span>
+                          <button onclick="switchTab('projects')" class="text-indigo-400 hover:underline">Edit di Proyek & Media →</button>
+                        </div>
+                      ` : ''}
+                    </div>
+
+                    <!-- Title & Category -->
+                    <div class="grid grid-cols-2 gap-2">
+                      <div>
+                        <label class="block text-[11px] font-mono text-slate-400 mb-1">Judul Kegiatan / Sistem</label>
+                        <input type="text" value="${sys.title || ''}" placeholder="Judul Kegiatan..." oninput="currentData.experience.web_systems[${sysIdx}].title = this.value; saveData()" class="w-full px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                      </div>
+                      <div>
+                        <label class="block text-[11px] font-mono text-slate-400 mb-1">Kategori / Badge</label>
+                        <input type="text" value="${sys.category || ''}" placeholder="Maintenance PC / IT Support / Web" oninput="currentData.experience.web_systems[${sysIdx}].category = this.value; saveData()" class="w-full px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-[11px] font-mono text-slate-400 mb-1">Deskripsi Kegiatan</label>
+                      <textarea rows="2" oninput="currentData.experience.web_systems[${sysIdx}].desc = this.value; saveData()" class="w-full px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">${sys.desc || ''}</textarea>
+                    </div>
+                    <div>
+                      <label class="block text-[11px] font-mono text-slate-400 mb-1">Tag & Kompetensi (Pisahkan dengan koma)</label>
+                      <input type="text" value="${(sys.tags || []).join(', ')}" placeholder="Contoh: Windows 11, LAN Cabling, Troubleshooting" oninput="currentData.experience.web_systems[${sysIdx}].tags = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                    </div>
+
+                    <!-- Photos Gallery Manager -->
+                    <div class="pt-2 border-t border-slate-800 space-y-3">
+                      <span class="text-[11px] font-mono text-slate-400 block font-semibold">📸 Galeri Foto Kegiatan (${sysImages.length} Foto)</span>
+                      
+                      <!-- Upload & Drag Drop Zone -->
+                      <div 
+                        ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                        ondragleave="this.classList.remove('drop-zone-active');"
+                        ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleCertFileDrop(event.dataTransfer.files[0], 'assets/projek/magang', (url, fname)=>{ if(!currentData.experience.web_systems[${sysIdx}].images) currentData.experience.web_systems[${sysIdx}].images=[]; currentData.experience.web_systems[${sysIdx}].images.push({url:url, caption:'Foto Kegiatan'}); saveData(); renderActiveTab(); });"
+                        class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-emerald-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
+                      >
+                        <span>📥 Drag & Drop Foto Kegiatan, atau</span>
+                        <button type="button" onclick="document.getElementById('sys-file-${sysIdx}').click();" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">📁 Pilih Gambar (JPG/PNG/WebP)</button>
+                        <input type="file" id="sys-file-${sysIdx}" accept="image/*" onchange="if(this.files[0]) handleCertFileDrop(this.files[0], 'assets/projek/magang', (url, fname)=>{ if(!currentData.experience.web_systems[${sysIdx}].images) currentData.experience.web_systems[${sysIdx}].images=[]; currentData.experience.web_systems[${sysIdx}].images.push({url:url, caption:'Foto Kegiatan'}); saveData(); renderActiveTab(); }); this.value='';" style="display:none">
+                      </div>
+
+                      <!-- URL Input -->
+                      <div class="flex gap-2">
+                        <input type="text" id="sys-img-input-${sysIdx}" placeholder="Paste URL Gambar atau Google Drive foto kegiatan..." class="flex-1 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                        <button onclick="addSystemImageUrl(${sysIdx})" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold">+ Tambah</button>
+                      </div>
+
+                      <!-- Photos Grid with Caption Edit Inputs -->
+                      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
+                        ${sysImages.map((img, imgIdx) => `
+                          <div class="relative group rounded-xl overflow-hidden border border-slate-800 bg-slate-950 p-2 flex flex-col justify-between space-y-1.5">
+                            <img src="${img.url}" class="w-full h-24 object-cover rounded-lg" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80'">
+                            <div>
+                              <label class="block text-[9px] font-mono text-slate-400 mb-0.5">Caption / Keterangan Foto:</label>
+                              <input type="text" value="${img.caption || ''}" placeholder="Contoh: Troubleshooting Laptop, Setup Printer..." oninput="if(!currentData.experience.web_systems[${sysIdx}].images[${imgIdx}]) currentData.experience.web_systems[${sysIdx}].images[${imgIdx}]={url:'${img.url}'}; currentData.experience.web_systems[${sysIdx}].images[${imgIdx}].caption = this.value; saveData();" class="w-full px-2 py-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-white">
+                            </div>
+                            <button onclick="removeSystemImage(${sysIdx}, ${imgIdx})" class="absolute top-2 right-2 p-1 px-1.5 rounded bg-rose-600 text-white text-[10px] opacity-0 group-hover:opacity-100 transition-opacity font-bold shadow">✕ Hapus</button>
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
             </div>
           </div>
         `;
@@ -968,7 +1329,7 @@
         let projectsHtml = `
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-sky-400">Proyek Unggulan & Dokumentasi (${currentData.projects.length})</h2>
+              <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-sky-400">Proyek Unggulan & Media (${currentData.projects.length})</h2>
               <p class="text-xs text-slate-400 font-mono">Tiap proyek memiliki folder lokal <code class="text-indigo-400">assets/projek/[nama_projek]/</code> & Google Drive Sync.</p>
             </div>
             <button onclick="addNewProject()" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-mono font-semibold flex items-center gap-1">
@@ -984,7 +1345,7 @@
               <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div>
                   <span class="text-xs font-mono font-bold text-indigo-400">Proyek #${idx + 1}: ${proj.title}</span>
-                  <span class="text-[10px] font-mono text-slate-400 block">📁 Folder: <code class="text-emerald-400">${proj.folder || `assets/projek/${proj.id}`}</code></span>
+                  <span class="text-[10px] font-mono text-slate-400 block">📁 ID: <code class="text-emerald-400">${proj.id}</code> • Folder: <code class="text-emerald-400">${proj.folder || `assets/projek/${proj.id}`}</code></span>
                 </div>
                 <button onclick="deleteProject(${idx})" class="text-xs font-mono text-rose-400 hover:text-rose-300 hover:underline">Hapus Proyek</button>
               </div>
@@ -994,9 +1355,9 @@
                 <input type="text" value="${proj.title || ''}" oninput="currentData.projects[${idx}].title = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-sm text-white">
               </div>
 
-              <div class="grid grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Kategori Filter</label>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Kategori Filter Web</label>
                   <select onchange="currentData.projects[${idx}].category = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
                     <option value="iot" ${proj.category === 'iot' ? 'selected' : ''}>IoT & Robotik</option>
                     <option value="web" ${proj.category === 'web' ? 'selected' : ''}>Web & Sistem</option>
@@ -1004,14 +1365,40 @@
                   </select>
                 </div>
                 <div>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Label Kategori Tampilan (Atas Judul)</label>
+                  <input type="text" value="${proj.category_label || ''}" placeholder="Contoh: CoppeliaSim • Robotik" oninput="currentData.projects[${idx}].category_label = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
                   <label class="block text-[11px] font-mono text-slate-400 mb-1">Peran & Tanggung Jawab</label>
-                  <input type="text" value="${proj.role || ''}" oninput="currentData.projects[${idx}].role = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                  <input type="text" value="${proj.role || ''}" placeholder="Contoh: Project Lead / Full-stack Dev" oninput="currentData.projects[${idx}].role = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-mono text-slate-400 mb-1">Lencana Highlight (Kanan Atas Cover)</label>
+                  <input type="text" value="${proj.lead_highlight || ''}" placeholder="Contoh: Lead 25 Mahasiswa" oninput="currentData.projects[${idx}].lead_highlight = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
                 </div>
               </div>
 
               <div>
-                <label class="block text-[11px] font-mono text-slate-400 mb-1">Deskripsi Ringkas</label>
+                <label class="block text-[11px] font-mono text-slate-400 mb-1">Sorotan / Metrik Teknis (Pisahkan dengan koma)</label>
+                <input type="text" value="${(proj.tech_metrics || []).join(', ')}" placeholder="Contoh: Autonomous Navigation, Obstacle Avoidance" oninput="currentData.projects[${idx}].tech_metrics = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-400 mb-1">Tag & Kompetensi (Pisahkan dengan koma)</label>
+                <input type="text" value="${(proj.tags || []).join(', ')}" placeholder="Contoh: PHP, MySQL, Tailwind CSS" oninput="currentData.projects[${idx}].tags = this.value.split(',').map(s=>s.trim()).filter(Boolean); saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-400 mb-1">Deskripsi Ringkas Card</label>
                 <textarea rows="2" oninput="currentData.projects[${idx}].description = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">${proj.description || ''}</textarea>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-400 mb-1">Detail Lengkap (Pop-up Modal)</label>
+                <textarea rows="3" oninput="currentData.projects[${idx}].details = this.value; saveData()" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white">${proj.details || ''}</textarea>
               </div>
 
               <!-- MEDIA & DOCUMENTATION GALLERY MANAGER -->
@@ -1063,46 +1450,56 @@
       } else if (activeTab === 'certifications') {
         container.innerHTML = `
           <div class="space-y-6">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-amber-400">Sertifikasi & Scan Dokumen Resmi</h2>
-            
-            <!-- Language Certifications -->
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-sm font-bold text-white uppercase tracking-wider font-mono text-amber-400">Sertifikasi & Scan Dokumen Resmi (PDF & Gambar)</h2>
+                <p class="text-xs text-slate-400 font-mono">Mendukung format file <strong>Gambar (JPG/PNG/WebP)</strong> dan <strong>PDF Scan (.pdf)</strong>.</p>
+              </div>
+            </div>
+
+            <!-- 1. Sertifikasi Kemampuan Bahasa -->
             <div class="space-y-4">
-              <h3 class="text-xs font-mono font-bold text-rose-400 uppercase">1. Sertifikasi Kemampuan Bahasa (TOEIC & TOEFL):</h3>
-              ${currentData.certifications.languages.map((lang, idx) => `
-                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
-                  <div class="flex justify-between items-center">
-                    <span class="text-xs font-mono font-bold text-white">${lang.name}</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">${lang.score} / ${lang.max_score}</span>
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-mono font-bold text-rose-400 uppercase">1. Sertifikasi Kemampuan Bahasa (TOEIC & TOEFL):</h3>
+                <button onclick="addCertificationItem('languages')" class="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-mono font-semibold">+ Tambah Bahasa</button>
+              </div>
+              ${(currentData.certifications.languages || []).map((lang, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                    <input type="text" value="${lang.name || ''}" placeholder="Nama Sertifikat Bahasa" oninput="currentData.certifications.languages[${idx}].name = this.value; saveData()" class="px-3 py-1 rounded-lg bg-slate-950 border border-slate-700 text-xs font-bold text-white w-2/3">
+                    <button onclick="deleteCertificationItem('languages', ${idx})" class="text-[11px] font-mono text-rose-400 hover:underline">Hapus</button>
                   </div>
-                  <div class="grid grid-cols-2 gap-2">
+                  <div class="grid grid-cols-3 gap-2">
+                    <input type="text" value="${lang.issuer || ''}" placeholder="Penerbit" oninput="currentData.certifications.languages[${idx}].issuer = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
                     <input type="text" value="${lang.score || ''}" placeholder="Skor" oninput="currentData.certifications.languages[${idx}].score = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
                     <input type="text" value="${lang.level || ''}" placeholder="Level" oninput="currentData.certifications.languages[${idx}].level = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
                   </div>
                   <div>
-                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (URL, Google Drive, atau 'assets/sertifikat/...')</label>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (Paste URL / Google Drive untuk PDF, atau upload gambar)</label>
                     <div class="flex gap-2">
-                      <input type="text" value="${lang.image || ''}" placeholder="URL Scan Sertifikat..." onchange="currentData.certifications.languages[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
+                      <input type="text" value="${lang.image || ''}" placeholder="URL Scan (Gambar / PDF / Google Drive)..." onchange="currentData.certifications.languages[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
                     </div>
                   </div>
-                  
-                  <!-- Drop & File Picker Zone -->
                   <div 
                     ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
                     ondragleave="this.classList.remove('drop-zone-active');"
-                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.languages[${idx}].image = url; saveData(); renderActiveTab(); });"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleCertFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.languages[${idx}].image = url; saveData(); renderActiveTab(); });"
                     class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-rose-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
                   >
-                    <span>📥 Drag & Drop atau</span>
-                    <label class="px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">
-                      <span>📁 Pilih File Scan</span>
-                      <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.languages[${idx}].image = url; saveData(); renderActiveTab(); });" class="hidden">
-                    </label>
+                    <span>📥 Drag & Drop Gambar, atau</span>
+                    <button type="button" onclick="document.getElementById('lang-file-${idx}').click();" class="px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">📁 Pilih Gambar (JPG/PNG/WebP)</button>
+                    <input type="file" id="lang-file-${idx}" accept="image/*" onchange="if(this.files[0]) handleCertFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.languages[${idx}].image = url; saveData(); renderActiveTab(); }); this.value='';" style="display:none">
                   </div>
-
                   ${lang.image ? `
                     <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-950 border border-slate-800">
-                      <img src="${lang.image}" class="w-16 h-12 object-cover rounded-lg">
-                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">${lang.caption || 'Scan Sertifikat Terpasang'}</div>
+                      ${isPdfUrl(lang.image) ? `
+                        <div class="w-12 h-12 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-mono font-bold text-xs">PDF</div>
+                      ` : `
+                        <img src="${lang.image}" class="w-16 h-12 object-cover rounded-lg">
+                      `}
+                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">
+                        ${isPdfUrl(lang.image) ? '📄 File Scan PDF Terpasang' : (lang.caption || 'Scan Sertifikat Terpasang')}
+                      </div>
                       <button onclick="currentData.certifications.languages[${idx}].image = ''; saveData(); renderActiveTab();" class="text-[10px] font-mono text-rose-400 hover:underline">Hapus</button>
                     </div>
                   ` : ''}
@@ -1110,44 +1507,48 @@
               `).join('')}
             </div>
 
-            <!-- License Certifications -->
+            <!-- 2. Lisensi & Sertifikasi Kompetensi -->
             <div class="space-y-4 pt-2">
-              <h3 class="text-xs font-mono font-bold text-teal-400 uppercase">2. Lisensi & Sertifikasi Kompetensi (BNSP, Cisco, Dicoding):</h3>
-              ${currentData.certifications.licenses.map((lic, idx) => `
-                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
-                  <div class="flex justify-between items-center">
-                    <span class="text-xs font-mono font-bold text-white">${lic.title}</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">${lic.badge || ''}</span>
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-mono font-bold text-teal-400 uppercase">2. Lisensi & Sertifikasi Kompetensi (BNSP, Cisco, Dicoding):</h3>
+                <button onclick="addCertificationItem('licenses')" class="px-2.5 py-1 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-mono font-semibold">+ Tambah Lisensi / Cert</button>
+              </div>
+              ${(currentData.certifications.licenses || []).map((lic, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                    <input type="text" value="${lic.title || ''}" placeholder="Judul Sertifikasi" oninput="currentData.certifications.licenses[${idx}].title = this.value; saveData()" class="px-3 py-1 rounded-lg bg-slate-950 border border-slate-700 text-xs font-bold text-white w-2/3">
+                    <button onclick="deleteCertificationItem('licenses', ${idx})" class="text-[11px] font-mono text-rose-400 hover:underline">Hapus</button>
                   </div>
                   <div class="grid grid-cols-2 gap-2">
-                    <input type="text" value="${lic.title || ''}" placeholder="Judul Sertifikasi" oninput="currentData.certifications.licenses[${idx}].title = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
                     <input type="text" value="${lic.issuer || ''}" placeholder="Penerbit" oninput="currentData.certifications.licenses[${idx}].issuer = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                    <input type="text" value="${lic.badge || ''}" placeholder="Badge (BNSP, Cisco)" oninput="currentData.certifications.licenses[${idx}].badge = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
                   </div>
                   <div>
-                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (URL, Google Drive, atau 'assets/sertifikat/...')</label>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (Paste URL / Google Drive untuk PDF, atau upload gambar)</label>
                     <div class="flex gap-2">
-                      <input type="text" value="${lic.image || ''}" placeholder="URL Scan Sertifikat..." onchange="currentData.certifications.licenses[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
+                      <input type="text" value="${lic.image || ''}" placeholder="URL Scan (Gambar / PDF / Google Drive)..." onchange="currentData.certifications.licenses[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
                     </div>
                   </div>
-
-                  <!-- Drop & File Picker Zone -->
                   <div 
                     ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
                     ondragleave="this.classList.remove('drop-zone-active');"
-                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleImageFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.licenses[${idx}].image = url; saveData(); renderActiveTab(); });"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleCertFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.licenses[${idx}].image = url; saveData(); renderActiveTab(); });"
                     class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-emerald-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
                   >
-                    <span>📥 Drag & Drop atau</span>
-                    <label class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">
-                      <span>📁 Pilih File Scan</span>
-                      <input type="file" accept="image/*" onchange="if(this.files[0]) handleImageFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.licenses[${idx}].image = url; saveData(); renderActiveTab(); });" class="hidden">
-                    </label>
+                    <span>📥 Drag & Drop Gambar, atau</span>
+                    <button type="button" onclick="document.getElementById('lic-file-${idx}').click();" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">📁 Pilih Gambar (JPG/PNG/WebP)</button>
+                    <input type="file" id="lic-file-${idx}" accept="image/*" onchange="if(this.files[0]) handleCertFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.licenses[${idx}].image = url; saveData(); renderActiveTab(); }); this.value='';" style="display:none">
                   </div>
-
                   ${lic.image ? `
                     <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-950 border border-slate-800">
-                      <img src="${lic.image}" class="w-16 h-12 object-cover rounded-lg">
-                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">${lic.caption || 'Scan Sertifikat Terpasang'}</div>
+                      ${isPdfUrl(lic.image) ? `
+                        <div class="w-12 h-12 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono font-bold text-xs">PDF</div>
+                      ` : `
+                        <img src="${lic.image}" class="w-16 h-12 object-cover rounded-lg">
+                      `}
+                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">
+                        ${isPdfUrl(lic.image) ? '📄 File Scan PDF Terpasang' : (lic.caption || 'Scan Sertifikat Terpasang')}
+                      </div>
                       <button onclick="currentData.certifications.licenses[${idx}].image = ''; saveData(); renderActiveTab();" class="text-[10px] font-mono text-rose-400 hover:underline">Hapus</button>
                     </div>
                   ` : ''}
@@ -1155,6 +1556,107 @@
               `).join('')}
             </div>
 
+            <!-- 3. Sertifikat Pelatihan, Course & Workshop IT -->
+            <div class="space-y-4 pt-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-mono font-bold text-sky-400 uppercase">3. Sertifikat Pelatihan, Course & Workshop IT (Dicoding, Cisco, Google, Udemy):</h3>
+                <button onclick="addCertificationItem('courses')" class="px-2.5 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-mono font-semibold">+ Tambah Course / Pelatihan</button>
+              </div>
+              ${(currentData.certifications.courses || []).map((crs, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                    <input type="text" value="${crs.title || ''}" placeholder="Judul Pelatihan / Course" oninput="currentData.certifications.courses[${idx}].title = this.value; saveData()" class="px-3 py-1 rounded-lg bg-slate-950 border border-slate-700 text-xs font-bold text-white w-2/3">
+                    <button onclick="deleteCertificationItem('courses', ${idx})" class="text-[11px] font-mono text-rose-400 hover:underline">Hapus</button>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <input type="text" value="${crs.issuer || ''}" placeholder="Penerbit (Dicoding / Cisco / Google)" oninput="currentData.certifications.courses[${idx}].issuer = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                    <input type="text" value="${crs.badge || ''}" placeholder="Badge (Dicoding Academy / Cisco NetAcad)" oninput="currentData.certifications.courses[${idx}].badge = this.value; saveData()" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat (Paste URL / Google Drive untuk PDF, atau upload gambar)</label>
+                    <div class="flex gap-2">
+                      <input type="text" value="${crs.image || ''}" placeholder="URL Scan (Gambar / PDF / Google Drive)..." onchange="currentData.certifications.courses[${idx}].image = convertGoogleDriveLink(this.value); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
+                    </div>
+                  </div>
+                  <div 
+                    ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                    ondragleave="this.classList.remove('drop-zone-active');"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleCertFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.courses[${idx}].image = url; saveData(); renderActiveTab(); });"
+                    class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-sky-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
+                  >
+                    <span>📥 Drag & Drop Gambar, atau</span>
+                    <button type="button" onclick="document.getElementById('crs-file-${idx}').click();" class="px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">📁 Pilih Gambar (JPG/PNG/WebP)</button>
+                    <input type="file" id="crs-file-${idx}" accept="image/*" onchange="if(this.files[0]) handleCertFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.courses[${idx}].image = url; saveData(); renderActiveTab(); }); this.value='';" style="display:none">
+                  </div>
+                  ${crs.image ? `
+                    <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-950 border border-slate-800">
+                      ${isPdfUrl(crs.image) ? `
+                        <div class="w-12 h-12 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-mono font-bold text-xs">PDF</div>
+                      ` : `
+                        <img src="${crs.image}" class="w-16 h-12 object-cover rounded-lg">
+                      `}
+                      <div class="text-[10px] font-mono text-sky-400 truncate flex-1">
+                        ${isPdfUrl(crs.image) ? '📄 File Scan PDF Terpasang' : (crs.caption || 'Scan Sertifikat Terpasang')}
+                      </div>
+                      <button onclick="currentData.certifications.courses[${idx}].image = ''; saveData(); renderActiveTab();" class="text-[10px] font-mono text-rose-400 hover:underline">Hapus</button>
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- 4. Hak Cipta & Sertifikat HAKI -->
+            <div class="space-y-4 pt-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-mono font-bold text-amber-400 uppercase">4. Hak Cipta & Sertifikat HAKI (Kemenkumham RI):</h3>
+                <button onclick="addCertificationItem('haki')" class="px-2.5 py-1 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-xs font-mono font-semibold">+ Tambah HAKI</button>
+              </div>
+              ${(currentData.certifications.haki || []).map((h, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                    <input type="text" value="${h.title || ''}" placeholder="Judul Karya HAKI" oninput="currentData.certifications.haki[${idx}].title = this.value; syncHakiWithEducation(); saveData();" class="px-3 py-1 rounded-lg bg-slate-950 border border-slate-700 text-xs font-bold text-white w-2/3">
+                    <button onclick="deleteCertificationItem('haki', ${idx})" class="text-[11px] font-mono text-rose-400 hover:underline">Hapus</button>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <input type="text" value="${h.issuer || 'Kemenkumham RI'}" placeholder="Penerbit" oninput="currentData.certifications.haki[${idx}].issuer = this.value; syncHakiWithEducation(); saveData();" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                    <input type="text" value="${h.status || 'Terdaftar Resmi Kemenkumham RI'}" placeholder="Status HAKI" oninput="currentData.certifications.haki[${idx}].status = this.value; syncHakiWithEducation(); saveData();" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Deskripsi Karya Hak Cipta</label>
+                    <textarea rows="2" oninput="currentData.certifications.haki[${idx}].description = this.value; syncHakiWithEducation(); saveData();" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">${h.description || ''}</textarea>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] font-mono text-slate-400 mb-1">Scan Sertifikat HAKI (Paste URL / Google Drive untuk PDF, atau upload gambar)</label>
+                    <div class="flex gap-2">
+                      <input type="text" value="${h.image || ''}" placeholder="URL Scan HAKI (Gambar / PDF / Google Drive)..." onchange="currentData.certifications.haki[${idx}].image = convertGoogleDriveLink(this.value); syncHakiWithEducation(); saveData(); renderActiveTab();" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono">
+                    </div>
+                  </div>
+                  <div 
+                    ondragover="event.preventDefault(); this.classList.add('drop-zone-active');"
+                    ondragleave="this.classList.remove('drop-zone-active');"
+                    ondrop="event.preventDefault(); this.classList.remove('drop-zone-active'); handleCertFileDrop(event.dataTransfer.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.haki[${idx}].image = url; syncHakiWithEducation(); saveData(); renderActiveTab(); });"
+                    class="p-3 border border-dashed border-slate-700 rounded-xl text-center text-xs text-slate-400 hover:border-amber-500/50 bg-slate-950/40 flex items-center justify-center gap-3"
+                  >
+                    <span>📥 Drag & Drop Gambar, atau</span>
+                    <button type="button" onclick="document.getElementById('haki-file-${idx}').click();" class="px-3 py-1 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-[11px] font-mono font-semibold cursor-pointer shadow">📁 Pilih Gambar (JPG/PNG/WebP)</button>
+                    <input type="file" id="haki-file-${idx}" accept="image/*" onchange="if(this.files[0]) handleCertFileDrop(this.files[0], 'assets/sertifikat', (url, fname)=>{ currentData.certifications.haki[${idx}].image = url; syncHakiWithEducation(); saveData(); renderActiveTab(); }); this.value='';" style="display:none">
+                  </div>
+                  ${h.image ? `
+                    <div class="flex items-center gap-3 p-2 rounded-xl bg-slate-950 border border-slate-800">
+                      ${isPdfUrl(h.image) ? `
+                        <div class="w-12 h-12 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-xs">PDF</div>
+                      ` : `
+                        <img src="${h.image}" class="w-16 h-12 object-cover rounded-lg">
+                      `}
+                      <div class="text-[10px] font-mono text-emerald-400 truncate flex-1">
+                        ${isPdfUrl(h.image) ? '📄 File Scan PDF Terpasang' : (h.caption || 'Scan Sertifikat HAKI Terpasang')}
+                      </div>
+                      <button onclick="currentData.certifications.haki[${idx}].image = ''; syncHakiWithEducation(); saveData(); renderActiveTab();" class="text-[10px] font-mono text-rose-400 hover:underline">Hapus</button>
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
           </div>
         `;
       } else if (activeTab === 'skills') {
@@ -1270,6 +1772,147 @@
         saveData();
         renderActiveTab();
         showToast('Proyek berhasil dihapus');
+      }
+    }
+
+    function syncHakiWithEducation() {
+      ensureHakiData();
+      currentData.education.haki_list = currentData.certifications.haki.map(h => ({
+        id: h.id,
+        title: h.title,
+        issuer: h.issuer || 'Kemenkumham RI',
+        status: h.status || 'Terdaftar Resmi Kemenkumham RI',
+        description: h.description,
+        image: h.image || '',
+        images: h.image ? [{ url: h.image, caption: h.title || 'Sertifikat HAKI' }] : []
+      }));
+    }
+
+    function addCertificationItem(cat) {
+      ensureHakiData();
+      if (!currentData.certifications) currentData.certifications = { languages: [], licenses: [], haki: [] };
+      if (!currentData.certifications[cat]) currentData.certifications[cat] = [];
+      if (cat === 'languages') {
+        currentData.certifications.languages.push({
+          id: "lang_" + Date.now(),
+          name: "Sertifikasi Bahasa Baru",
+          issuer: "Lembaga Bahasa",
+          score: "800",
+          max_score: "990",
+          level: "Professional",
+          desc: "Deskripsi sertifikasi...",
+          image: "",
+          caption: "Scan Sertifikat Bahasa"
+        });
+      } else if (cat === 'licenses') {
+        currentData.certifications.licenses.push({
+          id: "lic_" + Date.now(),
+          title: "Sertifikasi Kompetensi Baru",
+          issuer: "Penerbit Sertifikat",
+          badge: "Certified",
+          status: "Certified",
+          desc: "Deskripsi sertifikasi kompetensi...",
+          image: "",
+          caption: "Scan Sertifikat Kompetensi"
+        });
+      } else if (cat === 'haki') {
+        currentData.certifications.haki.push({
+          id: "" + (currentData.certifications.haki.length + 1),
+          title: "Sertifikat HAKI Baru",
+          issuer: "Kemenkumham RI",
+          badge: "HAKI Kemenkumham",
+          status: "Terdaftar Resmi Kemenkumham RI",
+          description: "Deskripsi karya Hak Cipta...",
+          image: "",
+          images: [],
+          caption: "Sertifikat Hak Cipta Kemenkumham RI"
+        });
+        syncHakiWithEducation();
+      }
+      saveData();
+      renderActiveTab();
+      showToast('Sertifikat baru berhasil ditambahkan!');
+    }
+
+    function deleteCertificationItem(cat, idx) {
+      ensureHakiData();
+      if (confirm('Yakin ingin menghapus sertifikat ini?')) {
+        currentData.certifications[cat].splice(idx, 1);
+        if (cat === 'haki') syncHakiWithEducation();
+        saveData();
+        renderActiveTab();
+        showToast('Sertifikat dihapus');
+      }
+    }
+
+    function addExperienceProjectLink() {
+      if (!currentData.experience.web_systems) currentData.experience.web_systems = [];
+      currentData.experience.web_systems.push({
+        key: "act_" + Date.now(),
+        project_id: "",
+        title: "Dokumentasi Kegiatan / Maintenance Baru",
+        category: "Dokumentasi Kegiatan",
+        desc: "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        tags: ["IT Support", "Dokumentasi"],
+        images: []
+      });
+      saveData();
+      renderActiveTab();
+      showToast('Item Dokumentasi Kegiatan baru berhasil ditambahkan!');
+    }
+
+    function linkExperienceProject(sysIdx, projectId) {
+      if (!currentData.experience.web_systems[sysIdx]) return;
+      const proj = (currentData.projects || []).find(p => p.id === projectId);
+      if (proj) {
+        currentData.experience.web_systems[sysIdx].project_id = proj.id;
+        currentData.experience.web_systems[sysIdx].key = proj.id;
+        currentData.experience.web_systems[sysIdx].title = proj.title;
+        currentData.experience.web_systems[sysIdx].desc = proj.description;
+        currentData.experience.web_systems[sysIdx].folder = proj.folder;
+        currentData.experience.web_systems[sysIdx].tags = proj.tags;
+        currentData.experience.web_systems[sysIdx].images = proj.images;
+        showToast(`Berhasil dihubungkan ke proyek '${proj.title}'!`);
+      } else {
+        currentData.experience.web_systems[sysIdx].project_id = "";
+        showToast('Diatur sebagai Dokumentasi Kegiatan (Tanpa Proyek)');
+      }
+      saveData();
+      renderActiveTab();
+    }
+
+    function removeExperienceProjectLink(sysIdx) {
+      if (confirm('Hapus item dokumentasi / kegiatan ini dari Pengalaman?')) {
+        currentData.experience.web_systems.splice(sysIdx, 1);
+        saveData();
+        renderActiveTab();
+        showToast('Item dokumentasi kegiatan dihapus');
+      }
+    }
+
+    function addSystemImageUrl(sysIdx) {
+      const input = document.getElementById(`sys-img-input-${sysIdx}`);
+      if (!input || !input.value.trim()) return;
+      const url = convertGoogleDriveImageUrl(input.value.trim());
+      if (!currentData.experience.web_systems[sysIdx].images) {
+        currentData.experience.web_systems[sysIdx].images = [];
+      }
+      currentData.experience.web_systems[sysIdx].images.push({
+        url: url,
+        caption: "Tampilan Dokumentasi Kegiatan"
+      });
+      input.value = "";
+      saveData();
+      renderActiveTab();
+      showToast('Foto kegiatan berhasil ditambahkan!');
+    }
+
+    function removeSystemImage(sysIdx, imgIdx) {
+      if (currentData.experience.web_systems[sysIdx] && currentData.experience.web_systems[sysIdx].images) {
+        currentData.experience.web_systems[sysIdx].images.splice(imgIdx, 1);
+        saveData();
+        renderActiveTab();
+        showToast('Foto kegiatan dihapus');
       }
     }
 
@@ -1396,8 +2039,8 @@
 
     function openGithubModal() {
       document.getElementById('gh-token').value = localStorage.getItem('armand_gh_token') || '';
-      document.getElementById('gh-owner').value = localStorage.getItem('armand_gh_owner') || '';
-      document.getElementById('gh-repo').value = localStorage.getItem('armand_gh_repo') || '';
+      document.getElementById('gh-owner').value = localStorage.getItem('armand_gh_owner') || 'Arunayza';
+      document.getElementById('gh-repo').value = localStorage.getItem('armand_gh_repo') || 'portofolio';
       document.getElementById('gh-branch').value = localStorage.getItem('armand_gh_branch') || 'main';
       document.getElementById('github-modal').classList.remove('hidden');
       document.getElementById('github-modal').classList.add('flex');
