@@ -127,7 +127,20 @@
           "Barcode/QR Ready",
           "CRUD Enterprise"
         ],
-        "images": []
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1Z4B1tKcwLaAzlvBYqUvbbWrzy3A4vqjg",
+            "caption": "Tampilan Antarmuka Sistem"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1W-MPKx0bogxOOVrfaPhUt8mlPzHxaQQL",
+            "caption": "Tampilan Antarmuka Sistem"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1hQ8dWeI28zxGdYYkMYTHAc93TxKCLjut",
+            "caption": "Tampilan Antarmuka Sistem"
+          }
+        ]
       },
       {
         "key": "pesut",
@@ -143,7 +156,11 @@
         "images": [
           {
             "url": "https://lh3.googleusercontent.com/d/1O9b8tD32F4hI7ViLLvQxj68XTP63LIvX",
-            "caption": "Dokumentasi Teknis"
+            "caption": "Tampilan Halaman Login"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1Wwnx9-LxtfnCDQmynrE4wp7I33xPFZ8Y",
+            "caption": "Tampilan Antarmuka Sistem"
           }
         ],
         "project_id": "pesut"
@@ -151,7 +168,7 @@
       {
         "key": "act_1787644175236",
         "project_id": "",
-        "title": "Dokumentasi Kegiatan / Troubleshooting",
+        "title": " Troubleshooting Laptop dan Printer",
         "category": "Dokumentasi Kegiatan",
         "desc": "Melakukan troubleshooting koneksi jaringan lokal dan konfigurasi printer sharing antara laptop dan PC kasir menggunakan otentikasi Windows Credential.",
         "tags": [
@@ -161,16 +178,16 @@
         "images": [
           {
             "url": "https://lh3.googleusercontent.com/d/1pu3KqJZDRP2ziVRmBdIAvLQ8xr1MjU5p",
-            "caption": "Tampilan Antarmuka Sistem"
+            "caption": "Troubleshooting "
           }
         ]
       },
       {
         "key": "act_1787644175436",
         "project_id": "",
-        "title": "Dokumentasi Kegiatan / Setup Perangkat Baru",
+        "title": "Setup Perangkat Printer",
         "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "desc": "Melakukan setup unit printer baru, pengisian tinta, serta penanganan masalah teknis (troubleshooting) seperti kertas macet (paper jam) dan pembersihan print head untuk mengatasi tinta warna yang tersumbat.",
         "tags": [
           "IT Support",
           "Dokumentasi"
@@ -178,57 +195,117 @@
         "images": [
           {
             "url": "https://lh3.googleusercontent.com/d/1FaazptATsfIi1maLlH1WUt6Q2RpSpREV",
-            "caption": "Tampilan Antarmuka Sistem"
+            "caption": "Setup Printer Baru"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/185WZUszOQXFUT6RkziuOv1dwpfT4Vuv_",
+            "caption": "Pengisian Tinta Printer"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1uPF0RllZciZn7baP-mQ1PtgIvj_H29pJ",
+            "caption": "Troubleshoot Printer Tidak Keluar Warna Lain"
           }
         ]
       },
       {
-        "key": "act_1787657351255",
-        "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
-        "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
-        "tags": [
-          "IT Support",
-          "Dokumentasi"
-        ],
-        "images": []
-      },
-      {
         "key": "act_1787657353103",
         "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
+        "title": "Persiapan Perangkat Keras",
         "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "desc": "Melakukan persiapan dan pengoperasian perangkat TI harian, meliputi penyalaan dan pengetesan sistem video conference (audio, mic, kamera), startup PC operasional, serta aktivasi mesin kiosk tamu agar siap digunakan untuk pelayanan.",
         "tags": [
           "IT Support",
           "Dokumentasi"
         ],
-        "images": []
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1dFCPbGTpTwJBma8OmD7PrLaIGl7tmnWp",
+            "caption": "Setup Video Conference"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1O_KM55jBvtWEvsEkVnaaF39zmBUe1FPC",
+            "caption": "Setup PC Hakim di Ruang Sidang"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1gLiOqozVk-cmbZ1rd6zt9B8G5N3IY8GB",
+            "caption": "Setup KiosK Tamu"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1AsOAQZDJ43P8g9w1rcURbCVLpgq9m82m",
+            "caption": "Setup TV video Conference"
+          }
+        ]
       },
       {
         "key": "act_1787657353951",
         "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
+        "title": "Troubleshooting Perangkat Keras",
         "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "desc": "Melakukan troubleshooting PC no-display dengan membersihkan pin RAM, konfigurasi ulang BIOS, dan penggantian baterai CMOS, serta melakukan preventive maintenance (pembersihan debu dan pengecekan fisik/suhu) pada unit laptop operasional.",
         "tags": [
           "IT Support",
           "Dokumentasi"
         ],
-        "images": []
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1yuvTbCwGF35n8tu4Ltg3tpyvN5kEgonx",
+            "caption": "Troubleshoot PC No display"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1zC95YyJ-wdbngxs46YRtIPM0mfK1awQv",
+            "caption": "Tampilan Dokumentasi Kegiatan"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1kEL_zCgCPSpierVmsIp6TeFAJUZzwuMp",
+            "caption": "Tampilan Dokumentasi Kegiatan"
+          }
+        ]
       },
       {
         "key": "act_1787657354970",
         "project_id": "",
         "title": "Dokumentasi Kegiatan / Maintenance Baru",
         "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "desc": "Melakukan terminasi dan crimping kabel LAN (RJ-45) beserta pengetesan dengan LAN tester, dilanjutkan dengan pemasangan fisik dan konfigurasi koneksi perangkat Access Point untuk memperluas jangkauan jaringan Wi-Fi.",
         "tags": [
           "IT Support",
           "Dokumentasi"
         ],
-        "images": []
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1jvnp5iT6aEcRYyxCdI2tPeyMBw0qxyrR",
+            "caption": "Pemasangan Access Point"
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1uBpxZBQMsasOl8npfh0NxQOhiwb3Tl3i",
+            "caption": "Tampilan Dokumentasi Kegiatan"
+          }
+        ]
+      },
+      {
+        "key": "act_1787664970844",
+        "project_id": "",
+        "title": "Pembuatan ID Card Jobdesk Pegawai",
+        "category": "Dokumentasi Kegiatan",
+        "desc": "Mengelola proses produksi ID Card dari tahap editing tata letak data pegawai, pencetakan, pemotongan presisi, hingga pendistribusian akhir kepada 47 pegawai.",
+        "tags": [
+          "IT Support",
+          "Dokumentasi"
+        ],
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1uIu5CuE4eUuu1vLkwvhhEwMzTrRhVP99",
+            "caption": "Editing ID Card "
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1MTFebZhV2r-n9UI3YwhdtBl7_qorxDJw",
+            "caption": ""
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/d/1lJRBVvSAwLCyLeWJtfpFo1vuH2yrnUA7",
+            "caption": ""
+          }
+        ]
       }
     ]
   },
@@ -360,6 +437,10 @@
         {
           "url": "https://lh3.googleusercontent.com/d/1O9b8tD32F4hI7ViLLvQxj68XTP63LIvX",
           "caption": "Dokumentasi Teknis"
+        },
+        {
+          "url": "https://lh3.googleusercontent.com/d/1Wwnx9-LxtfnCDQmynrE4wp7I33xPFZ8Y",
+          "caption": "Dokumentasi Teknis"
         }
       ]
     },
@@ -382,7 +463,20 @@
         "CRUD"
       ],
       "details": "Katalogisasi 30+ aset komputer, pelacakan histori perbaikan perangkat, pencatatan penanggung jawab ruangan, serta modul ekspor rekap inventaris otomatis.",
-      "images": []
+      "images": [
+        {
+          "url": "https://lh3.googleusercontent.com/d/1O9b8tD32F4hI7ViLLvQxj68XTP63LIvX",
+          "caption": "Dokumentasi Teknis"
+        },
+        {
+          "url": "https://lh3.googleusercontent.com/d/1hQ8dWeI28zxGdYYkMYTHAc93TxKCLjut",
+          "caption": "Dokumentasi Teknis"
+        },
+        {
+          "url": "https://lh3.googleusercontent.com/d/1W-MPKx0bogxOOVrfaPhUt8mlPzHxaQQL",
+          "caption": "Dokumentasi Teknis"
+        }
+      ]
     }
   ],
   "certifications": {
