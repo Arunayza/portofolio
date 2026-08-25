@@ -149,55 +149,41 @@
         "project_id": "pesut"
       },
       {
-        "key": "act_1787644172404",
-        "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
-        "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
-        "tags": [
-          "IT Support",
-          "Dokumentasi"
-        ],
-        "images": []
-      },
-      {
-        "key": "act_1787644174104",
-        "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
-        "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
-        "tags": [
-          "IT Support",
-          "Dokumentasi"
-        ],
-        "images": []
-      },
-      {
         "key": "act_1787644175236",
         "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
+        "title": "Dokumentasi Kegiatan / Troubleshooting",
         "category": "Dokumentasi Kegiatan",
-        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "desc": "Melakukan troubleshooting koneksi jaringan lokal dan konfigurasi printer sharing antara laptop dan PC kasir menggunakan otentikasi Windows Credential.",
         "tags": [
           "IT Support",
           "Dokumentasi"
         ],
-        "images": []
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1pu3KqJZDRP2ziVRmBdIAvLQ8xr1MjU5p",
+            "caption": "Tampilan Antarmuka Sistem"
+          }
+        ]
       },
       {
         "key": "act_1787644175436",
         "project_id": "",
-        "title": "Dokumentasi Kegiatan / Maintenance Baru",
+        "title": "Dokumentasi Kegiatan / Setup Perangkat Baru",
         "category": "Dokumentasi Kegiatan",
         "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
         "tags": [
           "IT Support",
           "Dokumentasi"
         ],
-        "images": []
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/d/1FaazptATsfIi1maLlH1WUt6Q2RpSpREV",
+            "caption": "Tampilan Antarmuka Sistem"
+          }
+        ]
       },
       {
-        "key": "act_1787644175600",
+        "key": "act_1787657351255",
         "project_id": "",
         "title": "Dokumentasi Kegiatan / Maintenance Baru",
         "category": "Dokumentasi Kegiatan",
@@ -209,7 +195,31 @@
         "images": []
       },
       {
-        "key": "act_1787644175768",
+        "key": "act_1787657353103",
+        "project_id": "",
+        "title": "Dokumentasi Kegiatan / Maintenance Baru",
+        "category": "Dokumentasi Kegiatan",
+        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "tags": [
+          "IT Support",
+          "Dokumentasi"
+        ],
+        "images": []
+      },
+      {
+        "key": "act_1787657353951",
+        "project_id": "",
+        "title": "Dokumentasi Kegiatan / Maintenance Baru",
+        "category": "Dokumentasi Kegiatan",
+        "desc": "Deskripsi ringkas mengenai kegiatan, maintenance hardware, troubleshooting, atau proyek yang dikerjakan...",
+        "tags": [
+          "IT Support",
+          "Dokumentasi"
+        ],
+        "images": []
+      },
+      {
+        "key": "act_1787657354970",
         "project_id": "",
         "title": "Dokumentasi Kegiatan / Maintenance Baru",
         "category": "Dokumentasi Kegiatan",
