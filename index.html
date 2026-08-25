@@ -1992,26 +1992,37 @@
     // Synchronous immediate render to avoid any blank screen
     renderPortfolio(defaultPortfolioData);
 
-    // Asynchronously try to fetch live data.json or load from local storage
+    // Asynchronously fetch live data.json or load from local storage
     async function initPortfolio() {
-      // 1. Check local storage if in preview or edited locally
-      const localData = localStorage.getItem('armand_portfolio_data');
-      if (localData) {
-        try {
-          const parsed = JSON.parse(localData);
-          renderPortfolio(smartMergeDefaults(parsed));
-        } catch (e) { }
+      const isPreviewMode = (window.self !== window.top || new URLSearchParams(window.location.search).get('preview') === 'true');
+      
+      // 1. If inside Admin Studio preview iframe, use LocalStorage draft
+      if (isPreviewMode) {
+        const localData = localStorage.getItem('armand_portfolio_data');
+        if (localData) {
+          try {
+            renderPortfolio(smartMergeDefaults(JSON.parse(localData)));
+            return;
+          } catch (e) { }
+        }
       }
 
-      // 2. Fetch external data.json (for live GitHub Pages)
+      // 2. For public site, fetch live data.json FIRST (avoids stale localStorage cache)
       try {
         const response = await fetch('./data.json?v=' + Date.now());
         if (response.ok) {
           const json = await response.json();
           renderPortfolio(smartMergeDefaults(json));
+          return;
         }
-      } catch (err) {
-        // Fallback already rendered synchronously!
+      } catch (err) { }
+
+      // 3. Fallback to local storage if offline
+      const localData = localStorage.getItem('armand_portfolio_data');
+      if (localData) {
+        try {
+          renderPortfolio(smartMergeDefaults(JSON.parse(localData)));
+        } catch (e) { }
       }
     }
 
