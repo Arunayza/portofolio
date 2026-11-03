@@ -13,7 +13,9 @@
     "whatsapp_link": "https://wa.me/6283140723240",
     "linkedin": "linkedin.com/in/armand-maulana",
     "linkedin_link": "https://www.linkedin.com/in/armand-maulana-it/",
-    "summary": "Lulusan D4 Teknologi Rekayasa Komputer (IPK 3.91/4.00) dengan fokus pada keandalan infrastruktur IT, troubleshooting teknis operasional, dan pengembangan web internal."
+    "github": "github.com/Arunayza",
+    "github_link": "https://github.com/Arunayza",
+    "summary": "Lulusan Baru (Fresh Graduate) D4 Teknologi Rekayasa Komputer dari Politeknik Negeri Samarinda dengan IPK 3,91. Memiliki pengalaman langsung dalam pengelolaan sistem informasi, digitalisasi instansi pemerintah, serta pemeliharaan infrastruktur teknologi. Didukung dengan pemahaman pengembangan web, basis data, dan pengalaman aktif sebagai mentor teknologi. Adaptif, komunikatif, dan siap berkontribusi secara profesional di bidang teknologi informasi dan solusi digital."
   },
   "metrics": {
     "gpa": "3.91",
@@ -31,8 +33,25 @@
     "certifications_label": "Junior Net Admin & CCNA"
   },
   "education": {
-    "university": "Politeknik Negeri Samarinda",
-    "degree_name": "Sarjana Terapan (D4) - Teknologi Rekayasa Komputer",
+    "university": "Politeknik Negeri Samarinda (POLNES)",
+    "university_logo": "https://upload.wikimedia.org/wikipedia/id/thumb/0/05/Logo_Polnes_2015-sekarang.png/120px-Logo_Polnes_2015-sekarang.png",
+    "degree_title": "Sarjana Terapan Teknik (S.Tr.T.)",
+    "faculty_major": "Jurusan Teknologi Informasi — D4 Teknologi Rekayasa Komputer",
+    "degree_name": "Sarjana Terapan Teknik (S.Tr.T.)",
+    "gpa_badge": "★ IPK 3.91 / 4.00",
+    "honor": "Cum Laude",
+    "thesis": {
+      "title": "Rancang Bangun Pembersih Otomatis Cat Litter Box Berbasis Internet of Things dengan Deteksi Berat",
+      "label": "TUGAS AKHIR / SKRIPSI"
+    },
+    "relevant_courses": [
+      "Infrastruktur Jaringan & Routing Enterprise",
+      "Sistem Otomasi IoT & Mikrokontroler",
+      "Administrasi Server & Cloud",
+      "Pengembangan Sistem Informasi Web",
+      "Pengolahan Citra Digital & AI Dasar",
+      "Keamanan Sistem & Jaringan Komputer"
+    ],
     "period": "2022 – 2026",
     "gpa": "3.91 / 4.00",
     "description": "Program studi sarjana terapan berfokus pada integrasi hardware, arsitektur jaringan komputer enterprise, mikroelektronika IoT, sistem tertanam (embedded systems), dan pengembangan sistem informasi berbasis web terdistribusi.",
@@ -44,6 +63,9 @@
     ],
     "publication": {
       "journal": "Jurnal JAIEA",
+      "status": "Published (Sinta 3)",
+      "doi": "https://doi.org/10.59934/jaiea.v5i3.2554",
+      "url": "https://doi.org/10.59934/jaiea.v5i3.2554",
       "title": "Development of an IoT-Based Animal Trap Using Motion Sensors and Camera",
       "description": "Jurnal terakreditasi di bidang otomatisasi industri dan kecerdasan elektronik (JAIEA). Riset mencakup integrasi dua buah sensor infrared obstacle, mikrokontroler ESP8266 dan  mikrokontroler ESP32-CAM.",
       "tags": [
@@ -63,30 +85,34 @@
       {
         "id": "1",
         "title": "Sistem Otomatisasi Perangkap Hewan Terintegrasi Internet of Things",
-        "issuer": "Kemenkumham RI",
+        "issuer": "HKI Kemenkumham RI",
+        "date": "26 Juni 2026",
+        "category_tag": "Program Komputer",
+        "application_no": "EC002026098202",
+        "registration_no": "001304461",
+        "work_type": "Program Komputer",
+        "rights_holder": "Politeknik Negeri Samarinda",
+        "validity": "50 Tahun sejak pengumuman",
         "status": "Terdaftar Resmi",
-        "description": "Mengembangkan sistem otomatisasi perangkap hewan berbasis IoT yang mengintegrasikan ESP8266, modul kamera ESP32-CAM, dan aplikasi Android via Firebase Realtime Database. Sistem mengusung logika validasi dua sensor inframerah, manajemen daya pintar dengan relay, serta fitur live streaming dan notifikasi instan secara real-time.",
+        "description": "Mengembangkan sistem otomatisasi perangkap hewan berbasis IoT yang mengintegrasikan ESP8266, modul kamera ESP32-CAM, dan aplikasi Android via Firebase Realtime Database.",
         "image": "https://lh3.googleusercontent.com/d/1OOkcRxEXgoGHJtRNs74GM1ooB__9EWlc",
-        "images": [
-          {
-            "url": "https://lh3.googleusercontent.com/d/1OOkcRxEXgoGHJtRNs74GM1ooB__9EWlc",
-            "caption": "Sistem Otomatisasi Perangkap Hewan Terintegrasi Internet of Things"
-          }
-        ]
+        "pdf_url": "https://lh3.googleusercontent.com/d/1OOkcRxEXgoGHJtRNs74GM1ooB__9EWlc"
       },
       {
         "id": "2",
-        "title": "Website Spin A Meal",
-        "issuer": "Kemenkumham RI",
+        "title": "Website Spin A Meal (Program Komputer Rekomendasi Menu)",
+        "issuer": "HKI Kemenkumham RI",
+        "date": "12 Juni 2024",
+        "category_tag": "Program Komputer",
+        "application_no": "EC00202448914",
+        "registration_no": "000624268",
+        "work_type": "Program Komputer",
+        "rights_holder": "Politeknik Negeri Samarinda",
+        "validity": "50 Tahun sejak pengumuman",
         "status": "Terdaftar Resmi",
-        "description": "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem hiburan spin a wheel.",
+        "description": "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem hiburan roda putar interaktif.",
         "image": "https://lh3.googleusercontent.com/d/1c5vfAUfUHz4zHWPqKGwVLWeiUdAAvI70",
-        "images": [
-          {
-            "url": "https://lh3.googleusercontent.com/d/1c5vfAUfUHz4zHWPqKGwVLWeiUdAAvI70",
-            "caption": "Website Spin A Meal"
-          }
-        ]
+        "pdf_url": "https://lh3.googleusercontent.com/d/1c5vfAUfUHz4zHWPqKGwVLWeiUdAAvI70"
       }
     ]
   },
@@ -306,6 +332,285 @@
             "caption": ""
           }
         ]
+      }
+    ],
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_Mahkamah_Agung_RI.png/120px-Logo_Mahkamah_Agung_RI.png",
+    "description": "Bertanggung jawab dalam pemeliharaan infrastruktur TI dan operasional harian di lingkungan Pengadilan Tata Usaha Negara (PTUN) Samarinda dengan mengelola keandalan 30+ workstation, printer jaringan, dan perangkat jaringan aktif. Berhasil mendiagnosis serta menuntaskan 35+ insiden kendala teknis perangkat keras, sistem operasi Windows, dan konektivitas LAN/Wi-Fi, sekaligus menginisiasi digitalisasi birokrasi melalui pengembangan aplikasi web internal seperti sistem inventaris logistik TI (InvenIT) dan sistem perizinan serta cuti pegawai terpadu.",
+    "items": [
+      {
+        "id": "exp_ptun",
+        "company": "Pengadilan Tata Usaha Negara (PTUN) Samarinda",
+        "role": "IT Support Intern & Internal Web Developer",
+        "division": "Subbag Perencanaan, TI, & Pelaporan (PTIP)",
+        "period": "Januari 2026 – Mei 2026",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_Mahkamah_Agung_RI.png/120px-Logo_Mahkamah_Agung_RI.png",
+        "description": "Bertanggung jawab dalam pemeliharaan infrastruktur TI dan operasional harian di lingkungan Pengadilan Tata Usaha Negara (PTUN) Samarinda dengan mengelola keandalan 30+ workstation, printer jaringan, dan perangkat jaringan aktif. Berhasil mendiagnosis serta menuntaskan 35+ insiden kendala teknis perangkat keras, sistem operasi Windows, dan konektivitas LAN/Wi-Fi, sekaligus menginisiasi digitalisasi birokrasi melalui pengembangan aplikasi web internal seperti sistem inventaris logistik TI (InvenIT) dan sistem perizinan serta cuti pegawai terpadu.",
+        "highlights": [
+          {
+            "value": "30+",
+            "label": "PC & Laptop Terkelola",
+            "sublabel": "Workstation & Jaringan"
+          },
+          {
+            "value": "35+",
+            "label": "Kasus Troubleshoot Selesai",
+            "sublabel": "Hardware, OS & LAN"
+          },
+          {
+            "value": "3",
+            "label": "Aplikasi Web Internal Dibuat",
+            "sublabel": "InvenIT, Presensi & Cuti"
+          }
+        ],
+        "responsibilities": [
+          {
+            "title": "Maintenance Perangkat Rutin",
+            "desc": "Mengelola dan memelihara 30+ unit PC, laptop, printer jaringan, dan perangkat pendukung di seluruh ruangan kerja PTUN Samarinda."
+          },
+          {
+            "title": "Troubleshooting Teknis (35+ Kasus)",
+            "desc": "Menangani insiden kendala koneksi LAN/Wi-Fi kantor, konfigurasi IP, instalasi OS Windows, konfigurasi driver, antivirus, serta perbaikan hardware."
+          },
+          {
+            "title": "Dukungan TI Sidang & Rapat",
+            "desc": "Mempersiapkan infrastruktur audio/video conference dan jaringan untuk persidangan elektronik dan rapat koordinasi instansi."
+          }
+        ],
+        "web_systems": [
+          {
+            "key": "invenit",
+            "title": "InvenIT PTUN",
+            "folder": "assets/projek/invenit",
+            "category": "Inventaris IT",
+            "desc": "Sistem manajemen inventaris aset perangkat keras TI, histori servis teknis, penomoran BMN, dan pelacakan unit secara digital.",
+            "tags": [
+              "PHP & MySQL",
+              "Tailwind CSS",
+              "Barcode/QR Ready",
+              "CRUD Enterprise"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1Z4B1tKcwLaAzlvBYqUvbbWrzy3A4vqjg",
+                "caption": "Tampilan Antarmuka Sistem"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1W-MPKx0bogxOOVrfaPhUt8mlPzHxaQQL",
+                "caption": "Tampilan Antarmuka Sistem"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1hQ8dWeI28zxGdYYkMYTHAc93TxKCLjut",
+                "caption": "Tampilan Antarmuka Sistem"
+              }
+            ]
+          },
+          {
+            "key": "pesut",
+            "title": "PESUT: Pengajuan Elektronik Surat Izin dan Cuti Terpadu",
+            "folder": "assets/projek/pesut",
+            "category": "Paperless",
+            "desc": "Sistem web pengajuan cuti dan izin pegawai terintegrasi struktur PTUN. Menghadirkan manajemen data pegawai multi-add, alur approval bertingkat via digital signature, kalkulasi kuota otomatis sesuai jenis pegawai, serta penerbitan dan cetak SK instan.",
+            "tags": [
+              "PHP & MySQL",
+              "CSS",
+              "CRUD"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1O9b8tD32F4hI7ViLLvQxj68XTP63LIvX",
+                "caption": "Tampilan Halaman Login"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1Wwnx9-LxtfnCDQmynrE4wp7I33xPFZ8Y",
+                "caption": "Tampilan Antarmuka Sistem"
+              }
+            ],
+            "project_id": "pesut"
+          },
+          {
+            "key": "act_1787644175236",
+            "project_id": "",
+            "title": " Troubleshooting Laptop dan Printer",
+            "category": "Dokumentasi Kegiatan",
+            "desc": "Melakukan troubleshooting koneksi jaringan lokal dan konfigurasi printer sharing antara laptop dan PC kasir menggunakan otentikasi Windows Credential.",
+            "tags": [
+              "IT Support",
+              "Dokumentasi"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1pu3KqJZDRP2ziVRmBdIAvLQ8xr1MjU5p",
+                "caption": "Troubleshooting "
+              }
+            ]
+          },
+          {
+            "key": "act_1787644175436",
+            "project_id": "",
+            "title": "Setup Perangkat Printer",
+            "category": "Dokumentasi Kegiatan",
+            "desc": "Melakukan setup unit printer baru, pengisian tinta, serta penanganan masalah teknis (troubleshooting) seperti kertas macet (paper jam) dan pembersihan print head untuk mengatasi tinta warna yang tersumbat.",
+            "tags": [
+              "IT Support",
+              "Dokumentasi"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1FaazptATsfIi1maLlH1WUt6Q2RpSpREV",
+                "caption": "Setup Printer Baru"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/185WZUszOQXFUT6RkziuOv1dwpfT4Vuv_",
+                "caption": "Pengisian Tinta Printer"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1uPF0RllZciZn7baP-mQ1PtgIvj_H29pJ",
+                "caption": "Troubleshoot Printer Tidak Keluar Warna Lain"
+              }
+            ]
+          },
+          {
+            "key": "act_1787657353103",
+            "project_id": "",
+            "title": "Persiapan Perangkat Keras",
+            "category": "Dokumentasi Kegiatan",
+            "desc": "Melakukan persiapan dan pengoperasian perangkat TI harian, meliputi penyalaan dan pengetesan sistem video conference (audio, mic, kamera), startup PC operasional, serta aktivasi mesin kiosk tamu agar siap digunakan untuk pelayanan.",
+            "tags": [
+              "IT Support",
+              "Dokumentasi"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1dFCPbGTpTwJBma8OmD7PrLaIGl7tmnWp",
+                "caption": "Setup Video Conference"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1O_KM55jBvtWEvsEkVnaaF39zmBUe1FPC",
+                "caption": "Setup PC Hakim di Ruang Sidang"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1gLiOqozVk-cmbZ1rd6zt9B8G5N3IY8GB",
+                "caption": "Setup KiosK Tamu"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1AsOAQZDJ43P8g9w1rcURbCVLpgq9m82m",
+                "caption": "Setup TV video Conference"
+              }
+            ]
+          },
+          {
+            "key": "act_1787657353951",
+            "project_id": "",
+            "title": "Troubleshooting Perangkat Keras",
+            "category": "Dokumentasi Kegiatan",
+            "desc": "Melakukan troubleshooting PC no-display dengan membersihkan pin RAM, konfigurasi ulang BIOS, dan penggantian baterai CMOS, serta melakukan preventive maintenance (pembersihan debu dan pengecekan fisik/suhu) pada unit laptop operasional.",
+            "tags": [
+              "IT Support",
+              "Dokumentasi"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1yuvTbCwGF35n8tu4Ltg3tpyvN5kEgonx",
+                "caption": "Troubleshoot PC No display"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1zC95YyJ-wdbngxs46YRtIPM0mfK1awQv",
+                "caption": "Tampilan Dokumentasi Kegiatan"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1kEL_zCgCPSpierVmsIp6TeFAJUZzwuMp",
+                "caption": "Tampilan Dokumentasi Kegiatan"
+              }
+            ]
+          },
+          {
+            "key": "act_1787657354970",
+            "project_id": "",
+            "title": "Dokumentasi Kegiatan / Maintenance Baru",
+            "category": "Dokumentasi Kegiatan",
+            "desc": "Melakukan terminasi dan crimping kabel LAN (RJ-45) beserta pengetesan dengan LAN tester, dilanjutkan dengan pemasangan fisik dan konfigurasi koneksi perangkat Access Point untuk memperluas jangkauan jaringan Wi-Fi.",
+            "tags": [
+              "IT Support",
+              "Dokumentasi"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1jvnp5iT6aEcRYyxCdI2tPeyMBw0qxyrR",
+                "caption": "Pemasangan Access Point"
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1uBpxZBQMsasOl8npfh0NxQOhiwb3Tl3i",
+                "caption": "Tampilan Dokumentasi Kegiatan"
+              }
+            ]
+          },
+          {
+            "key": "act_1787664970844",
+            "project_id": "",
+            "title": "Pembuatan ID Card Jobdesk Pegawai",
+            "category": "Dokumentasi Kegiatan",
+            "desc": "Mengelola proses produksi ID Card dari tahap editing tata letak data pegawai, pencetakan, pemotongan presisi, hingga pendistribusian akhir kepada 47 pegawai.",
+            "tags": [
+              "IT Support",
+              "Dokumentasi"
+            ],
+            "images": [
+              {
+                "url": "https://lh3.googleusercontent.com/d/1uIu5CuE4eUuu1vLkwvhhEwMzTrRhVP99",
+                "caption": "Editing ID Card "
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1MTFebZhV2r-n9UI3YwhdtBl7_qorxDJw",
+                "caption": ""
+              },
+              {
+                "url": "https://lh3.googleusercontent.com/d/1lJRBVvSAwLCyLeWJtfpFo1vuH2yrnUA7",
+                "caption": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "exp_ngajar",
+        "company": "SD & SMP Islam Bunga Bangsa & SMPN 16 Samarinda",
+        "role": "Instruktur Pemrograman & Coding Siswa",
+        "division": "Program Pembelajaran Komputasi & Coding",
+        "period": "Juli 2024 – Desember 2025",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Logo_Kementerian_Pendidikan%2C_Kebudayaan%2C_Riset%2C_dan_Teknologi.png/120px-Logo_Kementerian_Pendidikan%2C_Kebudayaan%2C_Riset%2C_dan_Teknologi.png",
+        "description": "Berperan aktif sebagai instruktur dan fasilitator pembelajaran coding dan logika komputasi untuk lebih dari 100 siswa jenjang SD dan SMP di Samarinda. Membimbing 25 siswa SD dalam pembuatan game interaktif menggunakan Scratch serta mengajar perancangan aplikasi Android berbasis blok dengan MIT App Inventor untuk 75 siswa SMP (termasuk 2 rombel di SMPN 16 Samarinda dan kelas terpadu di SD & SMP Islam Bunga Bangsa) dengan pendekatan hands-on project terstruktur.",
+        "highlights": [
+          {
+            "value": "100+ Siswa",
+            "label": "Total Siswa Terbimbing",
+            "sublabel": "25 Siswa SD & 75 Siswa SMP"
+          },
+          {
+            "value": "Scratch & MIT App",
+            "label": "Materi Pemrograman",
+            "sublabel": "Visual Block & Mobile App"
+          },
+          {
+            "value": "3 Sekolah",
+            "label": "Mitra (2 Rombel)",
+            "sublabel": "Islam Bunga Bangsa & SMPN 16"
+          }
+        ],
+        "responsibilities": [
+          {
+            "title": "Bimbingan Logika Visual Scratch (25 Siswa SD)",
+            "desc": "Membimbing 25 siswa SD dalam logika komputasi dasar, pemahaman algoritma visual (sequence & loop), animasi karakter, dan pembuatan game edukasi interaktif Scratch."
+          },
+          {
+            "title": "Aplikasi Mobile MIT App Inventor (75 Siswa SMP)",
+            "desc": "Membimbing 75 siswa SMP merancang antarmuka (UI) dan logika pemrograman blok aplikasi Android hingga tahap live testing dan build APK pada smartphone."
+          },
+          {
+            "title": "Manajemen Kelas & 2 Rombel Belajar",
+            "desc": "Mengelola 2 rombel belajar di SMPN 16 Samarinda serta kelas terpadu di SD & SMP Islam Bunga Bangsa dengan metode project-based learning dan dokumentasi progres siswa."
+          }
+        ],
+        "web_systems": []
       }
     ]
   },
@@ -539,34 +844,34 @@
       {
         "id": "1",
         "title": "Sistem Otomatisasi Perangkap Hewan Terintegrasi Internet of Things",
-        "issuer": "Kemenkumham RI",
-        "badge": "HAKI Kemenkumham",
+        "issuer": "HKI Kemenkumham RI",
+        "date": "26 Juni 2026",
+        "category_tag": "Program Komputer",
+        "application_no": "EC002026098202",
+        "registration_no": "001304461",
+        "work_type": "Program Komputer",
+        "rights_holder": "Politeknik Negeri Samarinda",
+        "validity": "50 Tahun sejak pengumuman",
         "status": "Terdaftar Resmi",
-        "description": "Mengembangkan sistem otomatisasi perangkap hewan berbasis IoT yang mengintegrasikan ESP8266, modul kamera ESP32-CAM, dan aplikasi Android via Firebase Realtime Database. Sistem mengusung logika validasi dua sensor inframerah, manajemen daya pintar dengan relay, serta fitur live streaming dan notifikasi instan secara real-time.",
+        "description": "Mengembangkan sistem otomatisasi perangkap hewan berbasis IoT yang mengintegrasikan ESP8266, modul kamera ESP32-CAM, dan aplikasi Android via Firebase Realtime Database.",
         "image": "https://lh3.googleusercontent.com/d/1OOkcRxEXgoGHJtRNs74GM1ooB__9EWlc",
-        "caption": "Sertifikat Hak Cipta Kemenkumham RI - Sistem Otomasi IoT",
-        "images": [
-          {
-            "url": "https://lh3.googleusercontent.com/d/1OOkcRxEXgoGHJtRNs74GM1ooB__9EWlc",
-            "caption": "Sistem Otomasi & Monitoring IoT"
-          }
-        ]
+        "pdf_url": "https://lh3.googleusercontent.com/d/1OOkcRxEXgoGHJtRNs74GM1ooB__9EWlc"
       },
       {
         "id": "2",
-        "title": "Website Spin A Meal",
-        "issuer": "Kemenkumham RI",
-        "badge": "HAKI Kemenkumham",
+        "title": "Website Spin A Meal (Program Komputer Rekomendasi Menu)",
+        "issuer": "HKI Kemenkumham RI",
+        "date": "12 Juni 2024",
+        "category_tag": "Program Komputer",
+        "application_no": "EC00202448914",
+        "registration_no": "000624268",
+        "work_type": "Program Komputer",
+        "rights_holder": "Politeknik Negeri Samarinda",
+        "validity": "50 Tahun sejak pengumuman",
         "status": "Terdaftar Resmi",
-        "description": "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem hiburan spin a wheel.",
+        "description": "Hak Cipta Program Komputer berupa platform interaktif penentu rekomendasi kuliner dengan sistem hiburan roda putar interaktif.",
         "image": "https://lh3.googleusercontent.com/d/1c5vfAUfUHz4zHWPqKGwVLWeiUdAAvI70",
-        "caption": "Sertifikat Hak Cipta Kemenkumham RI - Website Spin a Meal",
-        "images": [
-          {
-            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-            "caption": "Sertifikat Hak Cipta Kemenkumham RI - Website Spin a Meal"
-          }
-        ]
+        "pdf_url": "https://lh3.googleusercontent.com/d/1c5vfAUfUHz4zHWPqKGwVLWeiUdAAvI70"
       }
     ]
   },
