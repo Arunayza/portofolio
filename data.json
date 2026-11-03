@@ -481,7 +481,6 @@
         "images": []
       }
     ],
-<<<<<<< HEAD
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_Mahkamah_Agung_RI.png/120px-Logo_Mahkamah_Agung_RI.png",
     "description": "Bertanggung jawab dalam pemeliharaan infrastruktur TI dan operasional harian di lingkungan Pengadilan Tata Usaha Negara (PTUN) Samarinda dengan mengelola keandalan 30+ workstation, printer jaringan, dan perangkat jaringan aktif. Berhasil mendiagnosis serta menuntaskan 35+ insiden kendala teknis perangkat keras, sistem operasi Windows, dan konektivitas LAN/Wi-Fi, sekaligus menginisiasi digitalisasi birokrasi melalui pengembangan aplikasi web internal seperti sistem inventaris logistik TI (InvenIT) dan sistem perizinan serta cuti pegawai terpadu.",
     "items": [
@@ -492,7 +491,6 @@
         "division": "Subbag Perencanaan, TI, & Pelaporan (PTIP)",
         "period": "Januari 2026 – Mei 2026",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Logo_Mahkamah_Agung_RI.png/120px-Logo_Mahkamah_Agung_RI.png",
-=======
     "logo": "https://lh3.googleusercontent.com/d/1WV5OFPzNJDpkcncdr3JwwfzhqDoQkctg",
     "items": [
       {
@@ -839,7 +837,6 @@
             ]
           }
         ]
-<<<<<<< HEAD
       },
       {
         "id": "exp_ngajar",
