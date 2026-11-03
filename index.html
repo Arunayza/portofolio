@@ -2010,7 +2010,7 @@
 
       // 2. Fetch live data.json
       try {
-        const response = await fetch('./data.json);
+        const response = await fetch('./data.json?v=' + Date.now());
         if (response.ok) {
           const json = await response.json();
           renderPortfolio(json);
@@ -2019,7 +2019,9 @@
           }
           return;
         }
-      } catch (err) { }
+      } catch (err) {
+        console.error("Error fetching data.json:", err);
+      }
 
       // 3. Fallback: If fetch failed and localData empty, alert user or wait
       if (!activePortfolioData) {
